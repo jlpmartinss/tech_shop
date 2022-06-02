@@ -27,6 +27,9 @@ abstract class FavouritesRecord
   String get imagePath;
 
   @nullable
+  double get quantity;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -35,7 +38,8 @@ abstract class FavouritesRecord
     ..model = ''
     ..name = ''
     ..price = 0.0
-    ..imagePath = '';
+    ..imagePath = ''
+    ..quantity = 0.0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('favourites');
@@ -64,6 +68,7 @@ Map<String, dynamic> createFavouritesRecordData({
   String name,
   double price,
   String imagePath,
+  double quantity,
 }) =>
     serializers.toFirestore(
         FavouritesRecord.serializer,
@@ -72,4 +77,5 @@ Map<String, dynamic> createFavouritesRecordData({
           ..model = model
           ..name = name
           ..price = price
-          ..imagePath = imagePath));
+          ..imagePath = imagePath
+          ..quantity = quantity));

@@ -21,6 +21,14 @@ class FFAppState {
   bool showFullList = true;
 
   String USER = '1';
+
+  String Components = 'Components';
+
+  String Laptops = 'Laptops';
+
+  String Desktops = 'Desktops';
+
+  String Periphericals = 'Periphericals';
 }
 
 LatLng _latLngFromString(String val) {

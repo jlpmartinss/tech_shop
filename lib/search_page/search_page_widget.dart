@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +22,7 @@ class SearchPageWidget extends StatefulWidget {
 }
 
 class _SearchPageWidgetState extends State<SearchPageWidget> {
-  List<LaptopsRecord> simpleSearchResults = [];
+  List<ProductsRecord> simpleSearchResults = [];
   TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -171,14 +172,17 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                       5, 5, 5, 5),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      await queryLaptopsRecordOnce()
+                                      await queryProductsRecordOnce()
                                           .then(
                                             (records) => simpleSearchResults =
                                                 TextSearch(
                                               records
                                                   .map(
                                                     (record) => TextSearchItem(
-                                                        record, [record.model]),
+                                                        record, [
+                                                      record.name,
+                                                      record.modelno
+                                                    ]),
                                                   )
                                                   .toList(),
                                             )
@@ -226,8 +230,8 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                   child: Builder(
                     builder: (context) {
-                      final laptop = simpleSearchResults?.toList() ?? [];
-                      if (laptop.isEmpty) {
+                      final product = simpleSearchResults?.toList() ?? [];
+                      if (product.isEmpty) {
                         return Image.network(
                           '',
                         );
@@ -235,12 +239,140 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         scrollDirection: Axis.vertical,
-                        itemCount: laptop.length,
-                        itemBuilder: (context, laptopIndex) {
-                          final laptopItem = laptop[laptopIndex];
-                          return Text(
-                            laptopItem.model,
-                            style: FlutterFlowTheme.of(context).bodyText1,
+                        itemCount: product.length,
+                        itemBuilder: (context, productIndex) {
+                          final productItem = product[productIndex];
+                          return Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 3,
+                                    color: Color(0x411D2429),
+                                    offset: Offset(0, 1),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 1, 1, 1),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(6),
+                                        child: Image.network(
+                                          productItem.image,
+                                          width: 80,
+                                          height: 80,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8, 8, 4, 0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              productItem.name,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .title3
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    color: Color(0xFF0F1113),
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 4, 8, 0),
+                                              child: AutoSizeText(
+                                                productItem.stock
+                                                    .maybeHandleOverflow(
+                                                  maxChars: 70,
+                                                  replacement: '…',
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 4, 0, 0),
+                                          child: Icon(
+                                            Icons.chevron_right_rounded,
+                                            color: Color(0xFF57636C),
+                                            size: 24,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 12, 4, 8),
+                                          child: Text(
+                                            formatNumber(
+                                              productItem.price,
+                                              formatType: FormatType.decimal,
+                                              decimalType:
+                                                  DecimalType.automatic,
+                                              currency: '€',
+                                            ),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: Color(0xFF0F1113),
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           );
                         },
                       );

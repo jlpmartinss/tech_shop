@@ -12,14 +12,58 @@ abstract class ProductsRecord
       _$productsRecordSerializer;
 
   @nullable
-  BuiltList<String> get test;
+  String get modelno;
+
+  @nullable
+  String get name;
+
+  @nullable
+  double get price;
+
+  @nullable
+  String get image;
+
+  @nullable
+  String get category;
+
+  @nullable
+  String get cpu;
+
+  @nullable
+  String get gpu;
+
+  @nullable
+  String get ram;
+
+  @nullable
+  String get storage;
+
+  @nullable
+  String get stock;
+
+  @nullable
+  String get psu;
+
+  @nullable
+  String get type;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
-  static void _initializeBuilder(ProductsRecordBuilder builder) =>
-      builder..test = ListBuilder();
+  static void _initializeBuilder(ProductsRecordBuilder builder) => builder
+    ..modelno = ''
+    ..name = ''
+    ..price = 0.0
+    ..image = ''
+    ..category = ''
+    ..cpu = ''
+    ..gpu = ''
+    ..ram = ''
+    ..storage = ''
+    ..stock = ''
+    ..psu = ''
+    ..type = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('products');
@@ -42,5 +86,32 @@ abstract class ProductsRecord
           {...mapFromFirestore(data), kDocumentReferenceField: reference});
 }
 
-Map<String, dynamic> createProductsRecordData() => serializers.toFirestore(
-    ProductsRecord.serializer, ProductsRecord((p) => p..test = null));
+Map<String, dynamic> createProductsRecordData({
+  String modelno,
+  String name,
+  double price,
+  String image,
+  String category,
+  String cpu,
+  String gpu,
+  String ram,
+  String storage,
+  String stock,
+  String psu,
+  String type,
+}) =>
+    serializers.toFirestore(
+        ProductsRecord.serializer,
+        ProductsRecord((p) => p
+          ..modelno = modelno
+          ..name = name
+          ..price = price
+          ..image = image
+          ..category = category
+          ..cpu = cpu
+          ..gpu = gpu
+          ..ram = ram
+          ..storage = storage
+          ..stock = stock
+          ..psu = psu
+          ..type = type));

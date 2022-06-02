@@ -7,14 +7,13 @@ export 'laptops/laptops_widget.dart' show LaptopsWidget;
 export 'computers/computers_widget.dart' show ComputersWidget;
 export 'components/components_widget.dart' show ComponentsWidget;
 export 'peripherals/peripherals_widget.dart' show PeripheralsWidget;
-export 'specific_item_laptop/specific_item_laptop_widget.dart'
-    show SpecificItemLaptopWidget;
-export 'specific_item_desktop/specific_item_desktop_widget.dart'
-    show SpecificItemDesktopWidget;
-export 'specific_item_components/specific_item_components_widget.dart'
-    show SpecificItemComponentsWidget;
 export 'specific_item_peripherals/specific_item_peripherals_widget.dart'
     show SpecificItemPeripheralsWidget;
 export 'authentication/authentication_widget.dart' show AuthenticationWidget;
 export 'cart_payment/cart_payment_widget.dart' show CartPaymentWidget;
+export 'specific_laptop/specific_laptop_widget.dart' show SpecificLaptopWidget;
 export 'search_page/search_page_widget.dart' show SearchPageWidget;
+export 'specific_component/specific_component_widget.dart'
+    show SpecificComponentWidget;
+export 'specific_desktop/specific_desktop_widget.dart'
+    show SpecificDesktopWidget;
