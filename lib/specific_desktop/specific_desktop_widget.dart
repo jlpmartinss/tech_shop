@@ -247,50 +247,17 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                StreamBuilder<List<LaptopsRecord>>(
-                                  stream: queryLaptopsRecord(
-                                    queryBuilder: (laptopsRecord) =>
-                                        laptopsRecord.where('stock',
-                                            isEqualTo: true),
-                                    singleRecord: true,
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<LaptopsRecord> textLaptopsRecordList =
-                                        snapshot.data;
-                                    // Return an empty Container when the document does not exist.
-                                    if (snapshot.data.isEmpty) {
-                                      return Container();
-                                    }
-                                    final textLaptopsRecord =
-                                        textLaptopsRecordList.isNotEmpty
-                                            ? textLaptopsRecordList.first
-                                            : null;
-                                    return Text(
-                                      specificDesktopProductsRecord.stock,
-                                      textAlign: TextAlign.start,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Lexend Deca',
-                                            color: Color(0xFF23AD31),
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                    );
-                                  },
+                                Text(
+                                  specificDesktopProductsRecord.stock,
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Lexend Deca',
+                                        color: Color(0xFF23AD31),
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.normal,
+                                      ),
                                 ),
                               ],
                             ),
@@ -338,320 +305,92 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<DesktopsRecord>>(
-                                          stream: queryDesktopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<DesktopsRecord>
-                                                textDesktopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textDesktopsRecord =
-                                                textDesktopsRecordList
-                                                        .isNotEmpty
-                                                    ? textDesktopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificDesktopProductsRecord.cpu,
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificDesktopProductsRecord.cpu,
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<DesktopsRecord>>(
-                                          stream: queryDesktopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<DesktopsRecord>
-                                                textDesktopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textDesktopsRecord =
-                                                textDesktopsRecordList
-                                                        .isNotEmpty
-                                                    ? textDesktopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificDesktopProductsRecord.ram,
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificDesktopProductsRecord.ram,
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<DesktopsRecord>>(
-                                          stream: queryDesktopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<DesktopsRecord>
-                                                textDesktopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textDesktopsRecord =
-                                                textDesktopsRecordList
-                                                        .isNotEmpty
-                                                    ? textDesktopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificDesktopProductsRecord.gpu,
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificDesktopProductsRecord.gpu,
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<DesktopsRecord>>(
-                                          stream: queryDesktopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<DesktopsRecord>
-                                                textDesktopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textDesktopsRecord =
-                                                textDesktopsRecordList
-                                                        .isNotEmpty
-                                                    ? textDesktopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificDesktopProductsRecord
-                                                  .storage,
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificDesktopProductsRecord.storage,
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<DesktopsRecord>>(
-                                          stream: queryDesktopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<DesktopsRecord>
-                                                textDesktopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textDesktopsRecord =
-                                                textDesktopsRecordList
-                                                        .isNotEmpty
-                                                    ? textDesktopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              textDesktopsRecord.psu,
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificDesktopProductsRecord.psu,
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<DesktopsRecord>>(
-                                          stream: queryDesktopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<DesktopsRecord>
-                                                textDesktopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textDesktopsRecord =
-                                                textDesktopsRecordList
-                                                        .isNotEmpty
-                                                    ? textDesktopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              textDesktopsRecord.motherboard,
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificDesktopProductsRecord
+                                              .motherboard,
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -693,48 +432,16 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    StreamBuilder<List<DesktopsRecord>>(
-                                      stream: queryDesktopsRecord(
-                                        singleRecord: true,
+                                    Text(
+                                      formatNumber(
+                                        specificDesktopProductsRecord.price,
+                                        formatType: FormatType.decimal,
+                                        decimalType: DecimalType.automatic,
+                                        currency: '€',
                                       ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50,
-                                              height: 50,
-                                              child: CircularProgressIndicator(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<DesktopsRecord>
-                                            textDesktopsRecordList =
-                                            snapshot.data;
-                                        // Return an empty Container when the document does not exist.
-                                        if (snapshot.data.isEmpty) {
-                                          return Container();
-                                        }
-                                        final textDesktopsRecord =
-                                            textDesktopsRecordList.isNotEmpty
-                                                ? textDesktopsRecordList.first
-                                                : null;
-                                        return Text(
-                                          formatNumber(
-                                            specificDesktopProductsRecord.price,
-                                            formatType: FormatType.decimal,
-                                            decimalType: DecimalType.automatic,
-                                            currency: '€',
-                                          ),
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .title1,
-                                        );
-                                      },
+                                      textAlign: TextAlign.center,
+                                      style:
+                                          FlutterFlowTheme.of(context).title1,
                                     ),
                                   ],
                                 ),

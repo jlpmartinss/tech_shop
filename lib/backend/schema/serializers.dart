@@ -1,10 +1,6 @@
 import 'package:built_value/standard_json_plugin.dart';
 
 import 'users_record.dart';
-import 'laptops_record.dart';
-import 'desktops_record.dart';
-import 'components_record.dart';
-import 'peripherals_record.dart';
 import 'products_record.dart';
 import 'favourites_record.dart';
 import 'cart_record.dart';
@@ -19,10 +15,6 @@ const kDocumentReferenceField = 'Document__Reference__Field';
 
 @SerializersFor(const [
   UsersRecord,
-  LaptopsRecord,
-  DesktopsRecord,
-  ComponentsRecord,
-  PeripheralsRecord,
   ProductsRecord,
   FavouritesRecord,
   CartRecord,

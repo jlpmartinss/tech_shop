@@ -48,6 +48,9 @@ abstract class ProductsRecord
   String get type;
 
   @nullable
+  String get motherboard;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -63,7 +66,8 @@ abstract class ProductsRecord
     ..storage = ''
     ..stock = ''
     ..psu = ''
-    ..type = '';
+    ..type = ''
+    ..motherboard = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('products');
@@ -99,6 +103,7 @@ Map<String, dynamic> createProductsRecordData({
   String stock,
   String psu,
   String type,
+  String motherboard,
 }) =>
     serializers.toFirestore(
         ProductsRecord.serializer,
@@ -114,4 +119,5 @@ Map<String, dynamic> createProductsRecordData({
           ..storage = storage
           ..stock = stock
           ..psu = psu
-          ..type = type));
+          ..type = type
+          ..motherboard = motherboard));

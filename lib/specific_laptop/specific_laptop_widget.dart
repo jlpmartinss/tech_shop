@@ -272,13 +272,9 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                StreamBuilder<List<LaptopsRecord>>(
-                                  stream: queryLaptopsRecord(
-                                    queryBuilder: (laptopsRecord) =>
-                                        laptopsRecord.where('stock',
-                                            isEqualTo: true),
-                                    singleRecord: true,
-                                  ),
+                                StreamBuilder<ProductsRecord>(
+                                  stream: ProductsRecord.getDocument(
+                                      widget.laptopDetails),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -293,16 +289,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                         ),
                                       );
                                     }
-                                    List<LaptopsRecord> textLaptopsRecordList =
-                                        snapshot.data;
-                                    // Return an empty Container when the document does not exist.
-                                    if (snapshot.data.isEmpty) {
-                                      return Container();
-                                    }
-                                    final textLaptopsRecord =
-                                        textLaptopsRecordList.isNotEmpty
-                                            ? textLaptopsRecordList.first
-                                            : null;
+                                    final textProductsRecord = snapshot.data;
                                     return Text(
                                       specificLaptopProductsRecord.stock,
                                       textAlign: TextAlign.start,
@@ -363,263 +350,76 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<LaptopsRecord>>(
-                                          stream: queryLaptopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<LaptopsRecord>
-                                                textLaptopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textLaptopsRecord =
-                                                textLaptopsRecordList.isNotEmpty
-                                                    ? textLaptopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificLaptopProductsRecord.cpu,
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificLaptopProductsRecord.cpu,
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<LaptopsRecord>>(
-                                          stream: queryLaptopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<LaptopsRecord>
-                                                textLaptopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textLaptopsRecord =
-                                                textLaptopsRecordList.isNotEmpty
-                                                    ? textLaptopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificLaptopProductsRecord.ram,
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificLaptopProductsRecord.ram,
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<LaptopsRecord>>(
-                                          stream: queryLaptopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<LaptopsRecord>
-                                                textLaptopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textLaptopsRecord =
-                                                textLaptopsRecordList.isNotEmpty
-                                                    ? textLaptopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              textLaptopsRecord.gpu,
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificLaptopProductsRecord.gpu,
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<LaptopsRecord>>(
-                                          stream: queryLaptopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<LaptopsRecord>
-                                                textLaptopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textLaptopsRecord =
-                                                textLaptopsRecordList.isNotEmpty
-                                                    ? textLaptopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificLaptopProductsRecord
-                                                  .storage,
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificLaptopProductsRecord.storage,
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<LaptopsRecord>>(
-                                          stream: queryLaptopsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<LaptopsRecord>
-                                                textLaptopsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textLaptopsRecord =
-                                                textLaptopsRecordList.isNotEmpty
-                                                    ? textLaptopsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificLaptopProductsRecord
-                                                  .modelno,
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificLaptopProductsRecord.modelno,
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -661,48 +461,16 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    StreamBuilder<List<LaptopsRecord>>(
-                                      stream: queryLaptopsRecord(
-                                        singleRecord: true,
+                                    Text(
+                                      formatNumber(
+                                        specificLaptopProductsRecord.price,
+                                        formatType: FormatType.decimal,
+                                        decimalType: DecimalType.automatic,
+                                        currency: '€',
                                       ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50,
-                                              height: 50,
-                                              child: CircularProgressIndicator(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<LaptopsRecord>
-                                            textLaptopsRecordList =
-                                            snapshot.data;
-                                        // Return an empty Container when the document does not exist.
-                                        if (snapshot.data.isEmpty) {
-                                          return Container();
-                                        }
-                                        final textLaptopsRecord =
-                                            textLaptopsRecordList.isNotEmpty
-                                                ? textLaptopsRecordList.first
-                                                : null;
-                                        return Text(
-                                          formatNumber(
-                                            specificLaptopProductsRecord.price,
-                                            formatType: FormatType.decimal,
-                                            decimalType: DecimalType.automatic,
-                                            currency: '€',
-                                          ),
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .title1,
-                                        );
-                                      },
+                                      textAlign: TextAlign.center,
+                                      style:
+                                          FlutterFlowTheme.of(context).title1,
                                     ),
                                   ],
                                 ),

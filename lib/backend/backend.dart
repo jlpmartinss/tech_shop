@@ -5,10 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/users_record.dart';
-import 'schema/laptops_record.dart';
-import 'schema/desktops_record.dart';
-import 'schema/components_record.dart';
-import 'schema/peripherals_record.dart';
 import 'schema/products_record.dart';
 import 'schema/favourites_record.dart';
 import 'schema/cart_record.dart';
@@ -20,10 +16,6 @@ export 'schema/index.dart';
 export 'schema/serializers.dart';
 
 export 'schema/users_record.dart';
-export 'schema/laptops_record.dart';
-export 'schema/desktops_record.dart';
-export 'schema/components_record.dart';
-export 'schema/peripherals_record.dart';
 export 'schema/products_record.dart';
 export 'schema/favourites_record.dart';
 export 'schema/cart_record.dart';
@@ -64,174 +56,6 @@ Future<FFFirestorePage<UsersRecord>> queryUsersRecordPage({
     queryCollectionPage(
       UsersRecord.collection,
       UsersRecord.serializer,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query LaptopsRecords (as a Stream and as a Future).
-Stream<List<LaptopsRecord>> queryLaptopsRecord({
-  Query Function(Query) queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      LaptopsRecord.collection,
-      LaptopsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<LaptopsRecord>> queryLaptopsRecordOnce({
-  Query Function(Query) queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      LaptopsRecord.collection,
-      LaptopsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<LaptopsRecord>> queryLaptopsRecordPage({
-  Query Function(Query) queryBuilder,
-  DocumentSnapshot nextPageMarker,
-  int pageSize,
-  bool isStream,
-}) =>
-    queryCollectionPage(
-      LaptopsRecord.collection,
-      LaptopsRecord.serializer,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query DesktopsRecords (as a Stream and as a Future).
-Stream<List<DesktopsRecord>> queryDesktopsRecord({
-  Query Function(Query) queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      DesktopsRecord.collection,
-      DesktopsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<DesktopsRecord>> queryDesktopsRecordOnce({
-  Query Function(Query) queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      DesktopsRecord.collection,
-      DesktopsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<DesktopsRecord>> queryDesktopsRecordPage({
-  Query Function(Query) queryBuilder,
-  DocumentSnapshot nextPageMarker,
-  int pageSize,
-  bool isStream,
-}) =>
-    queryCollectionPage(
-      DesktopsRecord.collection,
-      DesktopsRecord.serializer,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query ComponentsRecords (as a Stream and as a Future).
-Stream<List<ComponentsRecord>> queryComponentsRecord({
-  Query Function(Query) queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      ComponentsRecord.collection,
-      ComponentsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<ComponentsRecord>> queryComponentsRecordOnce({
-  Query Function(Query) queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      ComponentsRecord.collection,
-      ComponentsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<ComponentsRecord>> queryComponentsRecordPage({
-  Query Function(Query) queryBuilder,
-  DocumentSnapshot nextPageMarker,
-  int pageSize,
-  bool isStream,
-}) =>
-    queryCollectionPage(
-      ComponentsRecord.collection,
-      ComponentsRecord.serializer,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query PeripheralsRecords (as a Stream and as a Future).
-Stream<List<PeripheralsRecord>> queryPeripheralsRecord({
-  Query Function(Query) queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      PeripheralsRecord.collection,
-      PeripheralsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<PeripheralsRecord>> queryPeripheralsRecordOnce({
-  Query Function(Query) queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      PeripheralsRecord.collection,
-      PeripheralsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<PeripheralsRecord>> queryPeripheralsRecordPage({
-  Query Function(Query) queryBuilder,
-  DocumentSnapshot nextPageMarker,
-  int pageSize,
-  bool isStream,
-}) =>
-    queryCollectionPage(
-      PeripheralsRecord.collection,
-      PeripheralsRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

@@ -289,8 +289,12 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 4, 0, 0),
-                                  child: StreamBuilder<List<ComponentsRecord>>(
-                                    stream: queryComponentsRecord(),
+                                  child: FutureBuilder<List<ProductsRecord>>(
+                                    future: queryProductsRecordOnce(
+                                      queryBuilder: (productsRecord) =>
+                                          productsRecord.where('category',
+                                              isEqualTo: 'Components'),
+                                    ),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
@@ -306,8 +310,8 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
                                           ),
                                         );
                                       }
-                                      List<ComponentsRecord>
-                                          textComponentsRecordList =
+                                      List<ProductsRecord>
+                                          textProductsRecordList =
                                           snapshot.data;
                                       return AutoSizeText(
                                         wrapProductsRecord.name,

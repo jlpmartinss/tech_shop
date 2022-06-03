@@ -1,4 +1,3 @@
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -199,49 +198,17 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            StreamBuilder<List<LaptopsRecord>>(
-                              stream: queryLaptopsRecord(
-                                queryBuilder: (laptopsRecord) => laptopsRecord
-                                    .where('stock', isEqualTo: true),
-                                singleRecord: true,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: CircularProgressIndicator(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<LaptopsRecord> textLaptopsRecordList =
-                                    snapshot.data;
-                                // Return an empty Container when the document does not exist.
-                                if (snapshot.data.isEmpty) {
-                                  return Container();
-                                }
-                                final textLaptopsRecord =
-                                    textLaptopsRecordList.isNotEmpty
-                                        ? textLaptopsRecordList.first
-                                        : null;
-                                return Text(
-                                  'Em Stock',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Color(0xFF23AD31),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                );
-                              },
+                            Text(
+                              'Em Stock',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF23AD31),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                             ),
                           ],
                         ),
@@ -287,145 +254,46 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         45, 0, 0, 0),
-                                    child:
-                                        StreamBuilder<List<ComponentsRecord>>(
-                                      stream: queryComponentsRecord(
-                                        singleRecord: true,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50,
-                                              height: 50,
-                                              child: CircularProgressIndicator(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ComponentsRecord>
-                                            textComponentsRecordList =
-                                            snapshot.data;
-                                        // Return an empty Container when the document does not exist.
-                                        if (snapshot.data.isEmpty) {
-                                          return Container();
-                                        }
-                                        final textComponentsRecord =
-                                            textComponentsRecordList.isNotEmpty
-                                                ? textComponentsRecordList.first
-                                                : null;
-                                        return Text(
-                                          textComponentsRecord.name,
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
-                                        );
-                                      },
+                                    child: Text(
+                                      'I7-12800H\n16 GB DDR5\nNVIDIA RTX 3070\n2TB SSD\n8h\t\n‎82B1000AUS',
+                                      textAlign: TextAlign.end,
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle2
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFF434343),
+                                            lineHeight: 2.5,
+                                          ),
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         45, 0, 0, 0),
-                                    child:
-                                        StreamBuilder<List<ComponentsRecord>>(
-                                      stream: queryComponentsRecord(
-                                        singleRecord: true,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50,
-                                              height: 50,
-                                              child: CircularProgressIndicator(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ComponentsRecord>
-                                            textComponentsRecordList =
-                                            snapshot.data;
-                                        // Return an empty Container when the document does not exist.
-                                        if (snapshot.data.isEmpty) {
-                                          return Container();
-                                        }
-                                        final textComponentsRecord =
-                                            textComponentsRecordList.isNotEmpty
-                                                ? textComponentsRecordList.first
-                                                : null;
-                                        return Text(
-                                          textComponentsRecord.modelno,
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
-                                        );
-                                      },
+                                    child: Text(
+                                      'I7-12800H\n16 GB DDR5\nNVIDIA RTX 3070\n2TB SSD\n8h\t\n‎82B1000AUS',
+                                      textAlign: TextAlign.end,
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle2
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFF434343),
+                                            lineHeight: 2.5,
+                                          ),
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         45, 0, 0, 0),
-                                    child:
-                                        StreamBuilder<List<ComponentsRecord>>(
-                                      stream: queryComponentsRecord(
-                                        singleRecord: true,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50,
-                                              height: 50,
-                                              child: CircularProgressIndicator(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ComponentsRecord>
-                                            textComponentsRecordList =
-                                            snapshot.data;
-                                        // Return an empty Container when the document does not exist.
-                                        if (snapshot.data.isEmpty) {
-                                          return Container();
-                                        }
-                                        final textComponentsRecord =
-                                            textComponentsRecordList.isNotEmpty
-                                                ? textComponentsRecordList.first
-                                                : null;
-                                        return Text(
-                                          textComponentsRecord.modelno,
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
-                                        );
-                                      },
+                                    child: Text(
+                                      'I7-12800H\n16 GB DDR5\nNVIDIA RTX 3070\n2TB SSD\n8h\t\n‎82B1000AUS',
+                                      textAlign: TextAlign.end,
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle2
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFF434343),
+                                            lineHeight: 2.5,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -467,42 +335,10 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                StreamBuilder<List<ComponentsRecord>>(
-                                  stream: queryComponentsRecord(
-                                    singleRecord: true,
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50,
-                                          height: 50,
-                                          child: CircularProgressIndicator(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<ComponentsRecord>
-                                        textComponentsRecordList =
-                                        snapshot.data;
-                                    // Return an empty Container when the document does not exist.
-                                    if (snapshot.data.isEmpty) {
-                                      return Container();
-                                    }
-                                    final textComponentsRecord =
-                                        textComponentsRecordList.isNotEmpty
-                                            ? textComponentsRecordList.first
-                                            : null;
-                                    return Text(
-                                      textComponentsRecord.price.toString(),
-                                      textAlign: TextAlign.center,
-                                      style:
-                                          FlutterFlowTheme.of(context).title1,
-                                    );
-                                  },
+                                Text(
+                                  '',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context).title1,
                                 ),
                               ],
                             ),
