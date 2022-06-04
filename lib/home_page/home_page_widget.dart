@@ -1,9 +1,9 @@
 import '../components/components_widget.dart';
-import '../computers/computers_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../laptops/laptops_widget.dart';
+import '../peripherals/peripherals_widget.dart';
 import '../search_page/search_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -155,61 +155,72 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 10, 10, 10),
-                                      child: Container(
-                                        width: 100,
-                                        height: 130,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              child: Image.asset(
-                                                'assets/images/pro-mouse-pro-keyboard-hero-desktop_1.png',
-                                                width: 100,
-                                                height: 100,
-                                                fit: BoxFit.scaleDown,
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PeripheralsWidget(),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 100,
+                                          height: 130,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                child: Image.asset(
+                                                  'assets/images/pro-mouse-pro-keyboard-hero-desktop_1.png',
+                                                  width: 100,
+                                                  height: 100,
+                                                  fit: BoxFit.scaleDown,
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              'Peripherals',
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1,
-                                            ),
-                                          ],
+                                              Text(
+                                                'Peripherals',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 10, 10, 10),
-                                      child: Container(
-                                        width: 100,
-                                        height: 130,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            InkWell(
-                                              onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ComponentsWidget(),
-                                                  ),
-                                                );
-                                              },
-                                              child: ClipRRect(
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ComponentsWidget(),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 100,
+                                          height: 130,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
                                                 child: Image.asset(
@@ -219,42 +230,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   fit: BoxFit.scaleDown,
                                                 ),
                                               ),
-                                            ),
-                                            Text(
-                                              'Components',
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1,
-                                            ),
-                                          ],
+                                              Text(
+                                                'Components',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10, 10, 10, 10),
-                                      child: Container(
-                                        width: 100,
-                                        height: 130,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            InkWell(
-                                              onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ComputersWidget(),
-                                                  ),
-                                                );
-                                              },
-                                              child: ClipRRect(
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PeripheralsWidget(),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 100,
+                                          height: 130,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
                                                 child: Image.asset(
@@ -264,18 +275,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(2, 2, 2, 2),
-                                              child: Text(
-                                                'Computers',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(2, 2, 2, 2),
+                                                child: Text(
+                                                  'Computers',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1,
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),

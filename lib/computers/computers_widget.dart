@@ -146,16 +146,6 @@ class _ComputersWidgetState extends State<ComputersWidget> {
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: Align(
-                                alignment: AlignmentDirectional(0.95, 0),
-                                child: Icon(
-                                  Icons.tune_rounded,
-                                  color: Color(0xFF95A1AC),
-                                  size: 24,
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       ),
