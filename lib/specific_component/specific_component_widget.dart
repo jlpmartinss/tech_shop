@@ -111,7 +111,8 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                           borderRadius:
                                               BorderRadius.circular(16),
                                           child: Image.network(
-                                            '',
+                                            specificComponentProductsRecord
+                                                .image,
                                             width: double.infinity,
                                             height: double.infinity,
                                             fit: BoxFit.scaleDown,

@@ -10,26 +10,17 @@ abstract class CartRecord implements Built<CartRecord, CartRecordBuilder> {
   static Serializer<CartRecord> get serializer => _$cartRecordSerializer;
 
   @nullable
-  String get name;
+  @BuiltValueField(wireName: 'created_by')
+  DocumentReference get createdBy;
 
   @nullable
-  String get uid;
-
-  @nullable
-  double get price;
-
-  @nullable
-  String get modelno;
+  DocumentReference get item;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
-  static void _initializeBuilder(CartRecordBuilder builder) => builder
-    ..name = ''
-    ..uid = ''
-    ..price = 0.0
-    ..modelno = '';
+  static void _initializeBuilder(CartRecordBuilder builder) => builder;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('cart');
@@ -52,15 +43,11 @@ abstract class CartRecord implements Built<CartRecord, CartRecordBuilder> {
 }
 
 Map<String, dynamic> createCartRecordData({
-  String name,
-  String uid,
-  double price,
-  String modelno,
+  DocumentReference createdBy,
+  DocumentReference item,
 }) =>
     serializers.toFirestore(
         CartRecord.serializer,
         CartRecord((c) => c
-          ..name = name
-          ..uid = uid
-          ..price = price
-          ..modelno = modelno));
+          ..createdBy = createdBy
+          ..item = item));

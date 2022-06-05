@@ -58,10 +58,10 @@ class _CartWidgetState extends State<CartWidget> {
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                child: StreamBuilder<List<CartRecord>>(
-                  stream: queryCartRecord(
-                    queryBuilder: (cartRecord) =>
-                        cartRecord.where('uid', isEqualTo: FFAppState().USER),
+                child: StreamBuilder<List<ProductsRecord>>(
+                  stream: queryProductsRecord(
+                    queryBuilder: (productsRecord) => productsRecord
+                        .where('cart', arrayContains: FFAppState().cartBool),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
@@ -77,16 +77,17 @@ class _CartWidgetState extends State<CartWidget> {
                         ),
                       );
                     }
-                    List<CartRecord> listViewCartRecordList = snapshot.data;
+                    List<ProductsRecord> listViewProductsRecordList =
+                        snapshot.data;
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: listViewCartRecordList.length,
+                      itemCount: listViewProductsRecordList.length,
                       itemBuilder: (context, listViewIndex) {
-                        final listViewCartRecord =
-                            listViewCartRecordList[listViewIndex];
+                        final listViewProductsRecord =
+                            listViewProductsRecordList[listViewIndex];
                         return Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
                           child: Container(
@@ -114,7 +115,7 @@ class _CartWidgetState extends State<CartWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(6),
                                       child: Image.network(
-                                        'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80',
+                                        listViewProductsRecord.image,
                                         width: 80,
                                         height: 80,
                                         fit: BoxFit.cover,
@@ -133,7 +134,7 @@ class _CartWidgetState extends State<CartWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            listViewCartRecord.name,
+                                            listViewProductsRecord.name,
                                             style: FlutterFlowTheme.of(context)
                                                 .title3
                                                 .override(
@@ -148,7 +149,11 @@ class _CartWidgetState extends State<CartWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 4, 8, 0),
                                             child: AutoSizeText(
-                                              'Subtext',
+                                              listViewProductsRecord.stock
+                                                  .maybeHandleOverflow(
+                                                maxChars: 70,
+                                                replacement: '…',
+                                              ),
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -176,17 +181,29 @@ class _CartWidgetState extends State<CartWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 4, 0, 0),
-                                        child: Icon(
-                                          Icons.chevron_right_rounded,
-                                          color: Color(0xFF57636C),
-                                          size: 24,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await listViewProductsRecord
+                                                .reference
+                                                .delete();
+                                          },
+                                          child: Icon(
+                                            Icons.delete,
+                                            color: Color(0xFF57636C),
+                                            size: 24,
+                                          ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 12, 4, 8),
                                         child: Text(
-                                          listViewCartRecord.price.toString(),
+                                          formatNumber(
+                                            listViewProductsRecord.price,
+                                            formatType: FormatType.decimal,
+                                            decimalType: DecimalType.automatic,
+                                            currency: '€',
+                                          ),
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1

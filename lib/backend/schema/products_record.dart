@@ -51,6 +51,12 @@ abstract class ProductsRecord
   String get motherboard;
 
   @nullable
+  BuiltList<DocumentReference> get favoritos;
+
+  @nullable
+  BuiltList<bool> get cart;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -67,7 +73,9 @@ abstract class ProductsRecord
     ..stock = ''
     ..psu = ''
     ..type = ''
-    ..motherboard = '';
+    ..motherboard = ''
+    ..favoritos = ListBuilder()
+    ..cart = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('products');
@@ -120,4 +128,6 @@ Map<String, dynamic> createProductsRecordData({
           ..stock = stock
           ..psu = psu
           ..type = type
-          ..motherboard = motherboard));
+          ..motherboard = motherboard
+          ..favoritos = null
+          ..cart = null));
