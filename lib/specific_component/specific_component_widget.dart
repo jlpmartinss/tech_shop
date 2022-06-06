@@ -169,7 +169,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                                                 .USER,
                                                             model:
                                                                 specificComponentProductsRecord
-                                                                    .name,
+                                                                    .modelno,
                                                             name:
                                                                 specificComponentProductsRecord
                                                                     .name,
@@ -244,7 +244,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  'Em Stock',
+                                  specificComponentProductsRecord.stock,
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
@@ -280,7 +280,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             24, 0, 0, 0),
                                         child: Text(
-                                          'Name\nVendor\nModel Number\nCategory\n',
+                                          'Name\nModel Number\nType\n',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -317,21 +317,6 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
                                         child: Text(
-                                          specificComponentProductsRecord.type,
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20, 0, 0, 0),
-                                        child: Text(
                                           specificComponentProductsRecord
                                               .modelno,
                                           textAlign: TextAlign.start,
@@ -348,8 +333,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
                                         child: Text(
-                                          specificComponentProductsRecord
-                                              .category,
+                                          specificComponentProductsRecord.type,
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2

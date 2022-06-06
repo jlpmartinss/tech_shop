@@ -7,8 +7,8 @@ export 'laptops/laptops_widget.dart' show LaptopsWidget;
 export 'computers/computers_widget.dart' show ComputersWidget;
 export 'components/components_widget.dart' show ComponentsWidget;
 export 'peripherals/peripherals_widget.dart' show PeripheralsWidget;
-export 'specific_item_peripherals/specific_item_peripherals_widget.dart'
-    show SpecificItemPeripheralsWidget;
+export 'specific_peripheral/specific_peripheral_widget.dart'
+    show SpecificPeripheralWidget;
 export 'authentication/authentication_widget.dart' show AuthenticationWidget;
 export 'cart_payment/cart_payment_widget.dart' show CartPaymentWidget;
 export 'specific_laptop/specific_laptop_widget.dart' show SpecificLaptopWidget;

@@ -2,7 +2,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../specific_item_peripherals/specific_item_peripherals_widget.dart';
+import '../specific_peripheral/specific_peripheral_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -236,7 +236,7 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SpecificItemPeripheralsWidget(
+                            builder: (context) => SpecificPeripheralWidget(
                               peripheralsDetails: wrapProductsRecord.reference,
                             ),
                           ),

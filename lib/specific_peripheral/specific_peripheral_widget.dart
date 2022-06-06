@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SpecificItemPeripheralsWidget extends StatefulWidget {
-  const SpecificItemPeripheralsWidget({
+class SpecificPeripheralWidget extends StatefulWidget {
+  const SpecificPeripheralWidget({
     Key key,
     this.peripheralsDetails,
   }) : super(key: key);
@@ -18,12 +18,11 @@ class SpecificItemPeripheralsWidget extends StatefulWidget {
   final DocumentReference peripheralsDetails;
 
   @override
-  _SpecificItemPeripheralsWidgetState createState() =>
-      _SpecificItemPeripheralsWidgetState();
+  _SpecificPeripheralWidgetState createState() =>
+      _SpecificPeripheralWidgetState();
 }
 
-class _SpecificItemPeripheralsWidgetState
-    extends State<SpecificItemPeripheralsWidget> {
+class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -43,7 +42,7 @@ class _SpecificItemPeripheralsWidgetState
             ),
           );
         }
-        final specificItemPeripheralsProductsRecord = snapshot.data;
+        final specificPeripheralProductsRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
@@ -64,7 +63,7 @@ class _SpecificItemPeripheralsWidgetState
               },
             ),
             title: Text(
-              specificItemPeripheralsProductsRecord.name,
+              specificPeripheralProductsRecord.name,
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: 'Poppins',
                     color: Colors.white,
@@ -113,7 +112,7 @@ class _SpecificItemPeripheralsWidgetState
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(16),
                                         child: Image.network(
-                                          specificItemPeripheralsProductsRecord
+                                          specificPeripheralProductsRecord
                                               .image,
                                           width: double.infinity,
                                           height: double.infinity,
@@ -221,7 +220,7 @@ class _SpecificItemPeripheralsWidgetState
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                specificItemPeripheralsProductsRecord.stock,
+                                specificPeripheralProductsRecord.stock,
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
@@ -256,7 +255,7 @@ class _SpecificItemPeripheralsWidgetState
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           24, 0, 0, 0),
                                       child: Text(
-                                        'Type\nModel number\n',
+                                        'Name\nModel number\n',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
@@ -309,7 +308,7 @@ class _SpecificItemPeripheralsWidgetState
                                                   ? textProductsRecordList.first
                                                   : null;
                                           return Text(
-                                            specificItemPeripheralsProductsRecord
+                                            specificPeripheralProductsRecord
                                                 .type,
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
@@ -327,7 +326,7 @@ class _SpecificItemPeripheralsWidgetState
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20, 0, 0, 0),
                                       child: Text(
-                                        specificItemPeripheralsProductsRecord
+                                        specificPeripheralProductsRecord
                                             .modelno,
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
@@ -380,8 +379,7 @@ class _SpecificItemPeripheralsWidgetState
                                 children: [
                                   Text(
                                     formatNumber(
-                                      specificItemPeripheralsProductsRecord
-                                          .price,
+                                      specificPeripheralProductsRecord.price,
                                       formatType: FormatType.decimal,
                                       decimalType: DecimalType.automatic,
                                       currency: '€',
