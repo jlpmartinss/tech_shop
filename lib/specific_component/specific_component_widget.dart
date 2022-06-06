@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -162,15 +163,29 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                                           size: 24,
                                                         ),
                                                         onPressed: () async {
-                                                          await Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  NavBarPage(
-                                                                      initialPage:
-                                                                          'Favourites'),
-                                                            ),
+                                                          final favouritesCreateData =
+                                                              createFavouritesRecordData(
+                                                            uid: FFAppState()
+                                                                .USER,
+                                                            model:
+                                                                specificComponentProductsRecord
+                                                                    .name,
+                                                            name:
+                                                                specificComponentProductsRecord
+                                                                    .name,
+                                                            price:
+                                                                specificComponentProductsRecord
+                                                                    .price,
+                                                            imagePath:
+                                                                specificComponentProductsRecord
+                                                                    .image,
+                                                            quantity: 1.0,
                                                           );
+                                                          await FavouritesRecord
+                                                              .collection
+                                                              .doc()
+                                                              .set(
+                                                                  favouritesCreateData);
                                                         },
                                                       ),
                                                     ),
@@ -265,7 +280,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             24, 0, 0, 0),
                                         child: Text(
-                                          'Name\nVendor\nModel Number\n',
+                                          'Name\nVendor\nModel Number\nType\n',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -286,55 +301,16 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<ProductsRecord>>(
-                                          stream: queryProductsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<ProductsRecord>
-                                                textProductsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textProductsRecord =
-                                                textProductsRecordList
-                                                        .isNotEmpty
-                                                    ? textProductsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificComponentProductsRecord
-                                                  .name,
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificComponentProductsRecord.name,
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(
@@ -342,6 +318,22 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                             20, 0, 0, 0),
                                         child: Text(
                                           specificComponentProductsRecord.type,
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 0, 0),
+                                        child: Text(
+                                          specificComponentProductsRecord
+                                              .modelno,
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
