@@ -38,6 +38,9 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String get passwordConfirm;
 
   @nullable
+  double get totalCart;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -48,7 +51,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..uid = ''
     ..phoneNumber = ''
     ..emailLogin = ''
-    ..passwordConfirm = '';
+    ..passwordConfirm = ''
+    ..totalCart = 0.0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -80,6 +84,7 @@ Map<String, dynamic> createUsersRecordData({
   String phoneNumber,
   String emailLogin,
   String passwordConfirm,
+  double totalCart,
 }) =>
     serializers.toFirestore(
         UsersRecord.serializer,
@@ -91,4 +96,5 @@ Map<String, dynamic> createUsersRecordData({
           ..createdTime = createdTime
           ..phoneNumber = phoneNumber
           ..emailLogin = emailLogin
-          ..passwordConfirm = passwordConfirm));
+          ..passwordConfirm = passwordConfirm
+          ..totalCart = totalCart));

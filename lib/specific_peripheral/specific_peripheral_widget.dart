@@ -433,9 +433,10 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                     .doc()
                                     .set(cartCreateData);
 
-                                final usersUpdateData = createUsersRecordData(
-                                  email: '',
-                                );
+                                final usersUpdateData = {
+                                  'totalCart': FieldValue.increment(
+                                      specificPeripheralProductsRecord.price),
+                                };
                                 await currentUserReference
                                     .update(usersUpdateData);
                               }

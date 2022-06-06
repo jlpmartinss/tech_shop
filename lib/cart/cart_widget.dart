@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
 import '../sucessful_purchase/sucessful_purchase_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -199,8 +201,49 @@ class _CartWidgetState extends State<CartWidget> {
                                                   0, 4, 0, 0),
                                           child: InkWell(
                                             onTap: () async {
-                                              await listViewCartRecord.reference
-                                                  .delete();
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                'Are you sure you want to remove this item?'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child:
+                                                                    Text('No'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child:
+                                                                    Text('Yes'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                final usersUpdateData = {
+                                                  'totalCart':
+                                                      FieldValue.increment(
+                                                          -(listViewCartRecord
+                                                              .price)),
+                                                };
+                                                await currentUserReference
+                                                    .update(usersUpdateData);
+                                                await listViewCartRecord
+                                                    .reference
+                                                    .delete();
+                                              }
                                             },
                                             child: Icon(
                                               Icons.delete,
@@ -274,16 +317,25 @@ class _CartWidgetState extends State<CartWidget> {
                           ),
                           Align(
                             alignment: AlignmentDirectional(0, 0),
-                            child: Text(
-                              '1234.99€',
-                              textAlign: TextAlign.end,
-                              style:
-                                  FlutterFlowTheme.of(context).title3.override(
-                                        fontFamily: 'Outfit',
-                                        color: Color(0xFF0F1113),
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                            child: AuthUserStreamWidget(
+                              child: Text(
+                                formatNumber(
+                                  valueOrDefault(
+                                      currentUserDocument?.totalCart, 0.0),
+                                  formatType: FormatType.decimal,
+                                  decimalType: DecimalType.automatic,
+                                  currency: '€',
+                                ),
+                                textAlign: TextAlign.end,
+                                style: FlutterFlowTheme.of(context)
+                                    .title3
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF0F1113),
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
                             ),
                           ),
                         ],
