@@ -132,7 +132,7 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                         listViewFavouritesRecord.imagePath,
                                         width: 80,
                                         height: 80,
-                                        fit: BoxFit.cover,
+                                        fit: BoxFit.scaleDown,
                                       ),
                                     ),
                                   ),

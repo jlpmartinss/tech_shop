@@ -173,24 +173,68 @@ class _CartWidgetState extends State<CartWidget> {
                                                             FontWeight.w500,
                                                       ),
                                                 ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 4, 8, 0),
-                                                  child: AutoSizeText(
-                                                    'Subtext',
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText2
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF57636C),
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                                  ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderRadius: 30,
+                                                      borderWidth: 1,
+                                                      buttonSize: 40,
+                                                      icon: Icon(
+                                                        Icons.remove,
+                                                        color: Colors.black,
+                                                        size: 20,
+                                                      ),
+                                                      onPressed: () async {
+                                                        final usersUpdateData =
+                                                            {
+                                                          'totalCart': FieldValue
+                                                              .increment(
+                                                                  -(listViewCartRecord
+                                                                      .price)),
+                                                        };
+                                                        await currentUserReference
+                                                            .update(
+                                                                usersUpdateData);
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      listViewCartRecord
+                                                          .quantity
+                                                          .toString(),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1,
+                                                    ),
+                                                    FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderRadius: 30,
+                                                      borderWidth: 1,
+                                                      buttonSize: 40,
+                                                      icon: Icon(
+                                                        Icons.add,
+                                                        color: Colors.black,
+                                                        size: 20,
+                                                      ),
+                                                      onPressed: () async {
+                                                        final usersUpdateData =
+                                                            {
+                                                          'totalCart': FieldValue
+                                                              .increment(
+                                                                  listViewCartRecord
+                                                                      .price),
+                                                        };
+                                                        await currentUserReference
+                                                            .update(
+                                                                usersUpdateData);
+                                                      },
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
