@@ -2,6 +2,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../sucessful_purchase/sucessful_purchase_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -312,6 +313,15 @@ class _CartWidgetState extends State<CartWidget> {
                                   },
                                 ) ??
                                 false;
+                            if (confirmDialogResponse) {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      SucessfulPurchaseWidget(),
+                                ),
+                              );
+                            }
                           },
                           child: Container(
                             width: 200,
