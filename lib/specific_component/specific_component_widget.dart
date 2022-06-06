@@ -280,7 +280,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             24, 0, 0, 0),
                                         child: Text(
-                                          'Name\nVendor\nModel Number\nType\n',
+                                          'Name\nVendor\nModel Number\nCategory\n',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -349,7 +349,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                             20, 0, 0, 0),
                                         child: Text(
                                           specificComponentProductsRecord
-                                              .modelno,
+                                              .category,
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2

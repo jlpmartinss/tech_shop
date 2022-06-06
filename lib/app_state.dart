@@ -28,9 +28,9 @@ class FFAppState {
 
   String Desktops = 'Desktops';
 
-  String Periphericals = 'Periphericals';
-
   bool cartBool = false;
+
+  String Peripherals = 'Peripherals';
 }
 
 LatLng _latLngFromString(String val) {

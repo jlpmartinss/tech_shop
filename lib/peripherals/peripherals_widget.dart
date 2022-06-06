@@ -201,7 +201,7 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
             StreamBuilder<List<ProductsRecord>>(
               stream: queryProductsRecord(
                 queryBuilder: (productsRecord) => productsRecord
-                    .where('category', isEqualTo: FFAppState().Periphericals)
+                    .where('category', isEqualTo: FFAppState().Peripherals)
                     .orderBy('name'),
               ),
               builder: (context, snapshot) {
