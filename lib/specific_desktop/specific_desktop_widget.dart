@@ -461,54 +461,8 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                               ],
                             ),
                             FFButtonWidget(
-                              onPressed: () async {
-                                var confirmDialogResponse =
-                                    await showDialog<bool>(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text(
-                                                  'Are you sure you want to add this item to your Cart?'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: Text('No'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: Text('Yes'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ) ??
-                                        false;
-                                if (confirmDialogResponse) {
-                                  final cartCreateData = createCartRecordData(
-                                    name: specificDesktopProductsRecord.name,
-                                    price: specificDesktopProductsRecord.price,
-                                    uid: FFAppState().USER,
-                                    quantity: 1.0,
-                                    imagePath:
-                                        specificDesktopProductsRecord.image,
-                                  );
-                                  await CartRecord.collection
-                                      .doc()
-                                      .set(cartCreateData);
-
-                                  final usersUpdateData = {
-                                    'totalCart': FieldValue.increment(
-                                        specificDesktopProductsRecord.price),
-                                  };
-                                  await currentUserReference
-                                      .update(usersUpdateData);
-                                }
+                              onPressed: () {
+                                print('Button pressed ...');
                               },
                               text: 'Add to cart',
                               options: FFButtonOptions(

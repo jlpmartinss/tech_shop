@@ -1,4 +1,3 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -6,7 +5,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
 import '../sucessful_purchase/sucessful_purchase_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -64,457 +62,335 @@ class _CartWidgetState extends State<CartWidget> {
       backgroundColor: Color(0xFFF1F4F8),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                child: StreamBuilder<List<CartRecord>>(
+                  stream: queryCartRecord(
+                    queryBuilder: (cartRecord) =>
+                        cartRecord.where('uid', isEqualTo: FFAppState().USER),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
+                        ),
+                      );
+                    }
+                    List<CartRecord> listViewCartRecordList = snapshot.data;
+                    return InkWell(
+                      onTap: () async {
+                        setState(() => FFAppState()
+                            .CartPrices
+                            .add(listViewCartRecordList.length.toDouble()));
+                      },
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: listViewCartRecordList.length,
+                        itemBuilder: (context, listViewIndex) {
+                          final listViewCartRecord =
+                              listViewCartRecordList[listViewIndex];
+                          return Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                            child: StreamBuilder<List<CartRecord>>(
-                              stream: queryCartRecord(
-                                queryBuilder: (cartRecord) => cartRecord
-                                    .where('uid', isEqualTo: FFAppState().USER),
+                                EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 3,
+                                    color: Color(0x411D2429),
+                                    offset: Offset(0, 1),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: CircularProgressIndicator(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 1, 1, 1),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(6),
+                                        child: Image.network(
+                                          listViewCartRecord.imagePath,
+                                          width: 80,
+                                          height: 80,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  );
-                                }
-                                List<CartRecord> listViewCartRecordList =
-                                    snapshot.data;
-                                return InkWell(
-                                  onTap: () async {
-                                    setState(() => FFAppState().CartPrices.add(
-                                        listViewCartRecordList.length
-                                            .toDouble()));
-                                  },
-                                  child: ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    primary: false,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: listViewCartRecordList.length,
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewCartRecord =
-                                          listViewCartRecordList[listViewIndex];
-                                      return Padding(
+                                    Expanded(
+                                      child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            16, 0, 16, 8),
-                                        child: Container(
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 3,
-                                                color: Color(0x411D2429),
-                                                offset: Offset(0, 1),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8, 8, 8, 8),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 1, 1, 1),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            6),
-                                                    child: Image.network(
-                                                      listViewCartRecord
-                                                          .imagePath,
-                                                      width: 80,
-                                                      height: 80,
-                                                      fit: BoxFit.cover,
-                                                    ),
+                                            8, 8, 4, 0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              listViewCartRecord.name,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .title3
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    color: Color(0xFF0F1113),
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w500,
                                                   ),
-                                                ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                8, 8, 4, 0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          listViewCartRecord
-                                                              .name,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .title3
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF0F1113),
-                                                                fontSize: 20,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      4, 8, 0),
-                                                          child: AutoSizeText(
-                                                            'Subtext',
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyText2
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  color: Color(
-                                                                      0xFF57636C),
-                                                                  fontSize: 14,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.end,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 4, 0, 0),
-                                                      child: InkWell(
-                                                        onTap: () async {
-                                                          var confirmDialogResponse =
-                                                              await showDialog<
-                                                                      bool>(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return AlertDialog(
-                                                                        title: Text(
-                                                                            'Are you sure you want to remove this item from your Cart?'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext, false),
-                                                                            child:
-                                                                                Text('No'),
-                                                                          ),
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext, true),
-                                                                            child:
-                                                                                Text('Yes'),
-                                                                          ),
-                                                                        ],
-                                                                      );
-                                                                    },
-                                                                  ) ??
-                                                                  false;
-                                                          if (confirmDialogResponse) {
-                                                            await listViewCartRecord
-                                                                .reference
-                                                                .delete();
-
-                                                            final usersUpdateData =
-                                                                {
-                                                              'totalCart': FieldValue
-                                                                  .increment(
-                                                                      -(listViewCartRecord
-                                                                          .price)),
-                                                            };
-                                                            await currentUserReference
-                                                                .update(
-                                                                    usersUpdateData);
-                                                          }
-                                                        },
-                                                        child: Icon(
-                                                          Icons.delete,
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 4, 8, 0),
+                                              child: AutoSizeText(
+                                                'Subtext',
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
                                                           color:
-                                                              Color(0xFFFF0000),
-                                                          size: 24,
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
                                                         ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 12, 4, 8),
-                                                      child: Text(
-                                                        formatNumber(
-                                                          listViewCartRecord
-                                                              .price,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          currency: '€',
-                                                          format: '',
-                                                          locale: '',
-                                                        ),
-                                                        textAlign:
-                                                            TextAlign.end,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  color: Color(
-                                                                      0xFF0F1113),
-                                                                  fontSize: 14,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 4, 0, 0),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              await listViewCartRecord.reference
+                                                  .delete();
+                                            },
+                                            child: Icon(
+                                              Icons.delete,
+                                              color: Color(0xFFFF0000),
+                                              size: 24,
                                             ),
                                           ),
                                         ),
-                                      );
-                                    },
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Color(0xFFEEEEEE),
-                ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4,
-                          color: Color(0x55000000),
-                          offset: Offset(0, 2),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(16),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    AuthUserStreamWidget(
-                                      child: Text(
-                                        formatNumber(
-                                          valueOrDefault(
-                                              currentUserDocument?.totalCart,
-                                              0.0),
-                                          formatType: FormatType.decimal,
-                                          decimalType: DecimalType.automatic,
-                                          currency: '€',
-                                        ),
-                                        textAlign: TextAlign.center,
-                                        style:
-                                            FlutterFlowTheme.of(context).title1,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          StreamBuilder<List<CartRecord>>(
-                            stream: queryCartRecord(
-                              queryBuilder: (cartRecord) => cartRecord
-                                  .where('uid', isEqualTo: FFAppState().USER),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50,
-                                    height: 50,
-                                    child: CircularProgressIndicator(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                    ),
-                                  ),
-                                );
-                              }
-                              List<CartRecord> menuItemCartRecordList =
-                                  snapshot.data;
-                              return InkWell(
-                                onTap: () async {
-                                  var confirmDialogResponse =
-                                      await showDialog<bool>(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text(
-                                                    'Are you sure you want to buy these items?'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext,
-                                                            false),
-                                                    child: Text('No'),
-                                                  ),
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext,
-                                                            true),
-                                                    child: Text('Yes'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          ) ??
-                                          false;
-                                  if (confirmDialogResponse) {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            SucessfulPurchaseWidget(),
-                                      ),
-                                    );
-                                  }
-                                },
-                                child: Container(
-                                  width: 130,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFF235DF2),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 3,
-                                        color: Color(0x411D2429),
-                                        offset: Offset(0, 1),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8, 8, 8, 8),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Align(
-                                          alignment: AlignmentDirectional(0, 0),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 12, 4, 8),
                                           child: Text(
-                                            'Buy',
-                                            textAlign: TextAlign.center,
+                                            formatNumber(
+                                              listViewCartRecord.price,
+                                              formatType: FormatType.custom,
+                                              currency: '€',
+                                              format: '',
+                                              locale: '',
+                                            ),
+                                            textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
-                                                .title3
+                                                .bodyText1
                                                 .override(
                                                   fontFamily: 'Outfit',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBtnText,
-                                                  fontSize: 30,
-                                                  fontWeight: FontWeight.w500,
+                                                  color: Color(0xFF0F1113),
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.normal,
                                                 ),
                                           ),
                                         ),
                                       ],
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              );
-                            },
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16, 100, 16, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Text(
+                              'Total:',
+                              textAlign: TextAlign.end,
+                              style:
+                                  FlutterFlowTheme.of(context).title3.override(
+                                        fontFamily: 'Outfit',
+                                        color: Color(0xFF0F1113),
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Text(
+                              '1234.99€',
+                              textAlign: TextAlign.end,
+                              style:
+                                  FlutterFlowTheme.of(context).title3.override(
+                                        fontFamily: 'Outfit',
+                                        color: Color(0xFF0F1113),
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                            ),
                           ),
                         ],
                       ),
                     ),
-                  ),
+                    StreamBuilder<List<CartRecord>>(
+                      stream: queryCartRecord(
+                        queryBuilder: (cartRecord) => cartRecord.where('uid',
+                            isEqualTo: FFAppState().USER),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: CircularProgressIndicator(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                              ),
+                            ),
+                          );
+                        }
+                        List<CartRecord> menuItemCartRecordList = snapshot.data;
+                        return InkWell(
+                          onTap: () async {
+                            var confirmDialogResponse = await showDialog<bool>(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          'Are you sure you want to buy these items?'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, false),
+                                          child: Text('No'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, true),
+                                          child: Text('Yes'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ) ??
+                                false;
+                            if (confirmDialogResponse) {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      SucessfulPurchaseWidget(),
+                                ),
+                              );
+                            }
+                          },
+                          child: Container(
+                            width: 180,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF235DF2),
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 3,
+                                  color: Color(0x411D2429),
+                                  offset: Offset(0, 1),
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(0, 0),
+                                    child: Text(
+                                      'Buy',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .title3
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBtnText,
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
