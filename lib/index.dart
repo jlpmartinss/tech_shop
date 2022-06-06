@@ -19,3 +19,4 @@ export 'specific_desktop/specific_desktop_widget.dart'
     show SpecificDesktopWidget;
 export 'sucessful_purchase/sucessful_purchase_widget.dart'
     show SucessfulPurchaseWidget;
+export 'cart_copy/cart_copy_widget.dart' show CartCopyWidget;
