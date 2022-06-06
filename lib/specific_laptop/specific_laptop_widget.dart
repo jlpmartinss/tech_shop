@@ -2,7 +2,6 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -501,40 +500,6 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                   ],
                                 ),
                               ],
-                            ),
-                            ToggleIcon(
-                              onPressed: () async {
-                                final cartElement =
-                                    (specificLaptopProductsRecord.reference) ==
-                                        (specificLaptopProductsRecord
-                                            .reference);
-                                final cartUpdate = specificLaptopProductsRecord
-                                        .cart
-                                        .toList()
-                                        .contains(cartElement)
-                                    ? FieldValue.arrayRemove([cartElement])
-                                    : FieldValue.arrayUnion([cartElement]);
-                                final productsUpdateData = {
-                                  'cart': cartUpdate,
-                                };
-                                await specificLaptopProductsRecord.reference
-                                    .update(productsUpdateData);
-                              },
-                              value: specificLaptopProductsRecord.cart
-                                  .toList()
-                                  .contains((specificLaptopProductsRecord
-                                          .reference) ==
-                                      (specificLaptopProductsRecord.reference)),
-                              onIcon: Icon(
-                                Icons.add_shopping_cart,
-                                color: Colors.black,
-                                size: 25,
-                              ),
-                              offIcon: Icon(
-                                Icons.remove_shopping_cart_outlined,
-                                color: Colors.black,
-                                size: 25,
-                              ),
                             ),
                             FlutterFlowIconButton(
                               borderColor: Colors.transparent,
