@@ -92,133 +92,138 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(1, 1, 1, 1),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(15, 5, 0, 5),
-                                child: TextFormField(
-                                  controller: textController,
-                                  onChanged: (_) => EasyDebounce.debounce(
-                                    'textController',
-                                    Duration(milliseconds: 2000),
-                                    () => setState(() {}),
-                                  ),
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Search for something',
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                  textAlign: TextAlign.start,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 10, 0, 10),
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderRadius: 30,
-                                borderWidth: 1,
-                                buttonSize: 40,
-                                icon: Icon(
-                                  Icons.cancel_outlined,
-                                  color: Colors.black,
-                                  size: 20,
-                                ),
-                                onPressed: () async {
-                                  setState(() {
-                                    textController?.clear();
-                                  });
-                                },
-                              ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      5, 5, 5, 5),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      await queryProductsRecordOnce()
-                                          .then(
-                                            (records) => simpleSearchResults =
-                                                TextSearch(
-                                              records
-                                                  .map(
-                                                    (record) => TextSearchItem(
-                                                        record, [
-                                                      record.name,
-                                                      record.modelno
-                                                    ]),
-                                                  )
-                                                  .toList(),
-                                            )
-                                                    .search(textController.text)
-                                                    .map((r) => r.object)
-                                                    .toList(),
-                                          )
-                                          .onError((_, __) =>
-                                              simpleSearchResults = [])
-                                          .whenComplete(() => setState(() {}));
-                                    },
-                                    text: 'Search',
-                                    options: FFButtonOptions(
-                                      width: 100,
-                                      height: 40,
-                                      color: Color(0xFF4B39EF),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .subtitle2
-                                          .override(
-                                            fontFamily: 'Lexend Deca',
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      elevation: 2,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1,
-                                      ),
-                                      borderRadius: 50,
+                                      15, 5, 0, 5),
+                                  child: TextFormField(
+                                    controller: textController,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      'textController',
+                                      Duration(milliseconds: 2000),
+                                      () => setState(() {}),
                                     ),
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      hintText: 'Search for something',
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                    textAlign: TextAlign.start,
                                   ),
                                 ),
-                              ],
-                            ),
-                          ],
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    5, 10, 0, 10),
+                                child: FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 30,
+                                  borderWidth: 1,
+                                  buttonSize: 40,
+                                  icon: Icon(
+                                    Icons.cancel_outlined,
+                                    color: Colors.black,
+                                    size: 20,
+                                  ),
+                                  onPressed: () async {
+                                    setState(() {
+                                      textController?.clear();
+                                    });
+                                  },
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 5, 5, 5),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        await queryProductsRecordOnce()
+                                            .then(
+                                              (records) => simpleSearchResults =
+                                                  TextSearch(
+                                                records
+                                                    .map(
+                                                      (record) =>
+                                                          TextSearchItem(
+                                                              record, [
+                                                        record.name,
+                                                        record.modelno
+                                                      ]),
+                                                    )
+                                                    .toList(),
+                                              )
+                                                      .search(
+                                                          textController.text)
+                                                      .map((r) => r.object)
+                                                      .toList(),
+                                            )
+                                            .onError((_, __) =>
+                                                simpleSearchResults = [])
+                                            .whenComplete(
+                                                () => setState(() {}));
+                                      },
+                                      text: 'Search',
+                                      options: FFButtonOptions(
+                                        width: 100,
+                                        height: 40,
+                                        color: Color(0xFF4B39EF),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .subtitle2
+                                            .override(
+                                              fontFamily: 'Lexend Deca',
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                        elevation: 2,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1,
+                                        ),
+                                        borderRadius: 50,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
