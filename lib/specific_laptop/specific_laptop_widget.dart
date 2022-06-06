@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -158,57 +159,62 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  Card(
-                                                    clipBehavior: Clip
-                                                        .antiAliasWithSaveLayer,
-                                                    color: Color(0x3A000000),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  2, 2, 2, 2),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 30,
-                                                        buttonSize: 46,
-                                                        icon: Icon(
-                                                          Icons.favorite_border,
-                                                          color: Colors.white,
-                                                          size: 24,
-                                                        ),
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      final favouritesCreateData =
+                                                          createFavouritesRecordData(
+                                                        uid: FFAppState().USER,
+                                                        model:
+                                                            specificLaptopProductsRecord
+                                                                .modelno,
+                                                        name:
+                                                            specificLaptopProductsRecord
+                                                                .name,
+                                                        imagePath:
+                                                            specificLaptopProductsRecord
+                                                                .image,
+                                                        price:
+                                                            specificLaptopProductsRecord
+                                                                .price,
+                                                        quantity: 1.0,
+                                                      );
+                                                      await FavouritesRecord
+                                                          .collection
+                                                          .doc()
+                                                          .set(
+                                                              favouritesCreateData);
+                                                    },
+                                                    child: Card(
+                                                      clipBehavior: Clip
+                                                          .antiAliasWithSaveLayer,
+                                                      color: Color(0x3AFFFFFF),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                      ),
+                                                      child: ToggleIcon(
                                                         onPressed: () async {
-                                                          final favouritesCreateData =
-                                                              createFavouritesRecordData(
-                                                            uid: FFAppState()
-                                                                .USER,
-                                                            model:
-                                                                specificLaptopProductsRecord
-                                                                    .modelno,
-                                                            name:
-                                                                specificLaptopProductsRecord
-                                                                    .name,
-                                                            imagePath:
-                                                                specificLaptopProductsRecord
-                                                                    .image,
-                                                            price:
-                                                                specificLaptopProductsRecord
-                                                                    .price,
-                                                            quantity: 1.0,
-                                                          );
-                                                          await FavouritesRecord
-                                                              .collection
-                                                              .doc()
-                                                              .set(
-                                                                  favouritesCreateData);
+                                                          setState(() =>
+                                                              FFAppState()
+                                                                      .favourite =
+                                                                  !FFAppState()
+                                                                      .favourite);
                                                         },
+                                                        value: FFAppState()
+                                                            .favourite,
+                                                        onIcon: Icon(
+                                                          Icons.favorite,
+                                                          color:
+                                                              Color(0xFFFF0000),
+                                                          size: 30,
+                                                        ),
+                                                        offIcon: Icon(
+                                                          Icons.favorite_border,
+                                                          color: Colors.black,
+                                                          size: 30,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),

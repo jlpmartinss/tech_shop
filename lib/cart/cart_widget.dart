@@ -143,7 +143,7 @@ class _CartWidgetState extends State<CartWidget> {
                                               listViewCartRecord.imagePath,
                                               width: 80,
                                               height: 80,
-                                              fit: BoxFit.cover,
+                                              fit: BoxFit.scaleDown,
                                             ),
                                           ),
                                         ),
@@ -308,7 +308,7 @@ class _CartWidgetState extends State<CartWidget> {
                 color: FlutterFlowTheme.of(context).primaryBtnText,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 20, 16, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 100, 16, 0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,

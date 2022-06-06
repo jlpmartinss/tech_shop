@@ -33,6 +33,8 @@ class FFAppState {
   String Peripherals = 'Peripherals';
 
   List<double> CartPrices = [];
+
+  bool favourite = false;
 }
 
 LatLng _latLngFromString(String val) {
