@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -305,8 +306,10 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child: Text(
-                                          specificDesktopProductsRecord.cpu,
+                                        child: AutoSizeText(
+                                          specificDesktopProductsRecord.cpu
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -320,8 +323,10 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child: Text(
-                                          specificDesktopProductsRecord.ram,
+                                        child: AutoSizeText(
+                                          specificDesktopProductsRecord.ram
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -335,8 +340,10 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child: Text(
-                                          specificDesktopProductsRecord.gpu,
+                                        child: AutoSizeText(
+                                          specificDesktopProductsRecord.gpu
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -350,8 +357,10 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child: Text(
-                                          specificDesktopProductsRecord.storage,
+                                        child: AutoSizeText(
+                                          specificDesktopProductsRecord.storage
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -365,8 +374,10 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child: Text(
-                                          specificDesktopProductsRecord.psu,
+                                        child: AutoSizeText(
+                                          specificDesktopProductsRecord.psu
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -380,9 +391,11 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             45, 0, 0, 0),
-                                        child: Text(
+                                        child: AutoSizeText(
                                           specificDesktopProductsRecord
-                                              .motherboard,
+                                              .motherboard
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2

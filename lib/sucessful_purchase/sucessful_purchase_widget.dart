@@ -1,9 +1,9 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SucessfulPurchaseWidget extends StatefulWidget {
@@ -18,6 +18,21 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 5000));
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => NavBarPage(initialPage: 'HomePage'),
+        ),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
@@ -27,33 +42,10 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20, 24, 20, 0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30,
-                    buttonSize: 46,
-                    fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                    icon: Icon(
-                      Icons.close_rounded,
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                      size: 20,
-                    ),
-                    onPressed: () async {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
               child: Card(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                color: Color(0xFF4B39EF),
+                color: Color(0xFF235DF2),
                 elevation: 3,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(70),
@@ -74,22 +66,10 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
                 'Payment Confirmed!',
                 style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: 'Lexend Deca',
-                      color: Color(0xFF4B39EF),
+                      color: Color(0xFF235DF2),
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-              child: Text(
-                '\$425.24',
-                style: GoogleFonts.getFont(
-                  'Overpass',
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  fontWeight: FontWeight.w100,
-                  fontSize: 72,
-                ),
               ),
             ),
             Padding(
@@ -143,13 +123,6 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                            child: Text(
-                              '\$425.24',
-                              style: FlutterFlowTheme.of(context).subtitle2,
                             ),
                           ),
                         ],

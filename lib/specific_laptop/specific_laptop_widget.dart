@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -343,8 +344,10 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child: Text(
-                                          specificLaptopProductsRecord.cpu,
+                                        child: AutoSizeText(
+                                          specificLaptopProductsRecord.cpu
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -358,8 +361,10 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child: Text(
-                                          specificLaptopProductsRecord.ram,
+                                        child: AutoSizeText(
+                                          specificLaptopProductsRecord.ram
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -373,8 +378,10 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child: Text(
-                                          specificLaptopProductsRecord.gpu,
+                                        child: AutoSizeText(
+                                          specificLaptopProductsRecord.gpu
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -388,8 +395,10 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child: Text(
-                                          specificLaptopProductsRecord.storage,
+                                        child: AutoSizeText(
+                                          specificLaptopProductsRecord.storage
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -403,8 +412,10 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child: Text(
-                                          specificLaptopProductsRecord.modelno,
+                                        child: AutoSizeText(
+                                          specificLaptopProductsRecord.modelno
+                                              .maybeHandleOverflow(
+                                                  maxChars: 25),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
