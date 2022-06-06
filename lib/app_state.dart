@@ -20,7 +20,7 @@ class FFAppState {
 
   bool showFullList = true;
 
-  String USER = '1';
+  String USER = '';
 
   String Components = 'Components';
 
