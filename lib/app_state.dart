@@ -31,6 +31,8 @@ class FFAppState {
   bool cartBool = false;
 
   String Peripherals = 'Peripherals';
+
+  int FinalPrice = 0;
 }
 
 LatLng _latLngFromString(String val) {

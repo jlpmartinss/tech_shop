@@ -254,16 +254,52 @@ class _CartWidgetState extends State<CartWidget> {
                           ),
                           Align(
                             alignment: AlignmentDirectional(0.2, 0),
-                            child: Text(
-                              '€€€€',
-                              textAlign: TextAlign.end,
-                              style:
-                                  FlutterFlowTheme.of(context).title3.override(
-                                        fontFamily: 'Outfit',
-                                        color: Color(0xFF0F1113),
-                                        fontSize: 40,
-                                        fontWeight: FontWeight.w500,
+                            child: StreamBuilder<List<CartRecord>>(
+                              stream: queryCartRecord(
+                                queryBuilder: (cartRecord) => cartRecord
+                                    .where('uid', isEqualTo: FFAppState().USER),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: CircularProgressIndicator(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                       ),
+                                    ),
+                                  );
+                                }
+                                List<CartRecord> textCartRecordList =
+                                    snapshot.data;
+                                return InkWell(
+                                  onTap: () async {
+                                    setState(() => FFAppState().FinalPrice =
+                                        FFAppState().FinalPrice +
+                                            textCartRecordList.length);
+                                  },
+                                  child: Text(
+                                    formatNumber(
+                                      FFAppState().FinalPrice,
+                                      formatType: FormatType.custom,
+                                      format: '€',
+                                      locale: '',
+                                    ),
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .title3
+                                        .override(
+                                          fontFamily: 'Outfit',
+                                          color: Color(0xFF0F1113),
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ],

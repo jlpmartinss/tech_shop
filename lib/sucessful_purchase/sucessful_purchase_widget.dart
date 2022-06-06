@@ -25,8 +25,11 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
       await Future.delayed(const Duration(milliseconds: 5000));
       await Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => NavBarPage(initialPage: 'HomePage'),
+        PageTransition(
+          type: PageTransitionType.fade,
+          duration: Duration(milliseconds: 0),
+          reverseDuration: Duration(milliseconds: 0),
+          child: NavBarPage(initialPage: 'HomePage'),
         ),
       );
     });

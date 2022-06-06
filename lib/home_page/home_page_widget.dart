@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../laptops/laptops_widget.dart';
 import '../peripherals/peripherals_widget.dart';
 import '../search_page/search_page_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -142,7 +143,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 fit: BoxFit.scaleDown,
                                               ),
                                             ),
-                                            Text(
+                                            AutoSizeText(
                                               'Laptops',
                                               textAlign: TextAlign.center,
                                               style:
@@ -186,7 +187,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   fit: BoxFit.scaleDown,
                                                 ),
                                               ),
-                                              Text(
+                                              AutoSizeText(
                                                 'Peripherals',
                                                 textAlign: TextAlign.center,
                                                 style:
@@ -231,7 +232,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   fit: BoxFit.scaleDown,
                                                 ),
                                               ),
-                                              Text(
+                                              AutoSizeText(
                                                 'Components',
                                                 textAlign: TextAlign.center,
                                                 style:
@@ -279,7 +280,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(2, 2, 2, 2),
-                                                child: Text(
+                                                child: AutoSizeText(
                                                   'Computers',
                                                   style: FlutterFlowTheme.of(
                                                           context)
