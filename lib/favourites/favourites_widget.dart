@@ -193,26 +193,28 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                                       },
                                                     ) ??
                                                     false;
-
-                                            final cartCreateData =
-                                                createCartRecordData(
-                                              name:
-                                                  listViewFavouritesRecord.name,
-                                              price: listViewFavouritesRecord
-                                                  .price,
-                                              uid: FFAppState().USER,
-                                              quantity: listViewFavouritesRecord
-                                                  .quantity,
-                                              imagePath:
-                                                  listViewFavouritesRecord
-                                                      .imagePath,
-                                            );
-                                            await CartRecord.collection
-                                                .doc()
-                                                .set(cartCreateData);
-                                            await listViewFavouritesRecord
-                                                .reference
-                                                .delete();
+                                            if (confirmDialogResponse) {
+                                              final cartCreateData =
+                                                  createCartRecordData(
+                                                name: listViewFavouritesRecord
+                                                    .name,
+                                                price: listViewFavouritesRecord
+                                                    .price,
+                                                uid: FFAppState().USER,
+                                                quantity:
+                                                    listViewFavouritesRecord
+                                                        .quantity,
+                                                imagePath:
+                                                    listViewFavouritesRecord
+                                                        .imagePath,
+                                              );
+                                              await CartRecord.collection
+                                                  .doc()
+                                                  .set(cartCreateData);
+                                              await listViewFavouritesRecord
+                                                  .reference
+                                                  .delete();
+                                            }
                                           },
                                           child: Icon(
                                             Icons.add_shopping_cart,
@@ -277,9 +279,11 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                                       },
                                                     ) ??
                                                     false;
-                                            await listViewFavouritesRecord
-                                                .reference
-                                                .delete();
+                                            if (confirmDialogResponse) {
+                                              await listViewFavouritesRecord
+                                                  .reference
+                                                  .delete();
+                                            }
                                           },
                                           child: Icon(
                                             Icons.cancel,
