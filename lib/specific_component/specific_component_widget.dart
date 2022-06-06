@@ -280,7 +280,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             24, 0, 0, 0),
                                         child: Text(
-                                          'Name\nVendor\nModel Number\nCategory\n',
+                                          'Name\nVendor\nModel Number\n',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -334,22 +334,6 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                         child: Text(
                                           specificComponentProductsRecord
                                               .modelno,
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20, 0, 0, 0),
-                                        child: Text(
-                                          specificComponentProductsRecord
-                                              .category,
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2

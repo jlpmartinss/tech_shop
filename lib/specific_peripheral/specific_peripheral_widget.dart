@@ -331,7 +331,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                                   : null;
                                           return Text(
                                             specificPeripheralProductsRecord
-                                                .type,
+                                                .name,
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
