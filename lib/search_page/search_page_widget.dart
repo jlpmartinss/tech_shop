@@ -100,7 +100,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                             Expanded(
                               child: Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(15, 5, 0, 0),
+                                    EdgeInsetsDirectional.fromSTEB(15, 5, 0, 5),
                                 child: TextFormField(
                                   controller: textController,
                                   onChanged: (_) => EasyDebounce.debounce(
@@ -226,157 +226,162 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                 ),
               ),
               Expanded(
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                  child: Builder(
-                    builder: (context) {
-                      final product = simpleSearchResults?.toList() ?? [];
-                      if (product.isEmpty) {
-                        return Image.network(
-                          '',
-                        );
-                      }
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        scrollDirection: Axis.vertical,
-                        itemCount: product.length,
-                        itemBuilder: (context, productIndex) {
-                          final productItem = product[productIndex];
-                          return Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    color: Color(0x411D2429),
-                                    offset: Offset(0, 1),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 1, 1, 1),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(6),
-                                        child: Image.network(
-                                          productItem.image,
-                                          width: 80,
-                                          height: 80,
-                                          fit: BoxFit.cover,
+                child: Align(
+                  alignment: AlignmentDirectional(0, 0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                    child: Builder(
+                      builder: (context) {
+                        final product = simpleSearchResults?.toList() ?? [];
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          scrollDirection: Axis.vertical,
+                          itemCount: product.length,
+                          itemBuilder: (context, productIndex) {
+                            final productItem = product[productIndex];
+                            return Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 3,
+                                      color: Color(0x411D2429),
+                                      offset: Offset(0, 1),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8, 8, 8, 8),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 1, 1, 1),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          child: Image.network(
+                                            productItem.image,
+                                            width: 80,
+                                            height: 80,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 4, 0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              productItem.name,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .title3
-                                                  .override(
-                                                    fontFamily: 'Outfit',
-                                                    color: Color(0xFF0F1113),
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 4, 8, 0),
-                                              child: AutoSizeText(
-                                                productItem.stock
-                                                    .maybeHandleOverflow(
-                                                  maxChars: 70,
-                                                  replacement: '…',
-                                                ),
-                                                textAlign: TextAlign.start,
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8, 8, 4, 0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                productItem.name,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText2
+                                                        .title3
                                                         .override(
                                                           fontFamily: 'Outfit',
                                                           color:
-                                                              Color(0xFF57636C),
-                                                          fontSize: 14,
+                                                              Color(0xFF0F1113),
+                                                          fontSize: 20,
                                                           fontWeight:
-                                                              FontWeight.normal,
+                                                              FontWeight.w500,
                                                         ),
                                               ),
-                                            ),
-                                          ],
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 4, 8, 0),
+                                                child: AutoSizeText(
+                                                  productItem.stock
+                                                      .maybeHandleOverflow(
+                                                    maxChars: 70,
+                                                    replacement: '…',
+                                                  ),
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText2
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color:
+                                                            Color(0xFF57636C),
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
-                                          child: Icon(
-                                            Icons.chevron_right_rounded,
-                                            color: Color(0xFF57636C),
-                                            size: 24,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 12, 4, 8),
-                                          child: Text(
-                                            formatNumber(
-                                              productItem.price,
-                                              formatType: FormatType.decimal,
-                                              decimalType:
-                                                  DecimalType.automatic,
-                                              currency: '€',
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 4, 0, 0),
+                                            child: Icon(
+                                              Icons.chevron_right_rounded,
+                                              color: Color(0xFF57636C),
+                                              size: 24,
                                             ),
-                                            textAlign: TextAlign.end,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: Color(0xFF0F1113),
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 12, 4, 8),
+                                            child: Text(
+                                              formatNumber(
+                                                productItem.price,
+                                                formatType: FormatType.decimal,
+                                                decimalType:
+                                                    DecimalType.automatic,
+                                                currency: '€',
+                                              ),
+                                              textAlign: TextAlign.end,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color:
+                                                            Color(0xFF0F1113),
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                      );
-                    },
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
