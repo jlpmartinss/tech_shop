@@ -456,10 +456,11 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                   children: [
                                     Text(
                                       formatNumber(
-                                        specificComponentProductsRecord.price,
-                                        formatType: FormatType.decimal,
-                                        decimalType: DecimalType.automatic,
+                                        specificLaptopProductsRecord.price,
+                                        formatType: FormatType.custom,
                                         currency: '€',
+                                        format: '',
+                                        locale: '',
                                       ),
                                       textAlign: TextAlign.center,
                                       style:
