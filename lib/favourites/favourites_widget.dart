@@ -1,9 +1,11 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -160,10 +162,33 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 4, 0, 0),
-                                        child: Icon(
-                                          Icons.check_circle_outlined,
-                                          color: Color(0xFF57636C),
-                                          size: 24,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            final cartCreateData =
+                                                createCartRecordData(
+                                              name:
+                                                  listViewFavouritesRecord.name,
+                                              price: listViewFavouritesRecord
+                                                  .price,
+                                              uid: FFAppState().USER,
+                                              quantity: listViewFavouritesRecord
+                                                  .quantity,
+                                              imagePath:
+                                                  listViewFavouritesRecord
+                                                      .imagePath,
+                                            );
+                                            await CartRecord.collection
+                                                .doc()
+                                                .set(cartCreateData);
+                                            await listViewFavouritesRecord
+                                                .reference
+                                                .delete();
+                                          },
+                                          child: Icon(
+                                            Icons.add_shopping_cart,
+                                            color: Color(0xFF19FF00),
+                                            size: 24,
+                                          ),
                                         ),
                                       ),
                                       Padding(
@@ -190,24 +215,17 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 12, 4, 8),
+                                            0, 4, 0, 0),
                                         child: InkWell(
                                           onTap: () async {
                                             await listViewFavouritesRecord
                                                 .reference
                                                 .delete();
                                           },
-                                          child: Text(
-                                            'Remove',
-                                            textAlign: TextAlign.end,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: Color(0xFFFF0000),
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
+                                          child: Icon(
+                                            Icons.cancel,
+                                            color: Color(0xFFFF0000),
+                                            size: 24,
                                           ),
                                         ),
                                       ),
