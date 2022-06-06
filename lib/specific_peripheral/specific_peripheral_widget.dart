@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -160,9 +161,30 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                                         color: Colors.white,
                                                         size: 24,
                                                       ),
-                                                      onPressed: () {
-                                                        print(
-                                                            'IconButton pressed ...');
+                                                      onPressed: () async {
+                                                        final favouritesCreateData =
+                                                            createFavouritesRecordData(
+                                                          uid:
+                                                              FFAppState().USER,
+                                                          model:
+                                                              specificPeripheralProductsRecord
+                                                                  .modelno,
+                                                          name:
+                                                              specificPeripheralProductsRecord
+                                                                  .name,
+                                                          price:
+                                                              specificPeripheralProductsRecord
+                                                                  .price,
+                                                          imagePath:
+                                                              specificPeripheralProductsRecord
+                                                                  .image,
+                                                          quantity: 1.0,
+                                                        );
+                                                        await FavouritesRecord
+                                                            .collection
+                                                            .doc()
+                                                            .set(
+                                                                favouritesCreateData);
                                                       },
                                                     ),
                                                   ),
