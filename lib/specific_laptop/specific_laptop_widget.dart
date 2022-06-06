@@ -3,6 +3,8 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -454,7 +456,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                   children: [
                                     Text(
                                       formatNumber(
-                                        specificLaptopProductsRecord.price,
+                                        specificComponentProductsRecord.price,
                                         formatType: FormatType.decimal,
                                         decimalType: DecimalType.automatic,
                                         currency: '€',
@@ -467,25 +469,37 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                 ),
                               ],
                             ),
-                            FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30,
-                              borderWidth: 1,
-                              buttonSize: 60,
-                              icon: Icon(
-                                Icons.add_box_outlined,
-                                color: Colors.black,
-                                size: 30,
-                              ),
+                            FFButtonWidget(
                               onPressed: () async {
-                                final cartCreateData = createCartRecordData(
-                                  createdBy: currentUserReference,
-                                  item: specificLaptopProductsRecord.reference,
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        NavBarPage(initialPage: 'Cart'),
+                                  ),
                                 );
-                                await CartRecord.collection
-                                    .doc()
-                                    .set(cartCreateData);
                               },
+                              text: 'Add to cart',
+                              options: FFButtonOptions(
+                                width: 130,
+                                height: 50,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                elevation: 3,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1,
+                                ),
+                                borderRadius: 8,
+                              ),
                             ),
                           ],
                         ),
