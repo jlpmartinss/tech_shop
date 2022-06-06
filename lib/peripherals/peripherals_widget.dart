@@ -282,31 +282,26 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
                                 ),
                               ],
                             ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 2, 0, 0),
-                                    child: AutoSizeText(
-                                      wrapProductsRecord.name,
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Lexend Deca',
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                    ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 2, 0, 0),
+                                  child: AutoSizeText(
+                                    wrapProductsRecord.name,
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                        ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                             Padding(
                               padding:
