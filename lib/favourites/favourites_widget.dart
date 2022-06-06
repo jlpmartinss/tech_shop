@@ -191,23 +191,24 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 12, 4, 8),
-                                        child: Text(
-                                          formatNumber(
-                                            listViewFavouritesRecord.price,
-                                            formatType: FormatType.custom,
-                                            currency: '€',
-                                            format: '',
-                                            locale: '',
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await listViewFavouritesRecord
+                                                .reference
+                                                .delete();
+                                          },
+                                          child: Text(
+                                            'Remove',
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: Color(0xFFFF0000),
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
                                           ),
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF0F1113),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
-                                              ),
                                         ),
                                       ),
                                     ],
