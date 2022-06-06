@@ -481,8 +481,13 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                               ],
                             ),
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                final usersUpdateData = {
+                                  'totalCart': FieldValue.increment(
+                                      specificLaptopProductsRecord.price),
+                                };
+                                await currentUserReference
+                                    .update(usersUpdateData);
                               },
                               text: 'Add to cart',
                               options: FFButtonOptions(
