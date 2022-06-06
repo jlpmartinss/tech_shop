@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../specific_peripheral/specific_peripheral_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -291,7 +292,7 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 2, 0, 0),
-                                    child: Text(
+                                    child: AutoSizeText(
                                       wrapProductsRecord.name,
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
@@ -317,7 +318,7 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         2, 2, 2, 2),
-                                    child: Text(
+                                    child: AutoSizeText(
                                       wrapProductsRecord.stock,
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
@@ -343,7 +344,7 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 2, 0, 0),
-                                    child: Text(
+                                    child: AutoSizeText(
                                       formatNumber(
                                         wrapProductsRecord.price,
                                         formatType: FormatType.custom,

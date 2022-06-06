@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../specific_laptop/specific_laptop_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -294,7 +295,7 @@ class _LaptopsWidgetState extends State<LaptopsWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 2, 0, 0),
-                                  child: Text(
+                                  child: AutoSizeText(
                                     wrapProductsRecord.name,
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
@@ -319,7 +320,7 @@ class _LaptopsWidgetState extends State<LaptopsWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 2, 0, 0),
-                                    child: Text(
+                                    child: AutoSizeText(
                                       wrapProductsRecord.stock,
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)

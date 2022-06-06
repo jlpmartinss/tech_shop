@@ -32,7 +32,7 @@ class FFAppState {
 
   String Peripherals = 'Peripherals';
 
-  int FinalPrice = 0;
+  List<double> CartPrices = [];
 }
 
 LatLng _latLngFromString(String val) {

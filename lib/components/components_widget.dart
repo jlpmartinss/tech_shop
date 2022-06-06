@@ -69,94 +69,97 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
                 color: Colors.white,
                 shape: BoxShape.rectangle,
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.95,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: Color(0xFFF1F4F8),
-                          width: 2,
+              child: Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: Color(0xFFF1F4F8),
+                            width: 2,
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
-                              child: Icon(
-                                Icons.search_rounded,
-                                color: Color(0xFF95A1AC),
-                                size: 24,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                                child: TextFormField(
-                                  controller: textController,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: '',
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0x00000000),
-                                        width: 1,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Color(0xFF95A1AC),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Align(
-                                alignment: AlignmentDirectional(0.95, 0),
+                                    EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
                                 child: Icon(
-                                  Icons.tune_rounded,
+                                  Icons.search_rounded,
                                   color: Color(0xFF95A1AC),
                                   size: 24,
                                 ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      4, 0, 0, 0),
+                                  child: TextFormField(
+                                    controller: textController,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: '',
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: Color(0xFF95A1AC),
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.95, 0),
+                                  child: Icon(
+                                    Icons.tune_rounded,
+                                    color: Color(0xFF95A1AC),
+                                    size: 24,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Row(
@@ -340,7 +343,7 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 2, 0, 0),
-                                    child: Text(
+                                    child: AutoSizeText(
                                       wrapProductsRecord.stock,
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
@@ -366,7 +369,7 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 2, 0, 0),
-                                    child: Text(
+                                    child: AutoSizeText(
                                       formatNumber(
                                         wrapProductsRecord.price,
                                         formatType: FormatType.custom,

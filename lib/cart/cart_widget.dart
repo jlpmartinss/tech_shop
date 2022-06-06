@@ -81,146 +81,157 @@ class _CartWidgetState extends State<CartWidget> {
                       );
                     }
                     List<CartRecord> listViewCartRecordList = snapshot.data;
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      primary: false,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: listViewCartRecordList.length,
-                      itemBuilder: (context, listViewIndex) {
-                        final listViewCartRecord =
-                            listViewCartRecordList[listViewIndex];
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 3,
-                                  color: Color(0x411D2429),
-                                  offset: Offset(0, 1),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 1, 1, 1),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(6),
-                                      child: Image.network(
-                                        listViewCartRecord.imagePath,
-                                        width: 80,
-                                        height: 80,
-                                        fit: BoxFit.cover,
+                    return InkWell(
+                      onTap: () async {
+                        setState(() => FFAppState()
+                            .CartPrices
+                            .add(listViewCartRecordList.length.toDouble()));
+                      },
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: listViewCartRecordList.length,
+                        itemBuilder: (context, listViewIndex) {
+                          final listViewCartRecord =
+                              listViewCartRecordList[listViewIndex];
+                          return Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 3,
+                                    color: Color(0x411D2429),
+                                    offset: Offset(0, 1),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 1, 1, 1),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(6),
+                                        child: Image.network(
+                                          listViewCartRecord.imagePath,
+                                          width: 80,
+                                          height: 80,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8, 8, 4, 0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            listViewCartRecord.name,
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8, 8, 4, 0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              listViewCartRecord.name,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .title3
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    color: Color(0xFF0F1113),
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 4, 8, 0),
+                                              child: AutoSizeText(
+                                                'Subtext',
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 4, 0, 0),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              await listViewCartRecord.reference
+                                                  .delete();
+                                            },
+                                            child: Icon(
+                                              Icons.delete,
+                                              color: Color(0xFFFF0000),
+                                              size: 24,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 12, 4, 8),
+                                          child: Text(
+                                            formatNumber(
+                                              listViewCartRecord.price,
+                                              formatType: FormatType.custom,
+                                              currency: '€',
+                                              format: '',
+                                              locale: '',
+                                            ),
+                                            textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
-                                                .title3
+                                                .bodyText1
                                                 .override(
                                                   fontFamily: 'Outfit',
                                                   color: Color(0xFF0F1113),
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.normal,
                                                 ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 4, 8, 0),
-                                            child: AutoSizeText(
-                                              'Subtext',
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            Color(0xFF57636C),
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 4, 0, 0),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await listViewCartRecord.reference
-                                                .delete();
-                                          },
-                                          child: Icon(
-                                            Icons.delete,
-                                            color: Color(0xFFFF0000),
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 12, 4, 8),
-                                        child: Text(
-                                          formatNumber(
-                                            listViewCartRecord.price,
-                                            formatType: FormatType.custom,
-                                            currency: '€',
-                                            format: '',
-                                            locale: '',
-                                          ),
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF0F1113),
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     );
                   },
                 ),
@@ -253,53 +264,17 @@ class _CartWidgetState extends State<CartWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.2, 0),
-                            child: StreamBuilder<List<CartRecord>>(
-                              stream: queryCartRecord(
-                                queryBuilder: (cartRecord) => cartRecord
-                                    .where('uid', isEqualTo: FFAppState().USER),
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: CircularProgressIndicator(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Text(
+                              '1234.99€',
+                              textAlign: TextAlign.end,
+                              style:
+                                  FlutterFlowTheme.of(context).title3.override(
+                                        fontFamily: 'Outfit',
+                                        color: Color(0xFF0F1113),
+                                        fontSize: 40,
+                                        fontWeight: FontWeight.w500,
                                       ),
-                                    ),
-                                  );
-                                }
-                                List<CartRecord> textCartRecordList =
-                                    snapshot.data;
-                                return InkWell(
-                                  onTap: () async {
-                                    setState(() => FFAppState().FinalPrice =
-                                        FFAppState().FinalPrice +
-                                            textCartRecordList.length);
-                                  },
-                                  child: Text(
-                                    formatNumber(
-                                      FFAppState().FinalPrice,
-                                      formatType: FormatType.custom,
-                                      format: '€',
-                                      locale: '',
-                                    ),
-                                    textAlign: TextAlign.end,
-                                    style: FlutterFlowTheme.of(context)
-                                        .title3
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: Color(0xFF0F1113),
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                );
-                              },
                             ),
                           ),
                         ],
