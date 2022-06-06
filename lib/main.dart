@@ -116,8 +116,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'Cart': CartWidget(),
       'Favourites': FavouritesWidget(),
+      'Cart': CartWidget(),
       'Profile': ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
@@ -126,9 +126,9 @@ class _NavBarPageState extends State<NavBarPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0x7FFFFFFF),
         selectedItemColor: Color(0xFF235DF2),
-        unselectedItemColor: Color(0x8A000000),
+        unselectedItemColor: Color(0xD9000000),
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
@@ -136,33 +136,33 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_outlined,
-              size: 24,
+              size: 36,
             ),
             label: 'Home',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.shopping_cart,
-              size: 24,
-            ),
-            label: 'Cart',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.favorite_border,
-              size: 24,
+              size: 36,
             ),
             label: 'Favourites',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
-              size: 24,
+              Icons.shopping_cart,
+              size: 36,
             ),
-            label: 'Home',
+            label: 'Cart',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              size: 36,
+            ),
+            label: 'Profile',
             tooltip: '',
           )
         ],

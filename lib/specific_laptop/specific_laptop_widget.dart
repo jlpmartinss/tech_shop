@@ -35,7 +35,6 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
         name: specificLaptopProductsRecord.name,
         price: specificLaptopProductsRecord.price,
         imagePath: specificLaptopProductsRecord.image,
-        quantity: 1.0,
       );
       await FavouritesRecord.collection.doc().set(favouritesCreateData);
     });
@@ -198,10 +197,8 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                             color: Colors.white,
                                                             size: 24,
                                                           ),
-                                                          onPressed: () {
-                                                            print(
-                                                                'IconButton pressed ...');
-                                                          },
+                                                          onPressed:
+                                                              () async {},
                                                         ),
                                                       ),
                                                     ),
