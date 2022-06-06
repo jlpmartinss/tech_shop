@@ -270,6 +270,8 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                     return;
                                                   }
 
+                                                  setState(() => FFAppState()
+                                                      .USER = currentUserUid);
                                                   await Navigator
                                                       .pushAndRemoveUntil(
                                                     context,

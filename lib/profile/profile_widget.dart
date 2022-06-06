@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -36,7 +37,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             size: 30,
           ),
           onPressed: () async {
-            Navigator.pop(context);
+            await Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.fade,
+                duration: Duration(milliseconds: 0),
+                reverseDuration: Duration(milliseconds: 0),
+                child: NavBarPage(initialPage: 'HomePage'),
+              ),
+            );
           },
         ),
         title: Text(
@@ -144,7 +153,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: Color(0xB4FFFFFF),
-                                          fontSize: 14,
+                                          fontSize: 18,
                                           fontWeight: FontWeight.normal,
                                         ),
                                   );
@@ -193,7 +202,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             'Edit Profile',
                             style:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Lexend Deca',
+                                      fontFamily: 'Outfit',
                                       color: Color(0xFF090F13),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -253,7 +262,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             'Change Username',
                             style:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Lexend Deca',
+                                      fontFamily: 'Outfit',
                                       color: Color(0xFF090F13),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -313,7 +322,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             'Change Password',
                             style:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Lexend Deca',
+                                      fontFamily: 'Outfit',
                                       color: Color(0xFF090F13),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -373,7 +382,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             'Notification Settings',
                             style:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Lexend Deca',
+                                      fontFamily: 'Outfit',
                                       color: Color(0xFF090F13),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -432,11 +441,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           Text(
                             'Terms of Services',
                             style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
+                                FlutterFlowTheme.of(context).subtitle2.override(
+                                      fontFamily: 'Poppins',
                                       color: Color(0xFF090F13),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w500,
                                     ),
                           ),
                           FlutterFlowIconButton(
@@ -473,13 +481,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               },
               text: 'Log Out',
               options: FFButtonOptions(
-                width: 150,
-                height: 50,
+                width: 180,
+                height: 60,
                 color: Color(0xFFFF7A00),
-                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                      fontFamily: 'Lexend Deca',
+                textStyle: FlutterFlowTheme.of(context).title3.override(
+                      fontFamily: 'Outfit',
                       color: Colors.white,
-                      fontSize: 16,
+                      fontSize: 30,
                       fontWeight: FontWeight.w500,
                     ),
                 elevation: 3,

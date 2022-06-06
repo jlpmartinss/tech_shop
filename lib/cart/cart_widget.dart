@@ -2,6 +2,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
 import '../sucessful_purchase/sucessful_purchase_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,15 @@ class _CartWidgetState extends State<CartWidget> {
             size: 30,
           ),
           onPressed: () async {
-            Navigator.pop(context);
+            await Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.fade,
+                duration: Duration(milliseconds: 0),
+                reverseDuration: Duration(milliseconds: 0),
+                child: NavBarPage(initialPage: 'HomePage'),
+              ),
+            );
           },
         ),
         title: Text(
@@ -258,7 +267,7 @@ class _CartWidgetState extends State<CartWidget> {
                                   FlutterFlowTheme.of(context).title3.override(
                                         fontFamily: 'Outfit',
                                         color: Color(0xFF0F1113),
-                                        fontSize: 40,
+                                        fontSize: 28,
                                         fontWeight: FontWeight.w500,
                                       ),
                             ),
@@ -272,7 +281,7 @@ class _CartWidgetState extends State<CartWidget> {
                                   FlutterFlowTheme.of(context).title3.override(
                                         fontFamily: 'Outfit',
                                         color: Color(0xFF0F1113),
-                                        fontSize: 40,
+                                        fontSize: 28,
                                         fontWeight: FontWeight.w500,
                                       ),
                             ),
@@ -335,7 +344,7 @@ class _CartWidgetState extends State<CartWidget> {
                             }
                           },
                           child: Container(
-                            width: 200,
+                            width: 180,
                             decoration: BoxDecoration(
                               color: Color(0xFF235DF2),
                               boxShadow: [
@@ -365,7 +374,7 @@ class _CartWidgetState extends State<CartWidget> {
                                             fontFamily: 'Outfit',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBtnText,
-                                            fontSize: 40,
+                                            fontSize: 30,
                                             fontWeight: FontWeight.w500,
                                           ),
                                     ),

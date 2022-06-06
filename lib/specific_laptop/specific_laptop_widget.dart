@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -482,14 +481,8 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                               ],
                             ),
                             FFButtonWidget(
-                              onPressed: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        NavBarPage(initialPage: 'Cart'),
-                                  ),
-                                );
+                              onPressed: () {
+                                print('Button pressed ...');
                               },
                               text: 'Add to cart',
                               options: FFButtonOptions(
@@ -500,9 +493,9 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .subtitle2
                                     .override(
-                                      fontFamily: 'Lexend Deca',
+                                      fontFamily: 'Outfit',
                                       color: Colors.white,
-                                      fontSize: 16,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w500,
                                     ),
                                 elevation: 3,

@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -448,9 +447,10 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                     Text(
                                       formatNumber(
                                         specificDesktopProductsRecord.price,
-                                        formatType: FormatType.decimal,
-                                        decimalType: DecimalType.automatic,
+                                        formatType: FormatType.custom,
                                         currency: '€',
+                                        format: '',
+                                        locale: '',
                                       ),
                                       textAlign: TextAlign.center,
                                       style:
@@ -461,14 +461,8 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                               ],
                             ),
                             FFButtonWidget(
-                              onPressed: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        NavBarPage(initialPage: 'Cart'),
-                                  ),
-                                );
+                              onPressed: () {
+                                print('Button pressed ...');
                               },
                               text: 'Add to cart',
                               options: FFButtonOptions(
