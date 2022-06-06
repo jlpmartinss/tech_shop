@@ -488,6 +488,17 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                 };
                                 await currentUserReference
                                     .update(usersUpdateData);
+
+                                final cartCreateData = createCartRecordData(
+                                  name: specificLaptopProductsRecord.name,
+                                  price: specificLaptopProductsRecord.price,
+                                  uid: FFAppState().USER,
+                                  quantity: 1.0,
+                                  imagePath: specificLaptopProductsRecord.image,
+                                );
+                                await CartRecord.collection
+                                    .doc()
+                                    .set(cartCreateData);
                               },
                               text: 'Add to cart',
                               options: FFButtonOptions(
