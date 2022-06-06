@@ -482,23 +482,53 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                final usersUpdateData = {
-                                  'totalCart': FieldValue.increment(
-                                      specificLaptopProductsRecord.price),
-                                };
-                                await currentUserReference
-                                    .update(usersUpdateData);
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  'Are you sure you want to add this item to your Cart?'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('No'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Yes'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  final cartCreateData = createCartRecordData(
+                                    name: specificLaptopProductsRecord.name,
+                                    price: specificLaptopProductsRecord.price,
+                                    uid: FFAppState().USER,
+                                    quantity: 1.0,
+                                    imagePath:
+                                        specificLaptopProductsRecord.image,
+                                  );
+                                  await CartRecord.collection
+                                      .doc()
+                                      .set(cartCreateData);
 
-                                final cartCreateData = createCartRecordData(
-                                  name: specificLaptopProductsRecord.name,
-                                  price: specificLaptopProductsRecord.price,
-                                  uid: FFAppState().USER,
-                                  quantity: 1.0,
-                                  imagePath: specificLaptopProductsRecord.image,
-                                );
-                                await CartRecord.collection
-                                    .doc()
-                                    .set(cartCreateData);
+                                  final usersUpdateData = {
+                                    'totalCart': FieldValue.increment(
+                                        specificLaptopProductsRecord.price),
+                                  };
+                                  await currentUserReference
+                                      .update(usersUpdateData);
+                                }
                               },
                               text: 'Add to cart',
                               options: FFButtonOptions(

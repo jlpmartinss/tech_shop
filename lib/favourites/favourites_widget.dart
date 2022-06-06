@@ -5,7 +5,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
-import '../search_page/search_page_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -58,27 +57,7 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                 fontSize: 22,
               ),
         ),
-        actions: [
-          FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30,
-            borderWidth: 1,
-            buttonSize: 60,
-            icon: Icon(
-              Icons.search,
-              color: FlutterFlowTheme.of(context).primaryBtnText,
-              size: 30,
-            ),
-            onPressed: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SearchPageWidget(),
-                ),
-              );
-            },
-          ),
-        ],
+        actions: [],
         centerTitle: true,
         elevation: 2,
       ),
@@ -244,6 +223,15 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                               await listViewFavouritesRecord
                                                   .reference
                                                   .delete();
+
+                                              final usersUpdateData = {
+                                                'totalCart':
+                                                    FieldValue.increment(
+                                                        listViewFavouritesRecord
+                                                            .price),
+                                              };
+                                              await currentUserReference
+                                                  .update(usersUpdateData);
                                             }
                                           },
                                           child: Icon(

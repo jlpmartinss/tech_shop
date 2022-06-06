@@ -406,8 +406,55 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                               ],
                             ),
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  'Are you sure you want to add this item to your Cart?'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('No'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Yes'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  final cartCreateData = createCartRecordData(
+                                    name: specificComponentProductsRecord.name,
+                                    price:
+                                        specificComponentProductsRecord.price,
+                                    uid: FFAppState().USER,
+                                    quantity: 1.0,
+                                    imagePath:
+                                        specificComponentProductsRecord.image,
+                                  );
+                                  await CartRecord.collection
+                                      .doc()
+                                      .set(cartCreateData);
+
+                                  final usersUpdateData = {
+                                    'totalCart': FieldValue.increment(
+                                        specificComponentProductsRecord.price),
+                                  };
+                                  await currentUserReference
+                                      .update(usersUpdateData);
+                                }
                               },
                               text: 'Add to cart',
                               options: FFButtonOptions(

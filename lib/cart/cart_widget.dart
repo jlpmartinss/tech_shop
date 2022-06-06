@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
 import '../sucessful_purchase/sucessful_purchase_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -234,9 +235,50 @@ class _CartWidgetState extends State<CartWidget> {
                                                                   0, 4, 0, 0),
                                                       child: InkWell(
                                                         onTap: () async {
-                                                          await listViewCartRecord
-                                                              .reference
-                                                              .delete();
+                                                          var confirmDialogResponse =
+                                                              await showDialog<
+                                                                      bool>(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (alertDialogContext) {
+                                                                      return AlertDialog(
+                                                                        title: Text(
+                                                                            'Are you sure you want to remove this item from your Cart?'),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(alertDialogContext, false),
+                                                                            child:
+                                                                                Text('No'),
+                                                                          ),
+                                                                          TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(alertDialogContext, true),
+                                                                            child:
+                                                                                Text('Yes'),
+                                                                          ),
+                                                                        ],
+                                                                      );
+                                                                    },
+                                                                  ) ??
+                                                                  false;
+                                                          if (confirmDialogResponse) {
+                                                            await listViewCartRecord
+                                                                .reference
+                                                                .delete();
+
+                                                            final usersUpdateData =
+                                                                {
+                                                              'totalCart': FieldValue
+                                                                  .increment(
+                                                                      -(listViewCartRecord
+                                                                          .price)),
+                                                            };
+                                                            await currentUserReference
+                                                                .update(
+                                                                    usersUpdateData);
+                                                          }
                                                         },
                                                         child: Icon(
                                                           Icons.delete,
@@ -299,170 +341,174 @@ class _CartWidgetState extends State<CartWidget> {
                 ),
               ],
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.9,
-              height: 100,
-              decoration: BoxDecoration(
-                color: Color(0xFFEEEEEE),
-              ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 4,
-                        color: Color(0x55000000),
-                        offset: Offset(0, 2),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(16),
-                    shape: BoxShape.rectangle,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  AuthUserStreamWidget(
-                                    child: Text(
-                                      formatNumber(
-                                        valueOrDefault(
-                                            currentUserDocument?.totalCart,
-                                            0.0),
-                                        formatType: FormatType.decimal,
-                                        decimalType: DecimalType.automatic,
-                                        currency: '€',
+            Align(
+              alignment: AlignmentDirectional(0, 0),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Color(0xFFEEEEEE),
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4,
+                          color: Color(0x55000000),
+                          offset: Offset(0, 2),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(16),
+                      shape: BoxShape.rectangle,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    AuthUserStreamWidget(
+                                      child: Text(
+                                        formatNumber(
+                                          valueOrDefault(
+                                              currentUserDocument?.totalCart,
+                                              0.0),
+                                          formatType: FormatType.decimal,
+                                          decimalType: DecimalType.automatic,
+                                          currency: '€',
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        style:
+                                            FlutterFlowTheme.of(context).title1,
                                       ),
-                                      textAlign: TextAlign.center,
-                                      style:
-                                          FlutterFlowTheme.of(context).title1,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          StreamBuilder<List<CartRecord>>(
+                            stream: queryCartRecord(
+                              queryBuilder: (cartRecord) => cartRecord
+                                  .where('uid', isEqualTo: FFAppState().USER),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: CircularProgressIndicator(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
                                     ),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        StreamBuilder<List<CartRecord>>(
-                          stream: queryCartRecord(
-                            queryBuilder: (cartRecord) => cartRecord
-                                .where('uid', isEqualTo: FFAppState().USER),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50,
+                                );
+                              }
+                              List<CartRecord> menuItemCartRecordList =
+                                  snapshot.data;
+                              return InkWell(
+                                onTap: () async {
+                                  var confirmDialogResponse =
+                                      await showDialog<bool>(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    'Are you sure you want to buy these items?'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            false),
+                                                    child: Text('No'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            true),
+                                                    child: Text('Yes'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          ) ??
+                                          false;
+                                  if (confirmDialogResponse) {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            SucessfulPurchaseWidget(),
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: Container(
+                                  width: 130,
                                   height: 50,
-                                  child: CircularProgressIndicator(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF235DF2),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 3,
+                                        color: Color(0x411D2429),
+                                        offset: Offset(0, 1),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 8, 8, 8),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Align(
+                                          alignment: AlignmentDirectional(0, 0),
+                                          child: Text(
+                                            'Buy',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .title3
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBtnText,
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );
-                            }
-                            List<CartRecord> menuItemCartRecordList =
-                                snapshot.data;
-                            return InkWell(
-                              onTap: () async {
-                                var confirmDialogResponse =
-                                    await showDialog<bool>(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text(
-                                                  'Are you sure you want to buy these items?'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: Text('No'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: Text('Yes'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ) ??
-                                        false;
-                                if (confirmDialogResponse) {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          SucessfulPurchaseWidget(),
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Container(
-                                width: 130,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF235DF2),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 3,
-                                      color: Color(0x411D2429),
-                                      offset: Offset(0, 1),
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8, 8, 8, 8),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Align(
-                                        alignment: AlignmentDirectional(0, 0),
-                                        child: Text(
-                                          'Buy',
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .title3
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBtnText,
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
