@@ -156,50 +156,50 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  InkWell(
-                                                    onTap: () async {
-                                                      final productsUpdateData =
-                                                          {
-                                                        'favoritos': FieldValue
-                                                            .arrayUnion([
-                                                          currentUserReference
-                                                        ]),
-                                                      };
-                                                      await specificLaptopProductsRecord
-                                                          .reference
-                                                          .update(
-                                                              productsUpdateData);
-                                                    },
-                                                    child: Card(
-                                                      clipBehavior: Clip
-                                                          .antiAliasWithSaveLayer,
-                                                      color: Color(0x3A000000),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    2, 2, 2, 2),
-                                                        child:
-                                                            FlutterFlowIconButton(
-                                                          borderColor: Colors
-                                                              .transparent,
-                                                          borderRadius: 30,
-                                                          buttonSize: 46,
-                                                          icon: Icon(
-                                                            Icons
-                                                                .favorite_border,
-                                                            color: Colors.white,
-                                                            size: 24,
-                                                          ),
-                                                          onPressed:
-                                                              () async {},
+                                                  Card(
+                                                    clipBehavior: Clip
+                                                        .antiAliasWithSaveLayer,
+                                                    color: Color(0x3A000000),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  2, 2, 2, 2),
+                                                      child:
+                                                          FlutterFlowIconButton(
+                                                        borderColor:
+                                                            Colors.transparent,
+                                                        borderRadius: 30,
+                                                        buttonSize: 46,
+                                                        icon: Icon(
+                                                          Icons.favorite_border,
+                                                          color: Colors.white,
+                                                          size: 24,
                                                         ),
+                                                        onPressed: () async {
+                                                          final favouritesCreateData =
+                                                              createFavouritesRecordData(
+                                                            uid: '',
+                                                            model: '',
+                                                            name: '',
+                                                            imagePath: '',
+                                                            price:
+                                                                specificLaptopProductsRecord
+                                                                    .price,
+                                                            quantity: 1.0,
+                                                          );
+                                                          await FavouritesRecord
+                                                              .collection
+                                                              .doc()
+                                                              .set(
+                                                                  favouritesCreateData);
+                                                        },
                                                       ),
                                                     ),
                                                   ),

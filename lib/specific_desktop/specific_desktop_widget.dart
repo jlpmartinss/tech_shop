@@ -184,7 +184,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                                             imagePath:
                                                                 specificDesktopProductsRecord
                                                                     .image,
-                                                            quantity: 0.0,
+                                                            quantity: 1.0,
                                                           );
                                                           await FavouritesRecord
                                                               .collection
