@@ -185,10 +185,17 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                         onPressed: () async {
                                                           final favouritesCreateData =
                                                               createFavouritesRecordData(
-                                                            uid: '',
-                                                            model: '',
-                                                            name: '',
-                                                            imagePath: '',
+                                                            uid: FFAppState()
+                                                                .USER,
+                                                            model:
+                                                                specificLaptopProductsRecord
+                                                                    .modelno,
+                                                            name:
+                                                                specificLaptopProductsRecord
+                                                                    .name,
+                                                            imagePath:
+                                                                specificLaptopProductsRecord
+                                                                    .image,
                                                             price:
                                                                 specificLaptopProductsRecord
                                                                     .price,
