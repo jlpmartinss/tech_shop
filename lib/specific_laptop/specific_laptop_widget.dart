@@ -341,54 +341,16 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 0, 0),
-                                        child:
-                                            StreamBuilder<List<ProductsRecord>>(
-                                          stream: queryProductsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<ProductsRecord>
-                                                textProductsRecordList =
-                                                snapshot.data;
-                                            // Return an empty Container when the document does not exist.
-                                            if (snapshot.data.isEmpty) {
-                                              return Container();
-                                            }
-                                            final textProductsRecord =
-                                                textProductsRecordList
-                                                        .isNotEmpty
-                                                    ? textProductsRecordList
-                                                        .first
-                                                    : null;
-                                            return Text(
-                                              specificLaptopProductsRecord.cpu,
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF434343),
-                                                        lineHeight: 2.5,
-                                                      ),
-                                            );
-                                          },
+                                        child: Text(
+                                          specificLaptopProductsRecord.cpu,
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF434343),
+                                                lineHeight: 2.5,
+                                              ),
                                         ),
                                       ),
                                       Padding(

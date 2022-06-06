@@ -17,3 +17,5 @@ export 'specific_component/specific_component_widget.dart'
     show SpecificComponentWidget;
 export 'specific_desktop/specific_desktop_widget.dart'
     show SpecificDesktopWidget;
+export 'sucessful_purchase/sucessful_purchase_widget.dart'
+    show SucessfulPurchaseWidget;

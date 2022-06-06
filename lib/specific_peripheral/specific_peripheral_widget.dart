@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -297,8 +298,9 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20, 0, 0, 0),
-                                      child: Text(
-                                        specificPeripheralProductsRecord.name,
+                                      child: AutoSizeText(
+                                        specificPeripheralProductsRecord.name
+                                            .maybeHandleOverflow(maxChars: 25),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
@@ -312,9 +314,9 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20, 0, 0, 0),
-                                      child: Text(
-                                        specificPeripheralProductsRecord
-                                            .modelno,
+                                      child: AutoSizeText(
+                                        specificPeripheralProductsRecord.modelno
+                                            .maybeHandleOverflow(maxChars: 25),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
@@ -328,8 +330,9 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20, 0, 0, 0),
-                                      child: Text(
-                                        specificPeripheralProductsRecord.type,
+                                      child: AutoSizeText(
+                                        specificPeripheralProductsRecord.type
+                                            .maybeHandleOverflow(maxChars: 25),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
