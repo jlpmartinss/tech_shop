@@ -235,6 +235,36 @@ class _CartWidgetState extends State<CartWidget> {
                                                           await currentUserReference
                                                               .update(
                                                                   usersUpdateData);
+
+                                                          final cartUpdateData =
+                                                              {
+                                                            'quantity':
+                                                                FieldValue
+                                                                    .increment(
+                                                                        -(1.0)),
+                                                          };
+                                                          await listViewCartRecord
+                                                              .reference
+                                                              .update(
+                                                                  cartUpdateData);
+                                                          await Navigator.push(
+                                                            context,
+                                                            PageTransition(
+                                                              type:
+                                                                  PageTransitionType
+                                                                      .fade,
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      300),
+                                                              reverseDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          300),
+                                                              child: NavBarPage(
+                                                                  initialPage:
+                                                                      'Cart'),
+                                                            ),
+                                                          );
                                                         },
                                                       ),
                                                       Text(
@@ -268,6 +298,36 @@ class _CartWidgetState extends State<CartWidget> {
                                                           await currentUserReference
                                                               .update(
                                                                   usersUpdateData);
+
+                                                          final cartUpdateData =
+                                                              {
+                                                            'quantity':
+                                                                FieldValue
+                                                                    .increment(
+                                                                        1.0),
+                                                          };
+                                                          await listViewCartRecord
+                                                              .reference
+                                                              .update(
+                                                                  cartUpdateData);
+                                                          await Navigator.push(
+                                                            context,
+                                                            PageTransition(
+                                                              type:
+                                                                  PageTransitionType
+                                                                      .fade,
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      300),
+                                                              reverseDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          300),
+                                                              child: NavBarPage(
+                                                                  initialPage:
+                                                                      'Cart'),
+                                                            ),
+                                                          );
                                                         },
                                                       ),
                                                     ],
@@ -329,6 +389,24 @@ class _CartWidgetState extends State<CartWidget> {
                                                       await listViewCartRecord
                                                           .reference
                                                           .delete();
+                                                      await Navigator.push(
+                                                        context,
+                                                        PageTransition(
+                                                          type:
+                                                              PageTransitionType
+                                                                  .fade,
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  300),
+                                                          reverseDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      300),
+                                                          child: NavBarPage(
+                                                              initialPage:
+                                                                  'Cart'),
+                                                        ),
+                                                      );
                                                     }
                                                   },
                                                   child: Icon(
@@ -395,7 +473,7 @@ class _CartWidgetState extends State<CartWidget> {
                           Align(
                             alignment: AlignmentDirectional(0, 0),
                             child: Text(
-                              'Total:',
+                              'Total:  ',
                               textAlign: TextAlign.end,
                               style: FlutterFlowTheme.of(context).title3,
                             ),
