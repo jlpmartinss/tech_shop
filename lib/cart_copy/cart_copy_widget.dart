@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../cart/cart_widget.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -396,7 +395,9 @@ class _CartCopyWidgetState extends State<CartCopyWidget> {
                                                                 Duration(
                                                                     milliseconds:
                                                                         300),
-                                                            child: CartWidget(),
+                                                            child: NavBarPage(
+                                                                initialPage:
+                                                                    'cartCopy'),
                                                           ),
                                                         );
                                                       } else {
