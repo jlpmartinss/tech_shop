@@ -73,12 +73,12 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                padding: EdgeInsetsDirectional.fromSTEB(26, 10, 26, 10),
                 child: Material(
                   color: Colors.transparent,
                   elevation: 5,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   child: Container(
                     width: double.infinity,
@@ -92,7 +92,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                           offset: Offset(0, 1),
                         )
                       ],
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     alignment: AlignmentDirectional(0, 0),
                     child: Column(
@@ -293,7 +293,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                             productItem.image,
                                             width: 80,
                                             height: 80,
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.scaleDown,
                                           ),
                                         ),
                                       ),

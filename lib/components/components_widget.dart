@@ -55,14 +55,17 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [],
-                ),
-              ],
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [],
+                  ),
+                ],
+              ),
             ),
             StreamBuilder<List<ProductsRecord>>(
               stream: queryProductsRecord(

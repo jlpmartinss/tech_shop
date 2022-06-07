@@ -61,40 +61,13 @@ class _ComputersWidgetState extends State<ComputersWidget> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(15, 12, 0, 12),
-                      child: Text(
-                        'Today\'s Deals',
-                        style: FlutterFlowTheme.of(context).title3,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      'assets/images/card_bg@2x.png',
-                      width: MediaQuery.of(context).size.width * 0.96,
-                      height: 110,
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                ),
-              ],
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [],
+              ),
             ),
             StreamBuilder<List<ProductsRecord>>(
               stream: queryProductsRecord(

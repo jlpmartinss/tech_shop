@@ -312,9 +312,17 @@ class _CartCopyWidgetState extends State<CartCopyWidget> {
                               ),
                             ],
                           ),
-                          Text(
-                            '\$230.20',
-                            style: FlutterFlowTheme.of(context).title1,
+                          AuthUserStreamWidget(
+                            child: Text(
+                              formatNumber(
+                                valueOrDefault(
+                                    currentUserDocument?.totalCart, 0.0),
+                                formatType: FormatType.decimal,
+                                decimalType: DecimalType.automatic,
+                                currency: '€',
+                              ),
+                              style: FlutterFlowTheme.of(context).title1,
+                            ),
                           ),
                         ],
                       ),

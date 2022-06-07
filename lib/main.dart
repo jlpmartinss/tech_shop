@@ -119,6 +119,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Favourites': FavouritesWidget(),
       'Cart': CartWidget(),
       'Profile': ProfileWidget(),
+      'cartCopy': CartCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
@@ -163,6 +164,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 36,
             ),
             label: 'Profile',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.threed_rotation_sharp,
+              size: 24,
+            ),
+            label: 'Home',
             tooltip: '',
           )
         ],

@@ -55,10 +55,13 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [],
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [],
+              ),
             ),
             StreamBuilder<List<ProductsRecord>>(
               stream: queryProductsRecord(
