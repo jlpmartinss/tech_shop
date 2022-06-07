@@ -151,7 +151,7 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.shopping_cart,
+              Icons.shopping_cart_rounded,
               size: 36,
             ),
             label: 'Cart',

@@ -6,14 +6,15 @@ import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AuthenticationWidget extends StatefulWidget {
-  const AuthenticationWidget({Key key}) : super(key: key);
+class AuthenticationCopyWidget extends StatefulWidget {
+  const AuthenticationCopyWidget({Key key}) : super(key: key);
 
   @override
-  _AuthenticationWidgetState createState() => _AuthenticationWidgetState();
+  _AuthenticationCopyWidgetState createState() =>
+      _AuthenticationCopyWidgetState();
 }
 
-class _AuthenticationWidgetState extends State<AuthenticationWidget> {
+class _AuthenticationCopyWidgetState extends State<AuthenticationCopyWidget> {
   TextEditingController confirmPasswordSignUpController;
   bool confirmPasswordSignUpVisibility;
   TextEditingController emailSignUpController;
@@ -80,19 +81,15 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                 children: [
                                   TabBar(
                                     isScrollable: true,
-                                    labelColor: Colors.white,
+                                    labelColor: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
                                     labelPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             24, 0, 24, 0),
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .subtitle1
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: Color(0xFF0F1113),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                    indicatorColor: Colors.white,
+                                    labelStyle:
+                                        FlutterFlowTheme.of(context).subtitle1,
+                                    indicatorColor: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
                                     tabs: [
                                       Tab(
                                         text: 'Sign In',
@@ -108,9 +105,11 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  24, 24, 24, 24),
+                                                  24, 0, 24, 360),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -316,7 +315,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 20, 0, 0),
+                                                    .fromSTEB(0, 10, 0, 10),
                                                 child: FFButtonWidget(
                                                   onPressed: () {
                                                     print(
@@ -326,18 +325,14 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                   options: FFButtonOptions(
                                                     width: 170,
                                                     height: 40,
-                                                    color: Color(0xFF4B39EF),
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color: Colors.white,
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                                    elevation: 0,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground,
+                                                    textStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyText1,
+                                                    elevation: 5,
                                                     borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1,
@@ -352,30 +347,25 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  24, 24, 24, 24),
+                                                  24, 0, 24, 295),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(20, 20, 20, 0),
+                                                    .fromSTEB(20, 20, 20, 10),
                                                 child: TextFormField(
                                                   controller:
                                                       emailSignUpController,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText: 'Email Address',
-                                                    labelStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .bodyText2
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF57636C),
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                    labelStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyText2,
+                                                    hintText:
+                                                        'Enter your email...',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .bodyText1
@@ -419,18 +409,15 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             Color(0xFF0F1113),
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
                                                       ),
                                                 ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(20, 12, 20, 0),
+                                                    .fromSTEB(20, 10, 20, 10),
                                                 child: TextFormField(
                                                   controller:
                                                       passwordSignUpController,
@@ -438,17 +425,12 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                       !passwordSignUpVisibility,
                                                   decoration: InputDecoration(
                                                     labelText: 'Password',
-                                                    labelStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .bodyText2
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF57636C),
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                    labelStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyText2,
+                                                    hintText:
+                                                        'Enter your password...',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .bodyText1
@@ -501,7 +483,9 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                             : Icons
                                                                 .visibility_off_outlined,
                                                         color:
-                                                            Color(0xFF57636C),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
                                                         size: 20,
                                                       ),
                                                     ),
@@ -510,12 +494,9 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        fontFamily: 'Poppins',
                                                         color:
                                                             Color(0xFF0F1113),
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
                                                       ),
                                                 ),
                                               ),
@@ -528,8 +509,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                   obscureText:
                                                       !confirmPasswordSignUpVisibility,
                                                   decoration: InputDecoration(
-                                                    labelText:
-                                                        'Confirm Password',
+                                                    labelText: 'Password',
                                                     labelStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
