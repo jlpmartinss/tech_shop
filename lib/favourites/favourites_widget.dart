@@ -210,7 +210,7 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
+                                                  0, 0, 0, 5),
                                           child: InkWell(
                                             onTap: () async {
                                               var confirmDialogResponse =
@@ -283,27 +283,22 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 12, 4, 8),
-                                          child: Text(
-                                            formatNumber(
-                                              listViewFavouritesRecord.price,
-                                              formatType: FormatType.custom,
-                                              currency: '€',
-                                              format: '',
-                                              locale: '',
-                                            ),
-                                            textAlign: TextAlign.end,
-                                            style: FlutterFlowTheme.of(context)
-                                                .subtitle1,
+                                        Text(
+                                          formatNumber(
+                                            listViewFavouritesRecord.price,
+                                            formatType: FormatType.custom,
+                                            currency: '€',
+                                            format: '',
+                                            locale: '',
                                           ),
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle1,
                                         ),
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 0, 0),
+                                                  0, 5, 0, 0),
                                           child: InkWell(
                                             onTap: () async {
                                               var confirmDialogResponse =
@@ -343,7 +338,7 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                               }
                                             },
                                             child: Icon(
-                                              Icons.cancel,
+                                              Icons.delete,
                                               color: Color(0xFFFF0000),
                                               size: 24,
                                             ),
