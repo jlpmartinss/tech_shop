@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SpecificLaptopWidget extends StatefulWidget {
   const SpecificLaptopWidget({
@@ -115,7 +117,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                 Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.9,
-                                  height: 320,
+                                  height: 330,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(16),
@@ -124,14 +126,43 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                     children: [
                                       Align(
                                         alignment: AlignmentDirectional(0, 0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                          child: Image.network(
-                                            specificLaptopProductsRecord.image,
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.contain,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child:
+                                                    FlutterFlowExpandedImageView(
+                                                  image: Image.network(
+                                                    specificLaptopProductsRecord
+                                                        .image,
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                  allowRotation: false,
+                                                  tag:
+                                                      specificLaptopProductsRecord
+                                                          .image,
+                                                  useHeroAnimation: true,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Hero(
+                                            tag: specificLaptopProductsRecord
+                                                .image,
+                                            transitionOnUserGestures: true,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
+                                              child: Image.network(
+                                                specificLaptopProductsRecord
+                                                    .image,
+                                                width: double.infinity,
+                                                height: double.infinity,
+                                                fit: BoxFit.contain,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -154,7 +185,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                   Card(
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
-                                                    color: Color(0x7FFFFFFF),
+                                                    color: Colors.white,
                                                     elevation: 5,
                                                     shape:
                                                         RoundedRectangleBorder(
@@ -164,11 +195,11 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                     ),
                                                     child:
                                                         FlutterFlowIconButton(
-                                                      borderColor:
-                                                          Colors.transparent,
+                                                      borderColor: Colors.white,
                                                       borderRadius: 30,
                                                       borderWidth: 1,
                                                       buttonSize: 60,
+                                                      fillColor: Colors.white,
                                                       icon: Icon(
                                                         Icons.favorite_border,
                                                         color: Colors.black,

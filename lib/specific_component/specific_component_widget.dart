@@ -102,7 +102,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                 Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.9,
-                                  height: 320,
+                                  height: 330,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(16),
@@ -172,7 +172,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                                   Card(
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
-                                                    color: Color(0x7FFFFFFF),
+                                                    color: Colors.white,
                                                     elevation: 5,
                                                     shape:
                                                         RoundedRectangleBorder(
@@ -182,11 +182,11 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                                     ),
                                                     child:
                                                         FlutterFlowIconButton(
-                                                      borderColor:
-                                                          Colors.transparent,
+                                                      borderColor: Colors.white,
                                                       borderRadius: 30,
                                                       borderWidth: 1,
                                                       buttonSize: 60,
+                                                      fillColor: Colors.white,
                                                       icon: Icon(
                                                         Icons.favorite_border,
                                                         color: Colors.black,
