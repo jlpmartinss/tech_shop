@@ -27,7 +27,7 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF235DF2),
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -61,7 +61,7 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
         ),
         actions: [],
         centerTitle: true,
-        elevation: 2,
+        elevation: 0,
       ),
       backgroundColor: Colors.white,
       body: GestureDetector(

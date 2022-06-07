@@ -2,7 +2,6 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../search_page/search_page_widget.dart';
 import '../specific_peripheral/specific_peripheral_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF235DF2),
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -47,29 +46,9 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
                 fontSize: 22,
               ),
         ),
-        actions: [
-          FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30,
-            borderWidth: 1,
-            buttonSize: 60,
-            icon: Icon(
-              Icons.search,
-              color: FlutterFlowTheme.of(context).primaryBtnText,
-              size: 30,
-            ),
-            onPressed: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SearchPageWidget(),
-                ),
-              );
-            },
-          ),
-        ],
+        actions: [],
         centerTitle: true,
-        elevation: 2,
+        elevation: 0,
       ),
       backgroundColor: Color(0xFFF1F4F8),
       body: SingleChildScrollView(
@@ -208,7 +187,7 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF00B346),
+                                              color: Color(0xFF19A808),
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),

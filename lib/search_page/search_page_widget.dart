@@ -37,7 +37,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF235DF2),
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -63,7 +63,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
         ),
         actions: [],
         centerTitle: true,
-        elevation: 2,
+        elevation: 0,
       ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
@@ -87,9 +87,9 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          blurRadius: 5,
-                          color: Color(0xFF191919),
-                          offset: Offset(0, 2),
+                          blurRadius: 3,
+                          color: Color(0x411D2429),
+                          offset: Offset(0, 1),
                         )
                       ],
                       borderRadius: BorderRadius.circular(16),
@@ -211,7 +211,8 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                         options: FFButtonOptions(
                                           width: 100,
                                           height: 40,
-                                          color: Color(0xFF4B39EF),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .subtitle2
@@ -338,7 +339,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                       .override(
                                                         fontFamily: 'Outfit',
                                                         color:
-                                                            Color(0xFF19FF00),
+                                                            Color(0xFF19A808),
                                                         fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.normal,

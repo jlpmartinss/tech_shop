@@ -26,7 +26,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF235DF2),
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -60,7 +60,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         ),
         actions: [],
         centerTitle: true,
-        elevation: 2,
+        elevation: 0,
       ),
       backgroundColor: Color(0xFFF1F4F8),
       body: Column(
@@ -70,7 +70,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             width: MediaQuery.of(context).size.width,
             height: 180,
             decoration: BoxDecoration(
-              color: Color(0xFF235DF2),
+              color: FlutterFlowTheme.of(context).primaryColor,
               shape: BoxShape.rectangle,
             ),
             child: Row(
@@ -485,7 +485,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               options: FFButtonOptions(
                 width: 180,
                 height: 60,
-                color: Color(0xFFFF7A00),
+                color: FlutterFlowTheme.of(context).primaryColor,
                 textStyle: FlutterFlowTheme.of(context).title3.override(
                       fontFamily: 'Outfit',
                       color: Colors.white,

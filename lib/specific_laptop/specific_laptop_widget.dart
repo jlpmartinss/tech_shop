@@ -63,7 +63,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
-            backgroundColor: Color(0xFF235DF2),
+            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
@@ -89,7 +89,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
             ),
             actions: [],
             centerTitle: true,
-            elevation: 2,
+            elevation: 0,
           ),
           backgroundColor: Colors.white,
           body: SafeArea(
@@ -215,7 +215,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 10, 24, 0),
+                                EdgeInsetsDirectional.fromSTEB(24, 19, 24, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -279,7 +279,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Lexend Deca',
-                                            color: Color(0xFF23AD31),
+                                            color: Color(0xFF19A808),
                                             fontSize: 14,
                                             fontWeight: FontWeight.normal,
                                           ),

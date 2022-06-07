@@ -45,7 +45,7 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
               child: Card(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                color: Color(0xFF235DF2),
+                color: FlutterFlowTheme.of(context).primaryColor,
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(70),
@@ -66,7 +66,7 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
                 'Payment Confirmed!',
                 style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: 'Lexend Deca',
-                      color: Color(0xFF235DF2),
+                      color: FlutterFlowTheme.of(context).primaryColor,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),

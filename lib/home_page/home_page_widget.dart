@@ -25,7 +25,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF235DF2),
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
           'TechShop',
@@ -57,7 +57,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           ),
         ],
         centerTitle: true,
-        elevation: 2,
+        elevation: 0,
       ),
       backgroundColor: Colors.white,
       body: SafeArea(

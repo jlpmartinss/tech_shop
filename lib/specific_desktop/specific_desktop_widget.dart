@@ -46,7 +46,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
-            backgroundColor: Color(0xFF235DF2),
+            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
@@ -72,7 +72,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
             ),
             actions: [],
             centerTitle: true,
-            elevation: 2,
+            elevation: 0,
           ),
           backgroundColor: Colors.white,
           body: SafeArea(
@@ -198,24 +198,20 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 8, 24, 0),
+                                EdgeInsetsDirectional.fromSTEB(24, 19, 24, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 3, 0, 0),
-                                  child: RatingBarIndicator(
-                                    itemBuilder: (context, index) => Icon(
-                                      Icons.star_rounded,
-                                      color: Color(0xFFFFA130),
-                                    ),
-                                    direction: Axis.horizontal,
-                                    rating: 4.5,
-                                    unratedColor: Color(0xFF95A1AC),
-                                    itemCount: 5,
-                                    itemSize: 24,
+                                RatingBarIndicator(
+                                  itemBuilder: (context, index) => Icon(
+                                    Icons.star_rounded,
+                                    color: Color(0xFFFFA130),
                                   ),
+                                  direction: Axis.horizontal,
+                                  rating: 4.5,
+                                  unratedColor: Color(0xFF95A1AC),
+                                  itemCount: 5,
+                                  itemSize: 24,
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -248,7 +244,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                       .bodyText1
                                       .override(
                                         fontFamily: 'Lexend Deca',
-                                        color: Color(0xFF23AD31),
+                                        color: Color(0xFF19A808),
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),

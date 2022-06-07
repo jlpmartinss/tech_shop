@@ -22,7 +22,7 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF235DF2),
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -48,7 +48,7 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
         ),
         actions: [],
         centerTitle: true,
-        elevation: 2,
+        elevation: 0,
       ),
       backgroundColor: Color(0xFFF1F4F8),
       body: SingleChildScrollView(
@@ -218,7 +218,7 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Lexend Deca',
-                                              color: Color(0xFF00B346),
+                                              color: Color(0xFF19A808),
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),

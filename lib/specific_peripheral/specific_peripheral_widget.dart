@@ -49,7 +49,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
-            backgroundColor: Color(0xFF235DF2),
+            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
             automaticallyImplyLeading: false,
             leading: FlutterFlowIconButton(
               borderColor: Colors.transparent,
@@ -74,6 +74,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
             ),
             actions: [],
             centerTitle: true,
+            elevation: 0,
           ),
           backgroundColor: Colors.white,
           body: SafeArea(
@@ -162,7 +163,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                                 Card(
                                                   clipBehavior: Clip
                                                       .antiAliasWithSaveLayer,
-                                                  color: Color(0x80FFFFFF),
+                                                  color: Colors.white,
                                                   elevation: 5,
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
@@ -296,7 +297,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                     .bodyText1
                                     .override(
                                       fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF23AD31),
+                                      color: Color(0xFF19A808),
                                       fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                     ),

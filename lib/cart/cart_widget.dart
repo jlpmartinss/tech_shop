@@ -27,7 +27,7 @@ class _CartWidgetState extends State<CartWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF235DF2),
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -53,7 +53,7 @@ class _CartWidgetState extends State<CartWidget> {
         ),
         actions: [],
         centerTitle: true,
-        elevation: 5,
+        elevation: 0,
       ),
       backgroundColor: Colors.white,
       body: GestureDetector(
@@ -93,12 +93,7 @@ class _CartWidgetState extends State<CartWidget> {
                                   child: Text(
                                     'Total:  ',
                                     textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context)
-                                        .title2
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF235DF2),
-                                        ),
+                                    style: FlutterFlowTheme.of(context).title1,
                                   ),
                                 ),
                               ),
@@ -118,8 +113,12 @@ class _CartWidgetState extends State<CartWidget> {
                                         currency: '€',
                                       ),
                                       textAlign: TextAlign.end,
-                                      style:
-                                          FlutterFlowTheme.of(context).title3,
+                                      style: FlutterFlowTheme.of(context)
+                                          .title3
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0xFF413F3F),
+                                          ),
                                     ),
                                   ),
                                 ),
