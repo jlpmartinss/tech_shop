@@ -96,7 +96,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                             children: [
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.9,
-                                height: 330,
+                                height: 340,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(16),
@@ -349,7 +349,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                         child: AutoSizeText(
                                           specificPeripheralProductsRecord.name
                                               .maybeHandleOverflow(
-                                                  maxChars: 25),
+                                                  maxChars: 18),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -367,7 +367,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                           specificPeripheralProductsRecord
                                               .modelno
                                               .maybeHandleOverflow(
-                                                  maxChars: 25),
+                                                  maxChars: 18),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -384,7 +384,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                         child: AutoSizeText(
                                           specificPeripheralProductsRecord.type
                                               .maybeHandleOverflow(
-                                                  maxChars: 25),
+                                                  maxChars: 18),
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2

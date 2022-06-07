@@ -362,8 +362,8 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                           child: AutoSizeText(
                                             specificComponentProductsRecord.name
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
-                                            textAlign: TextAlign.start,
+                                                    maxChars: 18),
+                                            textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -381,8 +381,8 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                             specificComponentProductsRecord
                                                 .modelno
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
-                                            textAlign: TextAlign.start,
+                                                    maxChars: 18),
+                                            textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -399,8 +399,8 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                           child: AutoSizeText(
                                             specificComponentProductsRecord.type
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
-                                            textAlign: TextAlign.start,
+                                                    maxChars: 18),
+                                            textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(

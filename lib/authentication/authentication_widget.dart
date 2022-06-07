@@ -326,16 +326,16 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                   options: FFButtonOptions(
                                                     width: 170,
                                                     height: 40,
-                                                    color: Color(0xFF4B39EF),
+                                                    color: Colors.white,
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .subtitle2
                                                         .override(
-                                                          fontFamily: 'Outfit',
-                                                          color: Colors.white,
-                                                          fontSize: 16,
+                                                          fontFamily: 'Poppins',
+                                                          color: Colors.black,
+                                                          fontSize: 14,
                                                           fontWeight:
-                                                              FontWeight.normal,
+                                                              FontWeight.w600,
                                                         ),
                                                     elevation: 0,
                                                     borderSide: BorderSide(
@@ -374,7 +374,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                               Color(0xFF57636C),
                                                           fontSize: 14,
                                                           fontWeight:
-                                                              FontWeight.normal,
+                                                              FontWeight.w600,
                                                         ),
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
@@ -424,7 +424,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                             Color(0xFF0F1113),
                                                         fontSize: 14,
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.w600,
                                                       ),
                                                 ),
                                               ),
@@ -447,7 +447,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                               Color(0xFF57636C),
                                                           fontSize: 14,
                                                           fontWeight:
-                                                              FontWeight.normal,
+                                                              FontWeight.w600,
                                                         ),
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
@@ -501,7 +501,9 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                             : Icons
                                                                 .visibility_off_outlined,
                                                         color:
-                                                            Color(0xFF57636C),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
                                                         size: 20,
                                                       ),
                                                     ),
@@ -515,13 +517,13 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                             Color(0xFF0F1113),
                                                         fontSize: 14,
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.w600,
                                                       ),
                                                 ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(20, 10, 20, 10),
+                                                    .fromSTEB(20, 12, 20, 10),
                                                 child: TextFormField(
                                                   controller:
                                                       confirmPasswordSignUpController,

@@ -349,7 +349,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                           child: AutoSizeText(
                                             specificDesktopProductsRecord.cpu
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
+                                                    maxChars: 18),
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
@@ -367,7 +367,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                           child: AutoSizeText(
                                             specificDesktopProductsRecord.ram
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
+                                                    maxChars: 18),
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
@@ -385,7 +385,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                           child: AutoSizeText(
                                             specificDesktopProductsRecord.gpu
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
+                                                    maxChars: 18),
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
@@ -404,7 +404,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                             specificDesktopProductsRecord
                                                 .storage
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
+                                                    maxChars: 18),
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
@@ -422,7 +422,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                           child: AutoSizeText(
                                             specificDesktopProductsRecord.psu
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
+                                                    maxChars: 18),
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
@@ -441,7 +441,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                             specificDesktopProductsRecord
                                                 .motherboard
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
+                                                    maxChars: 18),
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
