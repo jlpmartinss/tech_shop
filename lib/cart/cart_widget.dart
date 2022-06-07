@@ -39,7 +39,12 @@ class _CartWidgetState extends State<CartWidget> {
             size: 30,
           ),
           onPressed: () async {
-            Navigator.pop(context);
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NavBarPage(initialPage: 'HomePage'),
+              ),
+            );
           },
         ),
         title: Text(
