@@ -277,9 +277,8 @@ class _CartWidgetState extends State<CartWidget> {
                                                                   Duration(
                                                                       milliseconds:
                                                                           300),
-                                                              child: NavBarPage(
-                                                                  initialPage:
-                                                                      'Cart'),
+                                                              child:
+                                                                  CartWidget(),
                                                             ),
                                                           );
                                                         }
@@ -372,9 +371,7 @@ class _CartWidgetState extends State<CartWidget> {
                                                                 Duration(
                                                                     milliseconds:
                                                                         300),
-                                                            child: NavBarPage(
-                                                                initialPage:
-                                                                    'Cart'),
+                                                            child: CartWidget(),
                                                           ),
                                                         );
                                                       } else {
@@ -437,9 +434,8 @@ class _CartWidgetState extends State<CartWidget> {
                                                                   Duration(
                                                                       milliseconds:
                                                                           300),
-                                                              child: NavBarPage(
-                                                                  initialPage:
-                                                                      'Cart'),
+                                                              child:
+                                                                  CartWidget(),
                                                             ),
                                                           );
                                                         }
@@ -496,9 +492,7 @@ class _CartWidgetState extends State<CartWidget> {
                                                               Duration(
                                                                   milliseconds:
                                                                       300),
-                                                          child: NavBarPage(
-                                                              initialPage:
-                                                                  'Cart'),
+                                                          child: CartWidget(),
                                                         ),
                                                       );
                                                     },
