@@ -227,7 +227,7 @@ class _CartWidgetState extends State<CartWidget> {
                                                         onPressed: () async {
                                                           if ((listViewCartRecord
                                                                   .quantity) >=
-                                                              0.0) {
+                                                              1.0) {
                                                             final usersUpdateData =
                                                                 {
                                                               'totalCart': FieldValue
