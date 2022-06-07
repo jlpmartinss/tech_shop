@@ -119,13 +119,6 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                   height: 320,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 1,
-                                        color: Colors.black,
-                                        offset: Offset(0, 2),
-                                      )
-                                    ],
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: Stack(
@@ -317,7 +310,8 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Column(
@@ -325,20 +319,16 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24, 0, 0, 0),
-                                        child: Text(
-                                          'CPU\nRAM\nGPU\nStorage\nItem model number\n',
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Colors.black,
-                                                lineHeight: 2.5,
-                                              ),
-                                        ),
+                                      Text(
+                                        'CPU\nRAM\nGPU\nStorage\nItem model number\n',
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle2
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.black,
+                                              lineHeight: 2.5,
+                                            ),
                                       ),
                                     ],
                                   ),

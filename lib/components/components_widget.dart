@@ -2,7 +2,6 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../search_page/search_page_widget.dart';
 import '../specific_component/specific_component_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -47,27 +46,7 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
                 fontSize: 22,
               ),
         ),
-        actions: [
-          FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30,
-            borderWidth: 1,
-            buttonSize: 60,
-            icon: Icon(
-              Icons.search,
-              color: FlutterFlowTheme.of(context).primaryBtnText,
-              size: 30,
-            ),
-            onPressed: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SearchPageWidget(),
-                ),
-              );
-            },
-          ),
-        ],
+        actions: [],
         centerTitle: true,
         elevation: 2,
       ),
@@ -81,33 +60,7 @@ class _ComponentsWidgetState extends State<ComponentsWidget> {
               children: [
                 Row(
                   mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(15, 12, 0, 12),
-                      child: Text(
-                        'Today\'s Deals',
-                        style: FlutterFlowTheme.of(context).title3,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      'assets/images/card_bg@2x.png',
-                      width: MediaQuery.of(context).size.width * 0.96,
-                      height: 110,
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
+                  children: [],
                 ),
               ],
             ),

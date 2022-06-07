@@ -101,13 +101,6 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                   height: 320,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 5,
-                                        color: Colors.black,
-                                        offset: Offset(0, 1),
-                                      )
-                                    ],
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: Stack(
