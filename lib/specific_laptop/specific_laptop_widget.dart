@@ -2,7 +2,6 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_toggle_icon.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -92,7 +91,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
             centerTitle: true,
             elevation: 2,
           ),
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
@@ -152,64 +151,54 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  InkWell(
-                                                    onTap: () async {
-                                                      final favouritesCreateData =
-                                                          createFavouritesRecordData(
-                                                        uid: FFAppState().USER,
-                                                        model:
-                                                            specificLaptopProductsRecord
-                                                                .modelno,
-                                                        name:
-                                                            specificLaptopProductsRecord
-                                                                .name,
-                                                        imagePath:
-                                                            specificLaptopProductsRecord
-                                                                .image,
-                                                        price:
-                                                            specificLaptopProductsRecord
-                                                                .price,
-                                                        quantity: 1.0,
-                                                      );
-                                                      await FavouritesRecord
-                                                          .collection
-                                                          .doc()
-                                                          .set(
-                                                              favouritesCreateData);
-                                                    },
-                                                    child: Card(
-                                                      clipBehavior: Clip
-                                                          .antiAliasWithSaveLayer,
-                                                      color: Color(0x22FFFFFF),
-                                                      elevation: 5,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
+                                                  Card(
+                                                    clipBehavior: Clip
+                                                        .antiAliasWithSaveLayer,
+                                                    color: Color(0x22FFFFFF),
+                                                    elevation: 5,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderRadius: 30,
+                                                      borderWidth: 1,
+                                                      buttonSize: 60,
+                                                      icon: Icon(
+                                                        Icons.favorite_border,
+                                                        color: Colors.black,
+                                                        size: 30,
                                                       ),
-                                                      child: ToggleIcon(
-                                                        onPressed: () async {
-                                                          setState(() =>
-                                                              FFAppState()
-                                                                      .favourite =
-                                                                  !FFAppState()
-                                                                      .favourite);
-                                                        },
-                                                        value: FFAppState()
-                                                            .favourite,
-                                                        onIcon: Icon(
-                                                          Icons.favorite,
-                                                          color:
-                                                              Color(0xFFFF0000),
-                                                          size: 30,
-                                                        ),
-                                                        offIcon: Icon(
-                                                          Icons.favorite_border,
-                                                          color: Colors.black,
-                                                          size: 30,
-                                                        ),
-                                                      ),
+                                                      onPressed: () async {
+                                                        final favouritesCreateData =
+                                                            createFavouritesRecordData(
+                                                          uid:
+                                                              FFAppState().USER,
+                                                          model:
+                                                              specificLaptopProductsRecord
+                                                                  .modelno,
+                                                          name:
+                                                              specificLaptopProductsRecord
+                                                                  .name,
+                                                          imagePath:
+                                                              specificLaptopProductsRecord
+                                                                  .image,
+                                                          price:
+                                                              specificLaptopProductsRecord
+                                                                  .price,
+                                                          quantity: 1.0,
+                                                        );
+                                                        await FavouritesRecord
+                                                            .collection
+                                                            .doc()
+                                                            .set(
+                                                                favouritesCreateData);
+                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -226,7 +215,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 8, 24, 0),
+                                EdgeInsetsDirectional.fromSTEB(24, 10, 24, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -315,7 +304,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Column(
-                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -333,9 +322,8 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                     ],
                                   ),
                                   Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(

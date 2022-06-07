@@ -78,7 +78,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
             centerTitle: true,
             elevation: 2,
           ),
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
@@ -172,7 +172,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                                   Card(
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
-                                                    color: Color(0x3A000000),
+                                                    color: Color(0x7FFFFFFF),
                                                     elevation: 5,
                                                     shape:
                                                         RoundedRectangleBorder(
@@ -180,48 +180,43 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                                           BorderRadius.circular(
                                                               8),
                                                     ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  2, 2, 2, 2),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 30,
-                                                        buttonSize: 46,
-                                                        icon: Icon(
-                                                          Icons.favorite_border,
-                                                          color: Colors.white,
-                                                          size: 24,
-                                                        ),
-                                                        onPressed: () async {
-                                                          final favouritesCreateData =
-                                                              createFavouritesRecordData(
-                                                            uid: FFAppState()
-                                                                .USER,
-                                                            model:
-                                                                specificComponentProductsRecord
-                                                                    .name,
-                                                            name:
-                                                                specificComponentProductsRecord
-                                                                    .name,
-                                                            price:
-                                                                specificComponentProductsRecord
-                                                                    .price,
-                                                            imagePath:
-                                                                specificComponentProductsRecord
-                                                                    .image,
-                                                            quantity: 1.0,
-                                                          );
-                                                          await FavouritesRecord
-                                                              .collection
-                                                              .doc()
-                                                              .set(
-                                                                  favouritesCreateData);
-                                                        },
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderRadius: 30,
+                                                      borderWidth: 1,
+                                                      buttonSize: 60,
+                                                      icon: Icon(
+                                                        Icons.favorite_border,
+                                                        color: Colors.black,
+                                                        size: 30,
                                                       ),
+                                                      onPressed: () async {
+                                                        final favouritesCreateData =
+                                                            createFavouritesRecordData(
+                                                          uid:
+                                                              FFAppState().USER,
+                                                          model:
+                                                              specificComponentProductsRecord
+                                                                  .modelno,
+                                                          name:
+                                                              specificComponentProductsRecord
+                                                                  .name,
+                                                          imagePath:
+                                                              specificComponentProductsRecord
+                                                                  .image,
+                                                          price:
+                                                              specificComponentProductsRecord
+                                                                  .price,
+                                                          quantity: 1.0,
+                                                        );
+                                                        await FavouritesRecord
+                                                            .collection
+                                                            .doc()
+                                                            .set(
+                                                                favouritesCreateData);
+                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -242,16 +237,20 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                RatingBarIndicator(
-                                  itemBuilder: (context, index) => Icon(
-                                    Icons.star_rounded,
-                                    color: Color(0xFFFFA130),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 3, 0, 0),
+                                  child: RatingBarIndicator(
+                                    itemBuilder: (context, index) => Icon(
+                                      Icons.star_rounded,
+                                      color: Color(0xFFFFA130),
+                                    ),
+                                    direction: Axis.horizontal,
+                                    rating: 4.5,
+                                    unratedColor: Color(0xFF95A1AC),
+                                    itemCount: 5,
+                                    itemSize: 24,
                                   ),
-                                  direction: Axis.horizontal,
-                                  rating: 4.5,
-                                  unratedColor: Color(0xFF95A1AC),
-                                  itemCount: 5,
-                                  itemSize: 24,
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -302,7 +301,8 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Column(
@@ -312,7 +312,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            24, 0, 0, 0),
+                                            0, 0, 60, 0),
                                         child: Text(
                                           'Name\nModel Number\nType\n',
                                           textAlign: TextAlign.start,
@@ -329,8 +329,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                   ),
                                   Column(
                                     mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(

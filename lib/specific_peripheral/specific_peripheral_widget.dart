@@ -74,7 +74,6 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
             ),
             actions: [],
             centerTitle: true,
-            elevation: 2,
           ),
           backgroundColor: Colors.white,
           body: SafeArea(
@@ -99,13 +98,6 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                 height: 320,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 1,
-                                      color: Colors.black,
-                                      offset: Offset(0, 2),
-                                    )
-                                  ],
                                   borderRadius: BorderRadius.circular(16),
                                 ),
                                 child: Stack(
@@ -170,7 +162,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                                 Card(
                                                   clipBehavior: Clip
                                                       .antiAliasWithSaveLayer,
-                                                  color: Color(0x3A000000),
+                                                  color: Color(0x80FFFFFF),
                                                   elevation: 5,
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
@@ -187,11 +179,11 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                                       borderColor:
                                                           Colors.transparent,
                                                       borderRadius: 30,
-                                                      buttonSize: 46,
+                                                      buttonSize: 60,
                                                       icon: Icon(
                                                         Icons.favorite_border,
-                                                        color: Colors.white,
-                                                        size: 24,
+                                                        color: Colors.black,
+                                                        size: 30,
                                                       ),
                                                       onPressed: () async {
                                                         final favouritesCreateData =
@@ -217,6 +209,26 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                                             .doc()
                                                             .set(
                                                                 favouritesCreateData);
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Added to Favourites  ✔️',
+                                                              style: GoogleFonts
+                                                                  .getFont(
+                                                                'Poppins',
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                            ),
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    4000),
+                                                            backgroundColor:
+                                                                Colors.white,
+                                                          ),
+                                                        );
                                                       },
                                                     ),
                                                   ),
@@ -238,16 +250,20 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              RatingBarIndicator(
-                                itemBuilder: (context, index) => Icon(
-                                  Icons.star_rounded,
-                                  color: Color(0xFFFFA130),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                child: RatingBarIndicator(
+                                  itemBuilder: (context, index) => Icon(
+                                    Icons.star_rounded,
+                                    color: Color(0xFFFFA130),
+                                  ),
+                                  direction: Axis.horizontal,
+                                  rating: 4.5,
+                                  unratedColor: Color(0xFF95A1AC),
+                                  itemCount: 5,
+                                  itemSize: 24,
                                 ),
-                                direction: Axis.horizontal,
-                                rating: 4.5,
-                                unratedColor: Color(0xFF95A1AC),
-                                itemCount: 5,
-                                itemSize: 24,
                               ),
                               Padding(
                                 padding:
@@ -298,16 +314,16 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
-                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          24, 0, 0, 0),
+                                          0, 0, 60, 0),
                                       child: Text(
                                         'Name\nModel number\nType\n',
                                         textAlign: TextAlign.start,
@@ -323,8 +339,8 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                   ],
                                 ),
                                 Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(

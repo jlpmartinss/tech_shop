@@ -74,7 +74,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
             centerTitle: true,
             elevation: 2,
           ),
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
@@ -266,7 +266,8 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Column(
@@ -274,27 +275,22 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24, 0, 0, 0),
-                                        child: Text(
-                                          'CPU\nRAM\nGPU\nStorage\nPower Supply\nMotherboard',
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Colors.black,
-                                                lineHeight: 2.5,
-                                              ),
-                                        ),
+                                      Text(
+                                        'CPU\nRAM\nGPU\nStorage\nPower Supply\nMotherboard',
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle2
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.black,
+                                              lineHeight: 2.5,
+                                            ),
                                       ),
                                     ],
                                   ),
                                   Column(
                                     mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(

@@ -63,7 +63,7 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
         centerTitle: true,
         elevation: 2,
       ),
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: Colors.white,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -184,167 +184,169 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              listViewFavouritesRecord.name,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .title3
-                                                  .override(
-                                                    fontFamily: 'Outfit',
-                                                    color: Color(0xFF0F1113),
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 0, 0, 0),
+                                              child: Text(
+                                                listViewFavouritesRecord.name,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .title3,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 10, 0, 0),
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  var confirmDialogResponse =
+                                                      await showDialog<bool>(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Are you sure you want to remove this item from your Favourites?'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: Text(
+                                                                        'No'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: Text(
+                                                                        'Yes'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          ) ??
+                                                          false;
+                                                  if (confirmDialogResponse) {
+                                                    await listViewFavouritesRecord
+                                                        .reference
+                                                        .delete();
+                                                  }
+                                                },
+                                                child: Icon(
+                                                  Icons.delete,
+                                                  color: Color(0xFF5B5B5B),
+                                                  size: 24,
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 5),
-                                          child: InkWell(
-                                            onTap: () async {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Are you sure you want to add this item to your cart?'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child:
-                                                                    Text('No'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child:
-                                                                    Text('Yes'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                final cartCreateData =
-                                                    createCartRecordData(
-                                                  name: listViewFavouritesRecord
-                                                      .name,
-                                                  price:
-                                                      listViewFavouritesRecord
-                                                          .price,
-                                                  uid: FFAppState().USER,
-                                                  quantity:
-                                                      listViewFavouritesRecord
-                                                          .quantity,
-                                                  imagePath:
-                                                      listViewFavouritesRecord
-                                                          .imagePath,
-                                                );
-                                                await CartRecord.collection
-                                                    .doc()
-                                                    .set(cartCreateData);
-                                                await listViewFavouritesRecord
-                                                    .reference
-                                                    .delete();
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 8, 0, 0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            formatNumber(
+                                              listViewFavouritesRecord.price,
+                                              formatType: FormatType.custom,
+                                              currency: '€',
+                                              format: '',
+                                              locale: '',
+                                            ),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle1,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    1, 10, 0, 5),
+                                            child: InkWell(
+                                              onTap: () async {
+                                                var confirmDialogResponse =
+                                                    await showDialog<bool>(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Are you sure you want to add this item to your cart?'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                  child: Text(
+                                                                      'No'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                  child: Text(
+                                                                      'Yes'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        ) ??
+                                                        false;
+                                                if (confirmDialogResponse) {
+                                                  final cartCreateData =
+                                                      createCartRecordData(
+                                                    name:
+                                                        listViewFavouritesRecord
+                                                            .name,
+                                                    price:
+                                                        listViewFavouritesRecord
+                                                            .price,
+                                                    uid: FFAppState().USER,
+                                                    quantity:
+                                                        listViewFavouritesRecord
+                                                            .quantity,
+                                                    imagePath:
+                                                        listViewFavouritesRecord
+                                                            .imagePath,
+                                                  );
+                                                  await CartRecord.collection
+                                                      .doc()
+                                                      .set(cartCreateData);
+                                                  await listViewFavouritesRecord
+                                                      .reference
+                                                      .delete();
 
-                                                final usersUpdateData = {
-                                                  'totalCart':
-                                                      FieldValue.increment(
-                                                          listViewFavouritesRecord
-                                                              .price),
-                                                };
-                                                await currentUserReference
-                                                    .update(usersUpdateData);
-                                              }
-                                            },
-                                            child: Icon(
-                                              Icons.add_shopping_cart,
-                                              color: Color(0xFF19A808),
-                                              size: 24,
+                                                  final usersUpdateData = {
+                                                    'totalCart':
+                                                        FieldValue.increment(
+                                                            listViewFavouritesRecord
+                                                                .price),
+                                                  };
+                                                  await currentUserReference
+                                                      .update(usersUpdateData);
+                                                }
+                                              },
+                                              child: Icon(
+                                                Icons.add_shopping_cart,
+                                                color: Color(0xFF19A808),
+                                                size: 24,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                        Text(
-                                          formatNumber(
-                                            listViewFavouritesRecord.price,
-                                            formatType: FormatType.custom,
-                                            currency: '€',
-                                            format: '',
-                                            locale: '',
-                                          ),
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1,
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 5, 0, 0),
-                                          child: InkWell(
-                                            onTap: () async {
-                                              var confirmDialogResponse =
-                                                  await showDialog<bool>(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                'Are you sure you want to remove this item from your Favourites?'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        false),
-                                                                child:
-                                                                    Text('No'),
-                                                              ),
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext,
-                                                                        true),
-                                                                child:
-                                                                    Text('Yes'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ) ??
-                                                      false;
-                                              if (confirmDialogResponse) {
-                                                await listViewFavouritesRecord
-                                                    .reference
-                                                    .delete();
-                                              }
-                                            },
-                                            child: Icon(
-                                              Icons.delete,
-                                              color: Color(0xFFFF0000),
-                                              size: 24,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),

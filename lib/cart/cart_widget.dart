@@ -27,7 +27,7 @@ class _CartWidgetState extends State<CartWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF235DF2),
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -36,7 +36,7 @@ class _CartWidgetState extends State<CartWidget> {
           buttonSize: 60,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Colors.black,
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -47,12 +47,12 @@ class _CartWidgetState extends State<CartWidget> {
           'Cart',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 22,
               ),
         ),
         actions: [],
-        centerTitle: false,
+        centerTitle: true,
         elevation: 5,
       ),
       backgroundColor: Colors.white,
@@ -82,7 +82,7 @@ class _CartWidgetState extends State<CartWidget> {
                         children: [
                           Row(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Align(
@@ -92,7 +92,7 @@ class _CartWidgetState extends State<CartWidget> {
                                       0, 10, 10, 10),
                                   child: Text(
                                     'Total:  ',
-                                    textAlign: TextAlign.end,
+                                    textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .title2
                                         .override(
@@ -124,125 +124,131 @@ class _CartWidgetState extends State<CartWidget> {
                                   ),
                                 ),
                               ),
-                              StreamBuilder<List<CartRecord>>(
-                                stream: queryCartRecord(
-                                  queryBuilder: (cartRecord) =>
-                                      cartRecord.where('uid',
-                                          isEqualTo: FFAppState().USER),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: CircularProgressIndicator(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<CartRecord> menuItemCartRecordList =
-                                      snapshot.data;
-                                  return InkWell(
-                                    onTap: () async {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                        'Are you sure you want to buy these items?'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('No'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: Text('Yes'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                SucessfulPurchaseWidget(),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(43, 0, 0, 0),
+                                child: StreamBuilder<List<CartRecord>>(
+                                  stream: queryCartRecord(
+                                    queryBuilder: (cartRecord) =>
+                                        cartRecord.where('uid',
+                                            isEqualTo: FFAppState().USER),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: CircularProgressIndicator(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBackground,
                                           ),
-                                        );
-                                      }
-                                    },
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      elevation: 5,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Container(
-                                        width: 100,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 3,
-                                              color: Color(0x411D2429),
-                                              offset: Offset(0, 1),
-                                            )
-                                          ],
+                                        ),
+                                      );
+                                    }
+                                    List<CartRecord> menuItemCartRecordList =
+                                        snapshot.data;
+                                    return InkWell(
+                                      onTap: () async {
+                                        var confirmDialogResponse =
+                                            await showDialog<bool>(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text(
+                                                          'Are you sure you want to buy these items?'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  false),
+                                                          child: Text('No'),
+                                                        ),
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext,
+                                                                  true),
+                                                          child: Text('Yes'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                ) ??
+                                                false;
+                                        if (confirmDialogResponse) {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SucessfulPurchaseWidget(),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 5,
+                                        shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8, 8, 8, 8),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Align(
-                                                alignment:
-                                                    AlignmentDirectional(0, 0),
-                                                child: Text(
-                                                  'Buy',
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .title3
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryBtnText,
-                                                        fontSize: 30,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                              ),
+                                        child: Container(
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 3,
+                                                color: Color(0x411D2429),
+                                                offset: Offset(0, 1),
+                                              )
                                             ],
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8, 8, 8, 8),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0, 0),
+                                                  child: Text(
+                                                    'Buy',
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .title3
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBtnText,
+                                                          fontSize: 30,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                },
+                                    );
+                                  },
+                                ),
                               ),
                             ],
                           ),
@@ -384,173 +390,57 @@ class _CartWidgetState extends State<CartWidget> {
                                                               FontWeight.w500,
                                                         ),
                                                   ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 30,
-                                                        borderWidth: 1,
-                                                        buttonSize: 40,
-                                                        icon: Icon(
-                                                          Icons.remove,
-                                                          color: Colors.black,
-                                                          size: 20,
-                                                        ),
-                                                        onPressed: () async {
-                                                          if ((listViewCartRecord
-                                                                  .quantity) >=
-                                                              2.0) {
-                                                            final usersUpdateData =
-                                                                {
-                                                              'totalCart': FieldValue
-                                                                  .increment(
-                                                                      -(listViewCartRecord
-                                                                          .price)),
-                                                            };
-                                                            await currentUserReference
-                                                                .update(
-                                                                    usersUpdateData);
-
-                                                            final cartUpdateData =
-                                                                {
-                                                              'quantity':
-                                                                  FieldValue
-                                                                      .increment(
-                                                                          -(1.0)),
-                                                            };
-                                                            await listViewCartRecord
-                                                                .reference
-                                                                .update(
-                                                                    cartUpdateData);
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              PageTransition(
-                                                                type:
-                                                                    PageTransitionType
-                                                                        .fade,
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                        300),
-                                                                reverseDuration:
-                                                                    Duration(
-                                                                        milliseconds:
-                                                                            300),
-                                                                child: NavBarPage(
-                                                                    initialPage:
-                                                                        'Cart'),
-                                                              ),
-                                                            );
-                                                          } else {
-                                                            var confirmDialogResponse =
-                                                                await showDialog<
-                                                                        bool>(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return AlertDialog(
-                                                                          title:
-                                                                              Text('Are you sure you want to remove this item?'),
-                                                                          content:
-                                                                              Text('When the quantity is reduced to zero, the product will be removed from the shopping cart'),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                              child: Text('No'),
-                                                                            ),
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                              child: Text('Yes'),
-                                                                            ),
-                                                                          ],
-                                                                        );
-                                                                      },
-                                                                    ) ??
-                                                                    false;
-                                                            if (confirmDialogResponse) {
-                                                              final usersUpdateData =
-                                                                  {
-                                                                'totalCart': FieldValue
-                                                                    .increment(
-                                                                        -(listViewCartRecord
-                                                                            .price)),
-                                                              };
-                                                              await currentUserReference
-                                                                  .update(
-                                                                      usersUpdateData);
-                                                              await listViewCartRecord
-                                                                  .reference
-                                                                  .delete();
-                                                              await Navigator
-                                                                  .push(
-                                                                context,
-                                                                PageTransition(
-                                                                  type:
-                                                                      PageTransitionType
-                                                                          .fade,
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          300),
-                                                                  reverseDuration:
-                                                                      Duration(
-                                                                          milliseconds:
-                                                                              300),
-                                                                  child: NavBarPage(
-                                                                      initialPage:
-                                                                          'Cart'),
-                                                                ),
-                                                              );
-                                                            }
-                                                          }
-                                                        },
-                                                      ),
-                                                      Text(
-                                                        listViewCartRecord
-                                                            .quantity
-                                                            .toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1,
-                                                      ),
-                                                      FlutterFlowIconButton(
-                                                        borderColor:
-                                                            Colors.transparent,
-                                                        borderRadius: 30,
-                                                        borderWidth: 1,
-                                                        buttonSize: 40,
-                                                        icon: Icon(
-                                                          Icons.add,
-                                                          color: Colors.black,
-                                                          size: 20,
-                                                        ),
-                                                        onPressed: () async {
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 12, 0, 0),
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        var confirmDialogResponse =
+                                                            await showDialog<
+                                                                    bool>(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (alertDialogContext) {
+                                                                    return AlertDialog(
+                                                                      title: Text(
+                                                                          'Are you sure you want to remove this item?'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              false),
+                                                                          child:
+                                                                              Text('No'),
+                                                                        ),
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              true),
+                                                                          child:
+                                                                              Text('Yes'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ) ??
+                                                                false;
+                                                        if (confirmDialogResponse) {
                                                           final usersUpdateData =
                                                               {
                                                             'totalCart': FieldValue
                                                                 .increment(
-                                                                    listViewCartRecord
-                                                                        .price),
+                                                                    -(listViewCartRecord
+                                                                        .price)),
                                                           };
                                                           await currentUserReference
                                                               .update(
                                                                   usersUpdateData);
-
-                                                          final cartUpdateData =
-                                                              {
-                                                            'quantity':
-                                                                FieldValue
-                                                                    .increment(
-                                                                        1.0),
-                                                          };
                                                           await listViewCartRecord
                                                               .reference
-                                                              .update(
-                                                                  cartUpdateData);
+                                                              .delete();
                                                           await Navigator.push(
                                                             context,
                                                             PageTransition(
@@ -569,9 +459,15 @@ class _CartWidgetState extends State<CartWidget> {
                                                                       'Cart'),
                                                             ),
                                                           );
-                                                        },
+                                                        }
+                                                      },
+                                                      child: Icon(
+                                                        Icons.delete,
+                                                        color:
+                                                            Color(0xFF5B5B5B),
+                                                        size: 24,
                                                       ),
-                                                    ],
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -602,52 +498,168 @@ class _CartWidgetState extends State<CartWidget> {
                                                       .subtitle1,
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 4, 0, 0),
-                                                child: InkWell(
-                                                  onTap: () async {
-                                                    var confirmDialogResponse =
-                                                        await showDialog<bool>(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      'Are you sure you want to remove this item?'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed: () => Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                      child: Text(
-                                                                          'No'),
-                                                                    ),
-                                                                    TextButton(
-                                                                      onPressed: () => Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                      child: Text(
-                                                                          'Yes'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            ) ??
-                                                            false;
-                                                    if (confirmDialogResponse) {
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  FlutterFlowIconButton(
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderRadius: 30,
+                                                    borderWidth: 1,
+                                                    buttonSize: 40,
+                                                    icon: Icon(
+                                                      Icons.remove,
+                                                      color: Colors.black,
+                                                      size: 20,
+                                                    ),
+                                                    onPressed: () async {
+                                                      if ((listViewCartRecord
+                                                              .quantity) >=
+                                                          2.0) {
+                                                        final usersUpdateData =
+                                                            {
+                                                          'totalCart': FieldValue
+                                                              .increment(
+                                                                  -(listViewCartRecord
+                                                                      .price)),
+                                                        };
+                                                        await currentUserReference
+                                                            .update(
+                                                                usersUpdateData);
+
+                                                        final cartUpdateData = {
+                                                          'quantity': FieldValue
+                                                              .increment(
+                                                                  -(1.0)),
+                                                        };
+                                                        await listViewCartRecord
+                                                            .reference
+                                                            .update(
+                                                                cartUpdateData);
+                                                        await Navigator.push(
+                                                          context,
+                                                          PageTransition(
+                                                            type:
+                                                                PageTransitionType
+                                                                    .fade,
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    300),
+                                                            reverseDuration:
+                                                                Duration(
+                                                                    milliseconds:
+                                                                        300),
+                                                            child: NavBarPage(
+                                                                initialPage:
+                                                                    'Cart'),
+                                                          ),
+                                                        );
+                                                      } else {
+                                                        var confirmDialogResponse =
+                                                            await showDialog<
+                                                                    bool>(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (alertDialogContext) {
+                                                                    return AlertDialog(
+                                                                      title: Text(
+                                                                          'Are you sure you want to remove this item?'),
+                                                                      content: Text(
+                                                                          'When the quantity is reduced to zero, the product will be removed from the shopping cart'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              false),
+                                                                          child:
+                                                                              Text('No'),
+                                                                        ),
+                                                                        TextButton(
+                                                                          onPressed: () => Navigator.pop(
+                                                                              alertDialogContext,
+                                                                              true),
+                                                                          child:
+                                                                              Text('Yes'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ) ??
+                                                                false;
+                                                        if (confirmDialogResponse) {
+                                                          final usersUpdateData =
+                                                              {
+                                                            'totalCart': FieldValue
+                                                                .increment(
+                                                                    -(listViewCartRecord
+                                                                        .price)),
+                                                          };
+                                                          await currentUserReference
+                                                              .update(
+                                                                  usersUpdateData);
+                                                          await listViewCartRecord
+                                                              .reference
+                                                              .delete();
+                                                          await Navigator.push(
+                                                            context,
+                                                            PageTransition(
+                                                              type:
+                                                                  PageTransitionType
+                                                                      .fade,
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      300),
+                                                              reverseDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          300),
+                                                              child: NavBarPage(
+                                                                  initialPage:
+                                                                      'Cart'),
+                                                            ),
+                                                          );
+                                                        }
+                                                      }
+                                                    },
+                                                  ),
+                                                  Text(
+                                                    listViewCartRecord.quantity
+                                                        .toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1,
+                                                  ),
+                                                  FlutterFlowIconButton(
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderRadius: 30,
+                                                    borderWidth: 1,
+                                                    buttonSize: 40,
+                                                    icon: Icon(
+                                                      Icons.add,
+                                                      color: Colors.black,
+                                                      size: 20,
+                                                    ),
+                                                    onPressed: () async {
                                                       final usersUpdateData = {
                                                         'totalCart': FieldValue
                                                             .increment(
-                                                                -(listViewCartRecord
-                                                                    .price)),
+                                                                listViewCartRecord
+                                                                    .price),
                                                       };
                                                       await currentUserReference
                                                           .update(
                                                               usersUpdateData);
+
+                                                      final cartUpdateData = {
+                                                        'quantity': FieldValue
+                                                            .increment(1.0),
+                                                      };
                                                       await listViewCartRecord
                                                           .reference
-                                                          .delete();
+                                                          .update(
+                                                              cartUpdateData);
                                                       await Navigator.push(
                                                         context,
                                                         PageTransition(
@@ -666,14 +678,9 @@ class _CartWidgetState extends State<CartWidget> {
                                                                   'Cart'),
                                                         ),
                                                       );
-                                                    }
-                                                  },
-                                                  child: Icon(
-                                                    Icons.delete,
-                                                    color: Color(0xFFFF0000),
-                                                    size: 24,
+                                                    },
                                                   ),
-                                                ),
+                                                ],
                                               ),
                                             ],
                                           ),

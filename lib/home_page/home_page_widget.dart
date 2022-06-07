@@ -59,7 +59,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         centerTitle: true,
         elevation: 2,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -73,7 +73,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     width: double.infinity,
                     height: 100,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      color: Colors.white,
                     ),
                     child: SingleChildScrollView(
                       child: Column(
@@ -82,7 +82,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(9, 0, 0, 5),
                             child: Text(
                               'Categories',
                               textAlign: TextAlign.start,
@@ -90,7 +90,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(8, 3, 8, 0),
                             child: Material(
                               color: Colors.transparent,
                               elevation: 5,
@@ -320,6 +320,56 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 8, 0, 12),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 5,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFF235DF2),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 6,
+                                            color: Color(0x3A000000),
+                                            offset: Offset(0, 2),
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                          color: Colors.transparent,
+                                        ),
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          InkWell(
+                                            onTap: () async {
+                                              await launchURL(
+                                                  'https://pcpartpicker.com/list/');
+                                            },
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              child: Image.asset(
+                                                'assets/images/Group_1841_(1).png',
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                fit: BoxFit.scaleDown,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 8),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width *
@@ -359,14 +409,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   color: Color(0x00FFFFFF),
                                                 ),
                                               ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                child: Image.asset(
-                                                  'assets/images/1summer-1280-720-usd.jpg',
-                                                  width: 100,
-                                                  height: 200,
-                                                  fit: BoxFit.scaleDown,
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await launchURL(
+                                                      'https://www.kinguin.net/c/15019/windows');
+                                                },
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  child: Image.asset(
+                                                    'assets/images/1summer-1280-720-usd.jpg',
+                                                    width: 100,
+                                                    height: 200,
+                                                    fit: BoxFit.scaleDown,
+                                                  ),
                                                 ),
                                               ),
                                             ),
