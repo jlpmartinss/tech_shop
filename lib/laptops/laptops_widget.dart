@@ -93,13 +93,7 @@ class _LaptopsWidgetState extends State<LaptopsWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(15, 12, 0, 12),
                         child: Text(
                           'Today\'s Deals',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF090F13),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          style: FlutterFlowTheme.of(context).title3,
                         ),
                       ),
                     ],

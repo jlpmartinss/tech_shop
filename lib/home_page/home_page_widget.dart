@@ -151,7 +151,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   'assets/images/image_1.png',
                                                   width: 100,
                                                   height: 100,
-                                                  fit: BoxFit.scaleDown,
+                                                  fit: BoxFit.contain,
                                                 ),
                                               ),
                                               AutoSizeText(
@@ -196,7 +196,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     'assets/images/pro-mouse-pro-keyboard-hero-desktop_1.png',
                                                     width: 100,
                                                     height: 100,
-                                                    fit: BoxFit.scaleDown,
+                                                    fit: BoxFit.contain,
                                                   ),
                                                 ),
                                                 AutoSizeText(
@@ -242,7 +242,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     'assets/images/3rd-gen-amd-ryzen-threadripper-transparent-1260x709_1.png',
                                                     width: 100,
                                                     height: 100,
-                                                    fit: BoxFit.scaleDown,
+                                                    fit: BoxFit.contain,
                                                   ),
                                                 ),
                                                 AutoSizeText(
@@ -288,7 +288,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     'assets/images/desktop.jpg',
                                                     width: 100,
                                                     height: 100,
-                                                    fit: BoxFit.cover,
+                                                    fit: BoxFit.contain,
                                                   ),
                                                 ),
                                                 Padding(

@@ -139,7 +139,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                             specificLaptopProductsRecord.image,
                                             width: double.infinity,
                                             height: double.infinity,
-                                            fit: BoxFit.scaleDown,
+                                            fit: BoxFit.contain,
                                           ),
                                         ),
                                       ),
@@ -187,7 +187,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                     child: Card(
                                                       clipBehavior: Clip
                                                           .antiAliasWithSaveLayer,
-                                                      color: Color(0x3AFFFFFF),
+                                                      color: Color(0x22FFFFFF),
                                                       elevation: 5,
                                                       shape:
                                                           RoundedRectangleBorder(

@@ -121,7 +121,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                             specificDesktopProductsRecord.image,
                                             width: double.infinity,
                                             height: double.infinity,
-                                            fit: BoxFit.scaleDown,
+                                            fit: BoxFit.contain,
                                           ),
                                         ),
                                       ),
