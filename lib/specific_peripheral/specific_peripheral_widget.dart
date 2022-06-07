@@ -210,25 +210,24 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                                             .doc()
                                                             .set(
                                                                 favouritesCreateData);
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Added to Favourites  ✔️',
-                                                              style: GoogleFonts
-                                                                  .getFont(
-                                                                'Poppins',
-                                                                color: Colors
-                                                                    .black,
-                                                              ),
-                                                            ),
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    4000),
-                                                            backgroundColor:
-                                                                Colors.white,
-                                                          ),
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Added to favourites'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
                                                         );
                                                       },
                                                     ),

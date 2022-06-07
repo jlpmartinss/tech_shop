@@ -212,6 +212,25 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                                             .doc()
                                                             .set(
                                                                 favouritesCreateData);
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Added to favourites'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       },
                                                     ),
                                                   ),
