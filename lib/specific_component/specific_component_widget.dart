@@ -104,7 +104,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                       MediaQuery.of(context).size.width * 0.9,
                                   height: 320,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFDBE2E7),
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: Stack(
