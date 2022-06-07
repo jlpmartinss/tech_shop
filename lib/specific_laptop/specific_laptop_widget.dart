@@ -188,6 +188,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                       clipBehavior: Clip
                                                           .antiAliasWithSaveLayer,
                                                       color: Color(0x3AFFFFFF),
+                                                      elevation: 5,
                                                       shape:
                                                           RoundedRectangleBorder(
                                                         borderRadius:

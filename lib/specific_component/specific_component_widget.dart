@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -9,6 +10,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SpecificComponentWidget extends StatefulWidget {
   const SpecificComponentWidget({
@@ -108,15 +110,43 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                     children: [
                                       Align(
                                         alignment: AlignmentDirectional(0, 0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                          child: Image.network(
-                                            specificComponentProductsRecord
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                type: PageTransitionType.fade,
+                                                child:
+                                                    FlutterFlowExpandedImageView(
+                                                  image: Image.network(
+                                                    specificComponentProductsRecord
+                                                        .image,
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                  allowRotation: false,
+                                                  tag:
+                                                      specificComponentProductsRecord
+                                                          .image,
+                                                  useHeroAnimation: true,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Hero(
+                                            tag: specificComponentProductsRecord
                                                 .image,
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            fit: BoxFit.scaleDown,
+                                            transitionOnUserGestures: true,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
+                                              child: Image.network(
+                                                specificComponentProductsRecord
+                                                    .image,
+                                                width: double.infinity,
+                                                height: double.infinity,
+                                                fit: BoxFit.fill,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -140,6 +170,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
                                                     color: Color(0x3A000000),
+                                                    elevation: 5,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:

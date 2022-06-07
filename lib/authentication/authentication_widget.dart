@@ -60,7 +60,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 60),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 24),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -301,7 +301,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                                     context)
                                                                 .primaryBtnText,
                                                       ),
-                                                  elevation: 3,
+                                                  elevation: 5,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1,
@@ -329,7 +329,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyText1,
-                                                  elevation: 3,
+                                                  elevation: 5,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1,
@@ -642,7 +642,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                                                     context)
                                                                 .primaryBtnText,
                                                       ),
-                                                  elevation: 3,
+                                                  elevation: 5,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1,

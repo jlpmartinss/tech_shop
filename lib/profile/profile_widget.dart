@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../authentication/authentication_widget.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -8,6 +9,7 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ProfileWidget extends StatefulWidget {
   const ProfileWidget({Key key}) : super(key: key);
@@ -68,7 +70,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             width: MediaQuery.of(context).size.width,
             height: 180,
             decoration: BoxDecoration(
-              color: Color(0xFF3D72ED),
+              color: Color(0xFF235DF2),
               shape: BoxShape.rectangle,
             ),
             child: Row(
@@ -79,90 +81,90 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   child: Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     color: Colors.white,
-                    elevation: 0,
+                    elevation: 5,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(60),
+                      borderRadius: BorderRadius.circular(200),
                     ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(60),
-                        child: Image.network(
-                          'https://picsum.photos/seed/339/600',
-                          width: 120,
-                          height: 120,
-                          fit: BoxFit.cover,
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: FlutterFlowExpandedImageView(
+                              image: Image.network(
+                                'https://picsum.photos/seed/339/600',
+                                fit: BoxFit.contain,
+                              ),
+                              allowRotation: false,
+                              tag: 'userAvatarTag',
+                              useHeroAnimation: true,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Hero(
+                        tag: 'userAvatarTag',
+                        transitionOnUserGestures: true,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.network(
+                            'https://picsum.photos/seed/339/600',
+                            width: 150,
+                            height: 150,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(-1, 0),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                              child: StreamBuilder<List<UsersRecord>>(
-                                stream: queryUsersRecord(
-                                  queryBuilder: (usersRecord) =>
-                                      usersRecord.where('uid',
-                                          isEqualTo: FFAppState().USER),
-                                  singleRecord: true,
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: CircularProgressIndicator(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<UsersRecord>
-                                      textEmailAddressUsersRecordList =
-                                      snapshot.data;
-                                  // Return an empty Container when the document does not exist.
-                                  if (snapshot.data.isEmpty) {
-                                    return Container();
-                                  }
-                                  final textEmailAddressUsersRecord =
-                                      textEmailAddressUsersRecordList.isNotEmpty
-                                          ? textEmailAddressUsersRecordList
-                                              .first
-                                          : null;
-                                  return Text(
-                                    currentUserEmail,
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: Color(0xB4FFFFFF),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                  );
-                                },
+                Align(
+                  alignment: AlignmentDirectional(0, 0),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                    child: StreamBuilder<List<UsersRecord>>(
+                      stream: queryUsersRecord(
+                        queryBuilder: (usersRecord) => usersRecord.where('uid',
+                            isEqualTo: FFAppState().USER),
+                        singleRecord: true,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: CircularProgressIndicator(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
+                          );
+                        }
+                        List<UsersRecord> textEmailAddressUsersRecordList =
+                            snapshot.data;
+                        // Return an empty Container when the document does not exist.
+                        if (snapshot.data.isEmpty) {
+                          return Container();
+                        }
+                        final textEmailAddressUsersRecord =
+                            textEmailAddressUsersRecordList.isNotEmpty
+                                ? textEmailAddressUsersRecordList.first
+                                : null;
+                        return Text(
+                          currentUserEmail,
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -177,7 +179,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               children: [
                 Material(
                   color: Colors.transparent,
-                  elevation: 0,
+                  elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -237,7 +239,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               children: [
                 Material(
                   color: Colors.transparent,
-                  elevation: 0,
+                  elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -297,7 +299,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               children: [
                 Material(
                   color: Colors.transparent,
-                  elevation: 0,
+                  elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -357,7 +359,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               children: [
                 Material(
                   color: Colors.transparent,
-                  elevation: 0,
+                  elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -417,7 +419,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               children: [
                 Material(
                   color: Colors.transparent,
-                  elevation: 0,
+                  elevation: 5,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -490,7 +492,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       fontSize: 30,
                       fontWeight: FontWeight.w500,
                     ),
-                elevation: 3,
+                elevation: 5,
                 borderSide: BorderSide(
                   color: Color(0xFFFF7A00),
                   width: 1,

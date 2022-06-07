@@ -83,7 +83,7 @@ class _PeripheralsWidgetState extends State<PeripheralsWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 30, 0, 12),
+                      padding: EdgeInsetsDirectional.fromSTEB(15, 12, 0, 12),
                       child: Text(
                         'Today\'s Deals',
                         style: FlutterFlowTheme.of(context).bodyText1.override(

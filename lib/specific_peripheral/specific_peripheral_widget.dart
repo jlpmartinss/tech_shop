@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -9,6 +10,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class SpecificPeripheralWidget extends StatefulWidget {
   const SpecificPeripheralWidget({
@@ -110,14 +112,43 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                   children: [
                                     Align(
                                       alignment: AlignmentDirectional(0, 0),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(16),
-                                        child: Image.network(
-                                          specificPeripheralProductsRecord
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            PageTransition(
+                                              type: PageTransitionType.fade,
+                                              child:
+                                                  FlutterFlowExpandedImageView(
+                                                image: Image.network(
+                                                  specificPeripheralProductsRecord
+                                                      .image,
+                                                  fit: BoxFit.contain,
+                                                ),
+                                                allowRotation: false,
+                                                tag:
+                                                    specificPeripheralProductsRecord
+                                                        .image,
+                                                useHeroAnimation: true,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Hero(
+                                          tag: specificPeripheralProductsRecord
                                               .image,
-                                          width: double.infinity,
-                                          height: double.infinity,
-                                          fit: BoxFit.scaleDown,
+                                          transitionOnUserGestures: true,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(16),
+                                            child: Image.network(
+                                              specificPeripheralProductsRecord
+                                                  .image,
+                                              width: double.infinity,
+                                              height: double.infinity,
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -140,6 +171,7 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                                                   clipBehavior: Clip
                                                       .antiAliasWithSaveLayer,
                                                   color: Color(0x3A000000),
+                                                  elevation: 5,
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -354,115 +386,129 @@ class _SpecificPeripheralWidgetState extends State<SpecificPeripheralWidget> {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4,
-                          color: Color(0x55000000),
-                          offset: Offset(0, 2),
-                        )
-                      ],
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    formatNumber(
-                                      specificPeripheralProductsRecord.price,
-                                      formatType: FormatType.decimal,
-                                      decimalType: DecimalType.automatic,
-                                      currency: '€',
-                                    ),
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context).title1,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          FFButtonWidget(
-                            onPressed: () async {
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text(
-                                                'Are you sure you want to add this item to your Cart?'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text('No'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('Yes'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                              if (confirmDialogResponse) {
-                                final cartCreateData = createCartRecordData(
-                                  name: specificPeripheralProductsRecord.name,
-                                  price: specificPeripheralProductsRecord.price,
-                                  uid: FFAppState().USER,
-                                  quantity: 1.0,
-                                  imagePath:
-                                      specificPeripheralProductsRecord.image,
-                                );
-                                await CartRecord.collection
-                                    .doc()
-                                    .set(cartCreateData);
-
-                                final usersUpdateData = {
-                                  'totalCart': FieldValue.increment(
-                                      specificPeripheralProductsRecord.price),
-                                };
-                                await currentUserReference
-                                    .update(usersUpdateData);
-                              }
-                            },
-                            text: 'Add to cart',
-                            options: FFButtonOptions(
-                              width: 130,
-                              height: 50,
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                              elevation: 3,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
-                              ),
-                              borderRadius: 8,
-                            ),
-                          ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4,
+                            color: Color(0x55000000),
+                            offset: Offset(0, 2),
+                          )
                         ],
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      formatNumber(
+                                        specificPeripheralProductsRecord.price,
+                                        formatType: FormatType.decimal,
+                                        decimalType: DecimalType.automatic,
+                                        currency: '€',
+                                      ),
+                                      textAlign: TextAlign.center,
+                                      style:
+                                          FlutterFlowTheme.of(context).title1,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  'Are you sure you want to add this item to your Cart?'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('No'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Yes'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  final cartCreateData = createCartRecordData(
+                                    name: specificPeripheralProductsRecord.name,
+                                    price:
+                                        specificPeripheralProductsRecord.price,
+                                    uid: FFAppState().USER,
+                                    quantity: 1.0,
+                                    imagePath:
+                                        specificPeripheralProductsRecord.image,
+                                  );
+                                  await CartRecord.collection
+                                      .doc()
+                                      .set(cartCreateData);
+
+                                  final usersUpdateData = {
+                                    'totalCart': FieldValue.increment(
+                                        specificPeripheralProductsRecord.price),
+                                  };
+                                  await currentUserReference
+                                      .update(usersUpdateData);
+                                }
+                              },
+                              text: 'Add to cart',
+                              options: FFButtonOptions(
+                                width: 130,
+                                height: 50,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                elevation: 5,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1,
+                                ),
+                                borderRadius: 8,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
