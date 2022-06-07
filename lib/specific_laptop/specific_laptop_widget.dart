@@ -154,7 +154,7 @@ class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
                                                   Card(
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
-                                                    color: Color(0x22FFFFFF),
+                                                    color: Color(0x7FFFFFFF),
                                                     elevation: 5,
                                                     shape:
                                                         RoundedRectangleBorder(
