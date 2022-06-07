@@ -81,35 +81,40 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Categories',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context).subtitle1,
-                          ),
-                          Material(
-                            color: Colors.transparent,
-                            elevation: 5,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(9, 0, 0, 0),
+                            child: Text(
+                              'Categories',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context).subtitle1,
                             ),
-                            child: Container(
-                              height: 150,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 5,
-                                    color: Color(0x4D000000),
-                                    offset: Offset(0, 2),
-                                  )
-                                ],
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              alignment: AlignmentDirectional(-0.0, 0),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
+                              child: Container(
+                                height: 150,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 5,
+                                      color: Color(0x4D000000),
+                                      offset: Offset(0, 2),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: Color(0x00FFFFFF),
+                                  ),
+                                ),
+                                alignment: AlignmentDirectional(-0.0, 0),
                                 child: SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
@@ -309,58 +314,66 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 32),
+                                EdgeInsetsDirectional.fromSTEB(8, 20, 8, 32),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.94,
-                                  decoration: BoxDecoration(),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 4, 0, 0),
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          elevation: 5,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.96,
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  blurRadius: 6,
-                                                  color: Color(0x3A000000),
-                                                  offset: Offset(0, 2),
-                                                )
-                                              ],
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 8),
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.94,
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 4, 0, 0),
+                                          child: Material(
+                                            color: Colors.transparent,
+                                            elevation: 5,
+                                            shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(8),
                                             ),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              child: Image.asset(
-                                                'assets/images/1summer-1280-720-usd.jpg',
-                                                width: 100,
-                                                height: 200,
-                                                fit: BoxFit.scaleDown,
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.96,
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 6,
+                                                    color: Color(0x3A000000),
+                                                    offset: Offset(0, 2),
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                border: Border.all(
+                                                  color: Color(0x00FFFFFF),
+                                                ),
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                child: Image.asset(
+                                                  'assets/images/1summer-1280-720-usd.jpg',
+                                                  width: 100,
+                                                  height: 200,
+                                                  fit: BoxFit.scaleDown,
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -396,6 +409,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 ],
                                                 borderRadius:
                                                     BorderRadius.circular(8),
+                                                border: Border.all(
+                                                  color: Color(0x00FFFFFF),
+                                                ),
                                               ),
                                               child: InkWell(
                                                 onTap: () async {

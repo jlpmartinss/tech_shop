@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -118,9 +119,10 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                                 type: PageTransitionType.fade,
                                                 child:
                                                     FlutterFlowExpandedImageView(
-                                                  image: Image.network(
-                                                    specificComponentProductsRecord
-                                                        .image,
+                                                  image: CachedNetworkImage(
+                                                    imageUrl:
+                                                        specificComponentProductsRecord
+                                                            .image,
                                                     fit: BoxFit.contain,
                                                   ),
                                                   allowRotation: false,
@@ -139,9 +141,10 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(16),
-                                              child: Image.network(
-                                                specificComponentProductsRecord
-                                                    .image,
+                                              child: CachedNetworkImage(
+                                                imageUrl:
+                                                    specificComponentProductsRecord
+                                                        .image,
                                                 width: double.infinity,
                                                 height: double.infinity,
                                                 fit: BoxFit.fill,

@@ -145,6 +145,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                                                     clipBehavior: Clip
                                                         .antiAliasWithSaveLayer,
                                                     color: Color(0x3A000000),
+                                                    elevation: 5,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -417,122 +418,131 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 12),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 4,
-                            color: Color(0x55000000),
-                            offset: Offset(0, 2),
-                          )
-                        ],
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Text(
-                                      formatNumber(
-                                        specificDesktopProductsRecord.price,
-                                        formatType: FormatType.custom,
-                                        currency: '€',
-                                        format: '',
-                                        locale: '',
-                                      ),
-                                      textAlign: TextAlign.center,
-                                      style:
-                                          FlutterFlowTheme.of(context).title1,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                var confirmDialogResponse =
-                                    await showDialog<bool>(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text(
-                                                  'Are you sure you want to add this item to your Cart?'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: Text('No'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: Text('Yes'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ) ??
-                                        false;
-                                if (confirmDialogResponse) {
-                                  final cartCreateData = createCartRecordData(
-                                    name: specificDesktopProductsRecord.name,
-                                    price: specificDesktopProductsRecord.price,
-                                    uid: FFAppState().USER,
-                                    quantity: 1.0,
-                                    imagePath:
-                                        specificDesktopProductsRecord.image,
-                                  );
-                                  await CartRecord.collection
-                                      .doc()
-                                      .set(cartCreateData);
-
-                                  final usersUpdateData = {
-                                    'totalCart': FieldValue.increment(
-                                        specificDesktopProductsRecord.price),
-                                  };
-                                  await currentUserReference
-                                      .update(usersUpdateData);
-                                }
-                              },
-                              text: 'Add to cart',
-                              options: FFButtonOptions(
-                                width: 130,
-                                height: 50,
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                elevation: 3,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: 8,
-                              ),
-                            ),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4,
+                              color: Color(0x55000000),
+                              offset: Offset(0, 2),
+                            )
                           ],
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        formatNumber(
+                                          specificDesktopProductsRecord.price,
+                                          formatType: FormatType.custom,
+                                          currency: '€',
+                                          format: '',
+                                          locale: '',
+                                        ),
+                                        textAlign: TextAlign.center,
+                                        style:
+                                            FlutterFlowTheme.of(context).title1,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  var confirmDialogResponse =
+                                      await showDialog<bool>(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    'Are you sure you want to add this item to your Cart?'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            false),
+                                                    child: Text('No'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            true),
+                                                    child: Text('Yes'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          ) ??
+                                          false;
+                                  if (confirmDialogResponse) {
+                                    final cartCreateData = createCartRecordData(
+                                      name: specificDesktopProductsRecord.name,
+                                      price:
+                                          specificDesktopProductsRecord.price,
+                                      uid: FFAppState().USER,
+                                      quantity: 1.0,
+                                      imagePath:
+                                          specificDesktopProductsRecord.image,
+                                    );
+                                    await CartRecord.collection
+                                        .doc()
+                                        .set(cartCreateData);
+
+                                    final usersUpdateData = {
+                                      'totalCart': FieldValue.increment(
+                                          specificDesktopProductsRecord.price),
+                                    };
+                                    await currentUserReference
+                                        .update(usersUpdateData);
+                                  }
+                                },
+                                text: 'Add to cart',
+                                options: FFButtonOptions(
+                                  width: 130,
+                                  height: 50,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryColor,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: 'Lexend Deca',
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                  elevation: 5,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
+                                  ),
+                                  borderRadius: 8,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

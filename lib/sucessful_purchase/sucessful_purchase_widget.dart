@@ -25,11 +25,8 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
       await Future.delayed(const Duration(milliseconds: 5000));
       await Navigator.push(
         context,
-        PageTransition(
-          type: PageTransitionType.fade,
-          duration: Duration(milliseconds: 0),
-          reverseDuration: Duration(milliseconds: 0),
-          child: NavBarPage(initialPage: 'HomePage'),
+        MaterialPageRoute(
+          builder: (context) => NavBarPage(initialPage: 'HomePage'),
         ),
       );
     });
@@ -49,7 +46,7 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
               child: Card(
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 color: Color(0xFF235DF2),
-                elevation: 3,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(70),
                 ),
@@ -85,53 +82,61 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-              child: Container(
-                width: 300,
-                height: 70,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
+              child: Material(
+                color: Colors.transparent,
+                elevation: 5,
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    color: FlutterFlowTheme.of(context).primaryBackground,
-                  ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                      child: Image.asset(
-                        'assets/images/masterCard@2x.png',
-                        width: 40,
-                        height: 40,
-                        fit: BoxFit.fitWidth,
-                      ),
+                child: Container(
+                  width: 300,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primaryBackground,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                            child: Text(
-                              'Mastercard Ending in 4021',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText2
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF8B97A2),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                        child: Image.asset(
+                          'assets/images/masterCard@2x.png',
+                          width: 40,
+                          height: 40,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                              child: Text(
+                                'Mastercard Ending in 4021',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText2
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Color(0xFF8B97A2),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -146,11 +151,9 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
                       onPressed: () async {
                         await Navigator.push(
                           context,
-                          PageTransition(
-                            type: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 0),
-                            reverseDuration: Duration(milliseconds: 0),
-                            child: NavBarPage(initialPage: 'HomePage'),
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                NavBarPage(initialPage: 'HomePage'),
                           ),
                         );
                       },
@@ -167,7 +170,7 @@ class _SucessfulPurchaseWidgetState extends State<SucessfulPurchaseWidget> {
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                             ),
-                        elevation: 0,
+                        elevation: 5,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1,
