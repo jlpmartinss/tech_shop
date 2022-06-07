@@ -298,16 +298,6 @@ class _CartWidgetState extends State<CartWidget> {
                                                       await listViewCartRecord
                                                           .reference
                                                           .delete();
-
-                                                      final usersUpdateData = {
-                                                        'totalCart': FieldValue
-                                                            .increment(
-                                                                -(listViewCartRecord
-                                                                    .price)),
-                                                      };
-                                                      await currentUserReference
-                                                          .update(
-                                                              usersUpdateData);
                                                     }
                                                   },
                                                   child: Icon(
