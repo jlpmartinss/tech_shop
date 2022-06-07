@@ -248,7 +248,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 19, 24, 0),
+                                EdgeInsetsDirectional.fromSTEB(20, 19, 20, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -283,7 +283,7 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 16, 24, 0),
+                                EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -310,140 +310,152 @@ class _SpecificDesktopWidgetState extends State<SpecificDesktopWidget> {
                               decoration: BoxDecoration(
                                 color: Colors.white,
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'CPU\nRAM\nGPU\nStorage\nPower Supply\nMotherboard',
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle2
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Colors.black,
-                                              lineHeight: 2.5,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            45, 0, 0, 0),
-                                        child: AutoSizeText(
-                                          specificDesktopProductsRecord.cpu
-                                              .maybeHandleOverflow(
-                                                  maxChars: 25),
-                                          textAlign: TextAlign.end,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20, 0, 20, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'CPU\nRAM\nGPU\nStorage\nPower Supply\nMotherboard',
+                                          textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
                                                 fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
+                                                color: Colors.black,
                                                 lineHeight: 2.5,
                                               ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            45, 0, 0, 0),
-                                        child: AutoSizeText(
-                                          specificDesktopProductsRecord.ram
-                                              .maybeHandleOverflow(
-                                                  maxChars: 25),
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  45, 0, 0, 0),
+                                          child: AutoSizeText(
+                                            specificDesktopProductsRecord.cpu
+                                                .maybeHandleOverflow(
+                                                    maxChars: 25),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF434343),
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            45, 0, 0, 0),
-                                        child: AutoSizeText(
-                                          specificDesktopProductsRecord.gpu
-                                              .maybeHandleOverflow(
-                                                  maxChars: 25),
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  45, 0, 0, 0),
+                                          child: AutoSizeText(
+                                            specificDesktopProductsRecord.ram
+                                                .maybeHandleOverflow(
+                                                    maxChars: 25),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF434343),
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            45, 0, 0, 0),
-                                        child: AutoSizeText(
-                                          specificDesktopProductsRecord.storage
-                                              .maybeHandleOverflow(
-                                                  maxChars: 25),
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  45, 0, 0, 0),
+                                          child: AutoSizeText(
+                                            specificDesktopProductsRecord.gpu
+                                                .maybeHandleOverflow(
+                                                    maxChars: 25),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF434343),
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            45, 0, 0, 0),
-                                        child: AutoSizeText(
-                                          specificDesktopProductsRecord.psu
-                                              .maybeHandleOverflow(
-                                                  maxChars: 25),
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  45, 0, 0, 0),
+                                          child: AutoSizeText(
+                                            specificDesktopProductsRecord
+                                                .storage
+                                                .maybeHandleOverflow(
+                                                    maxChars: 25),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF434343),
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            45, 0, 0, 0),
-                                        child: AutoSizeText(
-                                          specificDesktopProductsRecord
-                                              .motherboard
-                                              .maybeHandleOverflow(
-                                                  maxChars: 25),
-                                          textAlign: TextAlign.end,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  45, 0, 0, 0),
+                                          child: AutoSizeText(
+                                            specificDesktopProductsRecord.psu
+                                                .maybeHandleOverflow(
+                                                    maxChars: 25),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF434343),
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  45, 0, 0, 0),
+                                          child: AutoSizeText(
+                                            specificDesktopProductsRecord
+                                                .motherboard
+                                                .maybeHandleOverflow(
+                                                    maxChars: 25),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF434343),
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

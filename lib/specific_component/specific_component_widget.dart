@@ -252,7 +252,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 19, 24, 0),
+                                EdgeInsetsDirectional.fromSTEB(20, 19, 20, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -291,7 +291,7 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 16, 24, 0),
+                                EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -318,93 +318,102 @@ class _SpecificComponentWidgetState extends State<SpecificComponentWidget> {
                               decoration: BoxDecoration(
                                 color: Colors.white,
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 60, 0),
-                                        child: Text(
-                                          'Name\nModel Number\nType\n',
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Colors.black,
-                                                lineHeight: 2.5,
-                                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20, 0, 20, 0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 60, 0),
+                                          child: Text(
+                                            'Name\nModel Number\nType\n',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Colors.black,
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20, 0, 0, 0),
-                                        child: AutoSizeText(
-                                          specificComponentProductsRecord.name
-                                              .maybeHandleOverflow(
-                                                  maxChars: 25),
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20, 0, 0, 0),
+                                          child: AutoSizeText(
+                                            specificComponentProductsRecord.name
+                                                .maybeHandleOverflow(
+                                                    maxChars: 25),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF434343),
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20, 0, 0, 0),
-                                        child: AutoSizeText(
-                                          specificComponentProductsRecord
-                                              .modelno
-                                              .maybeHandleOverflow(
-                                                  maxChars: 25),
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20, 0, 0, 0),
+                                          child: AutoSizeText(
+                                            specificComponentProductsRecord
+                                                .modelno
+                                                .maybeHandleOverflow(
+                                                    maxChars: 25),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF434343),
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20, 0, 0, 0),
-                                        child: AutoSizeText(
-                                          specificComponentProductsRecord.type
-                                              .maybeHandleOverflow(
-                                                  maxChars: 25),
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle2
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF434343),
-                                                lineHeight: 2.5,
-                                              ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20, 0, 0, 0),
+                                          child: AutoSizeText(
+                                            specificComponentProductsRecord.type
+                                                .maybeHandleOverflow(
+                                                    maxChars: 25),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF434343),
+                                                  lineHeight: 2.5,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

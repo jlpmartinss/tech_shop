@@ -77,7 +77,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(12, 10, 10, 10),
                   child: Card(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     color: Colors.white,

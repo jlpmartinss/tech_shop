@@ -104,9 +104,11 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  24, 0, 24, 375),
+                                                  24, 0, 24, 360),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -344,7 +346,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  24, 0, 24, 365),
+                                                  24, 0, 24, 295),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
