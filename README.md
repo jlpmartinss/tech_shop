@@ -1,4 +1,3 @@
-# tech_shop
 # TechShop
 
 A new Flutter project.
