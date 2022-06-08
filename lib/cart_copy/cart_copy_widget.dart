@@ -38,8 +38,16 @@ class _CartCopyWidgetState extends State<CartCopyWidget> {
             color: Colors.white,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.fade,
+                duration: Duration(milliseconds: 0),
+                reverseDuration: Duration(milliseconds: 0),
+                child: NavBarPage(initialPage: 'HomePage'),
+              ),
+            );
           },
         ),
         title: Text(

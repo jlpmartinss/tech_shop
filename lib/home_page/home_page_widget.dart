@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../components/components_widget.dart';
 import '../computers/computers_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -8,6 +9,7 @@ import '../peripherals/peripherals_widget.dart';
 import '../search_page/search_page_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -19,6 +21,15 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      setState(() => FFAppState().USER = currentUserUid);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

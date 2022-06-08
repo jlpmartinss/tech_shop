@@ -28,21 +28,21 @@ class SpecificLaptopWidget extends StatefulWidget {
 class _SpecificLaptopWidgetState extends State<SpecificLaptopWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  @override
-  void initState() {
-    super.initState();
-    // On page load action.
-    SchedulerBinding.instance?.addPostFrameCallback((_) async {
-      final favouritesCreateData = createFavouritesRecordData(
-        uid: FFAppState().USER,
-        model: specificLaptopProductsRecord.modelno,
-        name: specificLaptopProductsRecord.name,
-        price: specificLaptopProductsRecord.price,
-        imagePath: specificLaptopProductsRecord.image,
-      );
-      await FavouritesRecord.collection.doc().set(favouritesCreateData);
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // On page load action.
+  //   SchedulerBinding.instance?.addPostFrameCallback((_) async {
+  //     final favouritesCreateData = createFavouritesRecordData(
+  //       uid: FFAppState().USER,
+  //       model: specificLaptopProductsRecord.modelno,
+  //       name: specificLaptopProductsRecord.name,
+  //       price: specificLaptopProductsRecord.price,
+  //       imagePath: specificLaptopProductsRecord.image,
+  //     );
+  //     await FavouritesRecord.collection.doc().set(favouritesCreateData);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

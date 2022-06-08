@@ -340,7 +340,9 @@ class _FavouritesWidgetState extends State<FavouritesWidget> {
                                               },
                                               child: Icon(
                                                 Icons.add_shopping_cart,
-                                                color: Color(0xFF19A808),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryColor,
                                                 size: 24,
                                               ),
                                             ),
